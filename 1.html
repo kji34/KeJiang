@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPMS Research Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transform: translate(100px, 30px);
+        }
+
+        header {
+            color: #000;
+            padding: 20px 20px 10px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .logo {
+            flex: 1;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+
+        .logo img {
+            max-width: 150px;
+            max-height: 50px;
+            height: auto;
+            width: auto;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        nav {
+            display: flex;
+            gap: 70px;
+            position: absolute;
+            top: 30px;
+            left: 375px;
+            font-family: 'Montserrat';
+        }
+
+        nav a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            font-size: 1.2em;
+            font-family: 'Montserrat';
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            display: none;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .dropdown a {
+            color: #000;
+            padding: 10px;
+            text-decoration: none;
+            white-space: nowrap;
+            background-color: #fff;
+            font-size: 0.8em;
+        }
+
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .sidebar .details a {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: #000;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .sidebar .details a img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            vertical-align: middle;
+            margin-left: 70px;
+        }
+
+        .sidebar .details a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 45px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            margin: 0;
+            width: 100vw;
+            position: relative;
+            left: -100px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="has-dropdown">
+                <a href="#">Research</a>
+                <div class="dropdown">
+                    <a href="high.html">High-Performance Structures</a>
+                    <a href="anti.html">Anti-Seismic Devices</a>
+                    <a href="structural.html">Structural Fire</a>
+                    <a href="ai.html">AI in Structures</a>
+                </div>
+            </div>
+            <a href="teams.html">Teams</a>
+            <a href="publications.html">Publications</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <div class="details">
+                <p><strong>KE JIANG</strong></p>
+                <a href="#"><img src="images/H1.jpg" alt="Email Icon">Email</a>
+                <a href="#"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
+                <a href="#"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
+                <a href="#"><img src="images/H1.jpg" alt="Website Icon">Website</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Research Interests</h1>
+            <p>Details about research interests will go here.</p>
+
+            <h1>News and Updates</h1>
+            <p>Details about news and updates will go here.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownParent = document.querySelector('.has-dropdown');
+            const dropdown = dropdownParent.querySelector('.dropdown');
+
+            dropdownParent.addEventListener('click', (event) => {
+                // 阻止默认行为，防止跳转
+                event.preventDefault();
+
+                // 切换显示状态
+                if (dropdown.style.display === 'flex') {
+                    dropdown.style.display = 'none';
+                } else {
+                    dropdown.style.display = 'flex';
+                }
+            });
+
+            // 可选：点击页面其他地方关闭菜单
+            document.addEventListener('click', (event) => {
+                if (!dropdownParent.contains(event.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
