@@ -44,7 +44,7 @@
         
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
-            fetch('header.html') // 加载公共文件
+            fetch('inputs/header.html') // 加载公共文件
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
