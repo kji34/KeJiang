@@ -13,13 +13,7 @@
     <div class="container">
         <div class="sidebar">
             <img src="images/ke jiang.jpg" alt="Profile Picture">
-            <div class="details">
-                <p><strong>KE  JIANG</strong></p>
-                <a href="mailto:ke.jiang@canterbury.ac.nz"><img src="images/email.jpg" alt="Email Icon" class="rectangle-img">Email</a>
-                <a href="https://www.linkedin.com/in/ke-jiang-613646ba/"><img src="images/linkedin.jpg" alt="LinkedIn Icon" class="rectangle-img">LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=2YQxaJgAAAAJ&hl=en"><img src="images/google scholar.jpg" alt="Google Scholar Icon" class="rectangle-img">Google Scholar</a>
-                <a href="https://profiles.canterbury.ac.nz/Ke-Jiang"><img src="images/UC.jpg" alt="Website Icon" class="rectangle-img">Website</a>
-            </div>
+            <div id="author_bio-placeholder"></div>
         </div>
         <div class="content">
             <h1>Welcome!</h1>
@@ -42,14 +36,19 @@
 
     <script>
         
-        // 动态加载公共 HTML 文件
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('inputs/header.html') // 加载公共文件
+       // 动态加载公共部分
+       const loadHTML = (id, file) => {
+            fetch(file)
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
+                    document.getElementById(id).innerHTML = data;
                 })
-                .catch(error => console.error('加载失败:', error));
+                .catch(error => console.error(`加载失败: ${file}`, error));
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('header-placeholder', 'inputs/header.html'); // 加载头部
+            loadHTML('author_bio-placeholder', 'inputs/sidebar.html'); // 加载侧边栏
         });
 
     
