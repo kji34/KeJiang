@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <link rel="imput" href="hearder.html">
+    <div id="header-placeholder"></div> <!-- 公共 HTML 文件占位符 -->
     <div class="container">
         <div class="sidebar">
             <img src="images/ke jiang.jpg" alt="Profile Picture">
@@ -41,6 +41,18 @@
     </footer>
 
     <script>
+        
+        // 动态加载公共 HTML 文件
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('header.html') // 加载公共文件
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('加载失败:', error));
+        });
+
+    
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.querySelector('nav');
 
