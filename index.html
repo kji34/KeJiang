@@ -161,6 +161,14 @@
             font-size: 1.5em;
         }
 
+        .tagged-text::before {
+            content: "·"; /* 使用符号或文字 */
+            color: rgb(0, 0, 0); /* 设置符号颜色 */
+            margin-right: 8px; /* 符号与文字间距 */
+            margin-left:8px;
+            font-size: 1.2em; /* 调整符号大小 */    
+        }
+
         @media (max-width: 768px) {
             body {
                 transform: none;
@@ -276,6 +284,10 @@
         <div class="content">
             <h1>Welcome!</h1>
             <p>High-Performance Metallic Structure (HPMS) Research Group is led by Dr. Ke Jiang at University of Canterbury, New Zealand. Our group conducts research into high-performance metallic structures, with a particular emphasis on:</p>
+            <p class="tagged-text">High-performance connections and members</p>
+            <p class="tagged-text">•	Anti-seismic devices</p>
+            <p class="tagged-text">•	Post-fire Behaviour of steel and composite structures</p>
+            <p class="tagged-text">•	Artificial Intelligence in Structures</p>
             <br>
             <h1>News and Updates</h1>
             <p>Details about news and updates will go here.</p>
