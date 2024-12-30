@@ -36,19 +36,23 @@
 
     <script>
         
-       // 动态加载公共部分
-       const loadHTML = (id, file) => {
-            fetch(file)
+        // 动态加载公共 HTML 文件
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('inputs/header.html') // 加载公共文件
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById(id).innerHTML = data;
+                    document.getElementById('header-placeholder').innerHTML = data;
                 })
-                .catch(error => console.error(`加载失败: ${file}`, error));
-        };
+                .catch(error => console.error('加载失败:', error));
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadHTML('header-placeholder', 'inputs/header.html'); // 加载头部
-            loadHTML('author_bio-placeholder', 'inputs/sidebar.html'); // 加载侧边栏
+            fetch('inputs/author_bio.html') // 加载公共文件
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('加载失败:', error));
         });
 
     
