@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPMS Research Group</title>
+    <!-- 添加网站图标 -->
+    <link rel="icon" type="image/jpeg" href="images/1.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/HPMS.jpg" alt="Logo Icon"></div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <div class="has-dropdown">
+                <a href="#">Research</a>
+                <div class="dropdown">
+                    <a href="high.html">High-Performance Structures</a>
+                    <a href="anti.html">Anti-Seismic Devices</a>
+                    <a href="structural.html">Structural Fire</a>
+                    <a href="ai.html">AI in Structures</a>
+                </div>
+            </div>
+            <a href="team.html">Team</a>
+            <a href="publications.html">Publications</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <img src="images/ke jiang.jpg" alt="Profile Picture">
+            <div class="details">
+                <p><strong>KE  JIANG</strong></p>
+                <a href="mailto:ke.jiang@canterbury.ac.nz"><img src="images/email.jpg" alt="Email Icon" class="rectangle-img">Email</a>
+                <a href="https://www.linkedin.com/in/ke-jiang-613646ba/"><img src="images/linkedin.jpg" alt="LinkedIn Icon" class="rectangle-img">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=2YQxaJgAAAAJ&hl=en"><img src="images/google scholar.jpg" alt="Google Scholar Icon" class="rectangle-img">Google Scholar</a>
+                <a href="https://profiles.canterbury.ac.nz/Ke-Jiang"><img src="images/UC.jpg" alt="Website Icon" class="rectangle-img">Website</a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>AI in structures</h1>
+            <p>I have been working on developing machine-learning-based design framework for steel connections and members. All of the published papers can be found on this page.</p>
+
+            <h1>News and Updates</h1>
+            <p>Details about news and updates will go here.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024. High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
+    </footer>
+
+	    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownParent = document.querySelector('.has-dropdown');
+            const dropdown = dropdownParent.querySelector('.dropdown');
+
+            dropdownParent.addEventListener('click', (event) => {
+                // 阻止默认行为，防止跳转
+                event.preventDefault();
+
+                // 切换显示状态
+                if (dropdown.style.display === 'flex') {
+                    dropdown.style.display = 'none';
+                } else {
+                    dropdown.style.display = 'flex';
+                }
+            });
+
+            // 可选：点击页面其他地方关闭菜单
+            document.addEventListener('click', (event) => {
+                if (!dropdownParent.contains(event.target)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+	
+</body>
+</html>
