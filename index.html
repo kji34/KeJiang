@@ -50,7 +50,7 @@
             fetch('inputs/author_bio.html') // 加载公共文件
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
+                    document.getElementById('author_bio-placeholder').innerHTML = data;
                 })
                 .catch(error => console.error('加载失败:', error));
         });
