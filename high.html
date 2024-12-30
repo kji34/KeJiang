@@ -8,17 +8,17 @@
     <link rel="icon" type="image/jpeg" href="images/1.jpg">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: math;
             margin: 0;
             padding: 0;
-            transform: translate(100px, 30px);
+            transform: translate(50px, 30px);
         }
 
         header {
-            color: #000;
-            padding: 20px 20px 10px;
+            color: #000000;
+            padding: 0px 20px 10px;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
         }
 
         .logo {
@@ -28,64 +28,62 @@
         }
 
         .logo img {
-            max-width: 150px;
-            max-height: 50px;
+            max-width: 300px;
+            max-height: 100px;
             height: auto;
             width: auto;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
         nav {
             display: flex;
-            gap: 70px;
+            gap: 100px;
             position: absolute;
-            top: 30px;
+            top: 40px;
             left: 375px;
-            font-family: 'Montserrat';
+            font-family: "Gill Sans", sans-serif;
         }
 
         nav a {
             color: #000;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 1000;
             position: relative;
             font-size: 1.2em;
+            font-family:  "Gill Sans", sans-serif;
         }
 
         nav a:hover {
-            text-decoration: underline;
-        }
-
-        .has-dropdown {
-            position: relative;
+            text-decoration: overline #000000;
         }
 
         .dropdown {
-            display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            display: none;
             flex-direction: column;
-            z-index: 1000;
-            min-width: 200px;
+            z-index: 9999;
         }
 
         .dropdown a {
-            padding: 10px 15px;
-            color: #000;
+            color: #000000;
+            padding: 10px;
             text-decoration: none;
-            display: block;
-            font-size: 0.9em;
+            white-space: nowrap;
+            background-color: #ffffff;
+            font-size: 1.0em;
         }
 
         .dropdown a:hover {
-            background-color: #f0f0f0;
+            background-color: #ffffff;
+            text-decoration: underline #000000;
         }
 
-        .has-dropdown:hover .dropdown {
-            display: flex;
+        nav .has-dropdown.open .dropdown {
+            display: flex !important;
         }
 
         .container {
@@ -97,11 +95,12 @@
             width: 250px;
             padding: 20px;
             text-align: center;
+            font-size: 1.2em;
         }
 
         .sidebar img {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             margin-bottom: 10px;
         }
@@ -120,7 +119,8 @@
             align-items: center;
             color: #000;
             text-decoration: none;
-            margin: 5px 0;
+            font-size: 0.8em
+            margin: 7px 0;
         }
 
         .sidebar .details a img {
@@ -139,15 +139,7 @@
             flex: 1;
             padding: 20px;
             margin-left: 45px;
-        }
-
-        .content img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .content h3 {
-            margin-top: 0;
+            margin-right: 20%;
         }
 
         footer {
@@ -163,6 +155,10 @@
 
         footer p {
             margin: 0;
+        }
+
+        .content p {
+            font-size: 1.5em;
         }
 
         @media (max-width: 768px) {
@@ -190,6 +186,20 @@
                 display: flex;
             }
 
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+            .menu-toggle span {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: #000;
+                margin: 5px 0;
+            }
+
             .container {
                 flex-direction: column;
             }
@@ -202,6 +212,20 @@
             .sidebar img {
                 width: 80px;
                 height: 80px;
+            }
+
+            .sidebar .details {
+                font-size: 1.5em;
+            }
+
+            .sidebar .details a img {
+                width: 14px;
+                height: 14px;
+                margin-left: 50px;
+            }
+
+            .sidebar .details a {
+                font-size: 0.7em;
             }
 
             .content {
@@ -217,7 +241,12 @@
 </head>
 <body>
     <header>
-        <div class="logo"><img src="images/H1.jpg" alt="Logo Icon"></div>
+        <div class="logo"><img src="images/HPMS.jpg" alt="Logo Icon"></div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <a href="index.html">Home</a>
             <div class="has-dropdown">
@@ -229,19 +258,19 @@
                     <a href="ai.html">AI in Structures</a>
                 </div>
             </div>
-            <a href="teams.html">Teams</a>
+            <a href="team.html">Team</a>
             <a href="publications.html">Publications</a>
         </nav>
     </header>
     <div class="container">
         <div class="sidebar">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img src="images/ke jiang.jpg" alt="Profile Picture">
             <div class="details">
-                <p><strong>KE JIANG</strong></p>
-                <a href="mailto:example@example.com"><img src="images/H1.jpg" alt="Email Icon">Email</a>
-                <a href="#"><img src="images/H1.jpg" alt="LinkedIn Icon">LinkedIn</a>
-                <a href="#"><img src="images/H1.jpg" alt="Google Scholar Icon">Google Scholar</a>
-                <a href="#"><img src="images/H1.jpg" alt="Website Icon">Website</a>
+                <p><strong>KE  JIANG</strong></p>
+                <a href="mailto:ke.jiang@canterbury.ac.nz"><img src="images/email.jpg" alt="Email Icon" class="rectangle-img">Email</a>
+                <a href="https://www.linkedin.com/in/ke-jiang-613646ba/"><img src="images/linkedin.jpg" alt="LinkedIn Icon" class="rectangle-img">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=2YQxaJgAAAAJ&hl=en"><img src="images/google scholar.jpg" alt="Google Scholar Icon" class="rectangle-img">Google Scholar</a>
+                <a href="https://profiles.canterbury.ac.nz/Ke-Jiang"><img src="images/UC.jpg" alt="Website Icon" class="rectangle-img">Website</a>
             </div>
         </div>
         <div class="content">
