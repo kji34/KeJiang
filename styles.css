@@ -141,8 +141,9 @@ nav .has-dropdown.open .dropdown {
 .content {
     flex: 1; /* 内容区域占据剩余空间 */
     padding: 20px; /* 设置内边距 */
-    margin-left: 45px; /* 设置左外边距 */
-    margin-right: 20%; /* 设置右外边距 */
+    margin-left: 5%; /* 设置左外边距 */
+    margin-right: 7%; /* 设置右外边距 */
+    margin-top: -5%;
 }
 
 /* 选择容器内的所有段落标签 */
