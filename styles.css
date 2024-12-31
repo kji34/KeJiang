@@ -1,230 +1,266 @@
-        body {
-            font-family: math;
-            margin: 0;
-            padding: 0;
-            transform: translate(50px, 30px);
-        }
+/* 控制整个网页的默认外观和位置 */
+body {
+    font-family: math; /* 设置页面的默认字体样式为 "math" 字体 */
+    margin: 0; /* 去除页面的默认外边距 */
+    padding: 0; /* 去除页面的默认内边距 */
+    transform: translate(50px, 30px); /* 将整个页面向右下方偏移 50px 和 30px */
+}
 
-        header {
-            color: #000000;
-            padding: 0px 20px 10px;
-            display: flex;
-            align-items: center;
-        }
+/* 定义页眉的基本外观和布局 */
+header {
+    color: #000000; /* 设置文本颜色为黑色 */
+    padding: 0px 20px 10px; /* 设置页眉的内边距：上、左右、下 */
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐内容 */
+}
 
-        .logo {
-            flex: 1;
-            font-weight: bold;
-            font-size: 1.5em;
-        }
+/* 定义页眉课题组logo样式 */
+.logo {
+    flex: 1; /* 使 logo 占用多余的空间 */
+    font-weight: bold; /* 设置字体加粗 */
+    font-size: 1.5em; /* 设置字体大小 */
+}
 
-        .logo img {
-            max-width: 300px;
-            max-height: 100px;
-            height: auto;
-            width: auto;
-        }
+.logo img {
+    max-width: 300px; /* 限制 logo 图片的最大宽度 */
+    max-height: 100px; /* 限制 logo 图片的最大高度 */
+    height: auto; /* 保持图片纵横比 */
+    width: auto; /* 保持图片纵横比 */
+}
 
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-        nav {
-            display: flex;
-            gap: 100px;
-            position: absolute;
-            top: 40px;
-            left: 375px;
-            font-family: "Gill Sans", sans-serif;
-        }
+/* 定义导航栏（菜单栏）的位置、布局和样式 */
+nav {
+    display: flex; /* 使用 Flexbox 布局 */
+    gap: 100px; /* 设置导航链接之间的间距 */
+    position: absolute; /* 绝对定位导航栏 */
+    top: 40px; /* 距离页面顶部 40px */
+    left: 375px; /* 距离页面左侧 375px */
+    font-family: "Gill Sans", sans-serif; /* 设置字体 */
+}
 
-        nav a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 1000;
-            position: relative;
-            font-size: 1.2em;
-            font-family:  "Gill Sans", sans-serif;
-        }
+/* 控制导航栏中各个链接的样式 */
+nav a {
+    color: #000; /* 设置导航链接文字颜色为黑色 */
+    text-decoration: none; /* 去除下划线 */
+    font-weight: 1000; /* 设置文字粗细 */
+    position: relative; /* 定义相对定位，为后续样式提供基础 */
+    font-size: 1.2em; /* 设置文字大小 */
+}
 
-        nav a:hover {
-            text-decoration: overline #000000;
-        }
+/* 添加导航链接的鼠标悬停效果 */
+nav a:hover {
+    text-decoration: overline #000000; /* 鼠标悬停时显示上划线 */
+}
 
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            border: 1px solid #000000;
-            display: none;
-            flex-direction: column;
-            z-index: 9999;
-        }
+/* 定义下拉菜单的基本样式和隐藏效果 */
+.dropdown {
+    position: absolute; /* 绝对定位下拉菜单 */
+    top: 100%; /* 位于其父元素的下方 */
+    left: 0; /* 左对齐 */
+    background-color: #ffffff; /* 背景为白色 */
+    border: 1px solid #000000; /* 添加黑色边框 */
+    display: none; /* 默认隐藏下拉菜单 */
+    flex-direction: column; /* 垂直排列子元素 */
+    z-index: 9999; /* 设置较高的层级，确保显示在前 */
+}
 
-        .dropdown a {
-            color: #000000;
-            padding: 10px;
-            text-decoration: none;
-            white-space: nowrap;
-            background-color: #ffffff;
-            font-size: 1.0em;
-        }
+/* 控制下拉菜单项的显示样式 */
+.dropdown a {
+    color: #000000; /* 设置下拉菜单项的文字颜色为黑色 */
+    padding: 10px; /* 设置菜单项的内边距 */
+    text-decoration: none; /* 去除下划线 */
+    white-space: nowrap; /* 禁止换行 */
+    background-color: #ffffff; /* 背景颜色为白色 */
+    font-size: 1.0em; /* 设置文字大小 */
+}
 
-        .dropdown a:hover {
-            background-color: #ffffff;
-            text-decoration: underline #000000;
-        }
+/* 定义下拉菜单项的鼠标悬停效果 */
+.dropdown a:hover {
+    background-color: #ffffff; /* 鼠标悬停时背景保持白色 */
+    text-decoration: underline #000000; /* 鼠标悬停时显示下划线 */
+}
 
-        nav .has-dropdown.open .dropdown {
-            display: flex !important;
-        }
+/* 控制下拉菜单的显示状态 */
+nav .has-dropdown.open .dropdown {
+    display: flex !important; /* 强制显示下拉菜单 */
+}
 
-        .container {
-            display: flex;
-            margin: 20px;
-        }
+/* 定义页面主容器的布局方式 */
+.container {
+    display: flex; /* 使用 Flexbox 布局 */
+    margin: 20px; /* 设置外边距 */
+}
 
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            text-align: center;
-            font-size: 1.2em;
-        }
+/* 控制侧边栏及其内容（如头像）的显示样式 */
+.sidebar {
+    width: 250px; /* 设置侧边栏宽度 */
+    padding: 20px; /* 设置内边距 */
+    text-align: center; /* 文本居中对齐 */
+    font-size: 1.2em; /* 设置字体大小 */
+}
 
-        .sidebar img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
+.sidebar img {
+    width: 140px; /* 设置图片宽度 */
+    height: 140px; /* 设置图片高度 */
+    border-radius: 50%; /* 将图片裁剪为圆形 */
+    margin-bottom: 10px; /* 添加图片下方的外边距 */
+}
 
-        .sidebar .details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left;
-            width: 100%;
-        }
+.sidebar .details {
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-direction: column; /* 子元素垂直排列（从上到下） */
+    align-items: center; /* 子元素水平居中对齐 */
+    text-align: left; /* 文本左对齐 */
+    width: 100%; /* 宽度占满父容器 */
+}
 
-        .sidebar .details a {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            color: #000;
-            text-decoration: none;
-            font-size: 0.8em;
-            margin: 7px 0;
-        }
+.sidebar .details a {
+    width: 100%; /* 链接宽度占满父容器 */
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 图标和文本在垂直方向上居中对齐 */
+    color: #000; /* 文本颜色设置为黑色 */
+    text-decoration: none; /* 去掉默认的下划线 */
+    font-size: 0.8em; /* 设置链接文字的大小为父级的 80% */
+    margin: 7px 0; /* 在上下方向上添加 7px 的外边距 */
+}
 
-        .sidebar .details a img {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            vertical-align: middle;
-            margin-left: 70px;
-        }
+.sidebar .details a img {
+    width: 16px; /* 设置图标宽度为 16px */
+    height: 16px; /* 设置图标高度为 16px */
+    margin-right: 8px; /* 图标右侧留 8px 空间 */
+    vertical-align: middle; /* 图标与文字垂直方向对齐 */
+    margin-left: 70px; /* 图标左侧留 70px 空间 */
+}
 
-        .sidebar .details a:hover {
-            text-decoration: underline;
-        }
+.sidebar .details a:hover {
+    text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
 
-        .content {
-            flex: 1;
-            padding: 20px;
-            margin-left: 45px;
-            margin-right: 20%;
-        }
+/* 控制内容区域的宽度和位置 */
+.content {
+    flex: 1; /* 内容区域占据剩余空间 */
+    padding: 20px; /* 设置内边距 */
+    margin-left: 45px; /* 设置左外边距 */
+    margin-right: 20%; /* 设置右外边距 */
+}
 
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 50px 0;
-            margin: 0;
-            width: 100vw;
-            position: relative;
-            left: -100px;
-        }
+/* 选择容器内的所有段落标签 */
+.content p {
+    font-size: 1.3em; /* 段落的文字大小设置 */
+}
 
-        footer p {
-            margin: 0;
-        }
+/* 定义页脚的显示样式 */
+footer {
+    background-color: #000; /* 背景颜色为黑色 */
+    color: #fff; /* 文字颜色为白色 */
+    text-align: center; /* 文本居中对齐 */
+    padding: 50px 0; /* 设置上下内边距 */
+    margin: 0; /* 去除外边距 */
+    width: 100vw; /* 页脚宽度占满视口 */
+    position: relative; /* 相对定位 */
+    left: -100px; /* 向左偏移 100px */
+}
 
-        .content p {
-            font-size: 1.3em;
-        }
+/* 选择页脚中的所有段落标签*/
+footer p {
+    margin: 0; /* 选择页脚 (<footer>) 中的所有段落标签 */
+}
 
-        @media (max-width: 768px) {
-            body {
-                transform: none;
-                margin: 0;
-                padding: 0;
-            }
 
-            nav {
-                position: relative;
-                top: auto;
-                left: auto;
-                flex-direction: column;
-                gap: 20px;
-                display: none;
-                background-color: #f8f8f8;
-                width: 100%;
-                padding: 10px;
-                margin-top: 20px;
-                z-index: 1000;
-            }
+/* 针对小屏幕设备的样式，优化页面布局和导航栏显示 */
+@media (max-width: 768px) {
+    body {
+        transform: none; /* 移除页面的整体偏移 */
+        margin: 0; /* 去除外边距 */
+        padding: 0; /* 去除内边距 */
+    }
 
-            nav.open {
-                display: flex;
-            }
+    nav {
+        position: relative; /* 相对定位导航栏 */
+        top: auto; /* 移除顶部固定距离 */
+        left: auto; /* 移除左侧固定距离 */
+        flex-direction: column; /* 垂直排列导航链接 */
+        gap: 20px; /* 设置导航链接之间的间距 */
+        display: none; /* 默认隐藏导航栏 */
+        background-color: #f8f8f8; /* 背景颜色为浅灰色 */
+        width: 100%; /* 占满宽度 */
+        padding: 10px; /* 设置内边距 */
+        margin-top: 20px; /* 设置顶部外边距 */
+        z-index: 1000; /* 确保导航显示在最前 */
+    }
+}
 
-            .menu-toggle {
-                display: block;
-                cursor: pointer;
-                margin-left: 10px;
-            }
+body {
+    transform: none; /* 取消页面偏移 */
+    margin: 0; /* 去除页面的默认外边距 */
+    padding: 0; /* 去除页面的默认内边距 */
+}
 
-            .menu-toggle span {
-                display: block;
-                width: 25px;
-                height: 3px;
-                background-color: #000;
-                margin: 5px 0;
-            }
+nav {
+    position: relative; /* 取消绝对定位，改为相对定位 */
+    top: auto; /* 移除顶部的固定距离 */
+    left: auto; /* 移除左侧的固定距离 */
+    flex-direction: column; /* 导航链接垂直排列 */
+    gap: 20px; /* 设置导航链接之间的间距为 20px */
+    display: none; /* 默认隐藏导航栏 */
+    background-color: #f8f8f8; /* 设置导航栏背景色为浅灰色 */
+    width: 100%; /* 导航栏宽度占满屏幕 */
+    padding: 10px; /* 设置导航栏内边距 */
+    margin-top: 20px; /* 与上方内容之间添加 20px 间距 */
+    z-index: 1000; /* 提高层级，确保导航栏不会被其他内容覆盖 */
+}
 
-            .container {
-                flex-direction: column;
-            }
+nav.open {
+    display: flex; /* 当导航栏有 `open` 类时，将其显示为弹性布局 */
+}
 
-            .sidebar {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+.menu-toggle {
+    display: block; /* 将菜单切换按钮显示出来 */
+    cursor: pointer; /* 鼠标悬停时显示为手型 */
+    margin-left: 10px; /* 添加左侧 10px 的间距 */
+}
 
-            .sidebar img {
-                width: 80px;
-                height: 80px;
-            }
+.menu-toggle span {
+    display: block; /* 每条线作为块状元素 */
+    width: 25px; /* 每条线宽度为 25px */
+    height: 3px; /* 每条线高度为 3px */
+    background-color: #000; /* 设置线条颜色为黑色 */
+    margin: 5px 0; /* 每条线之间添加 5px 的间距 */
+}
 
-            .sidebar .details {
-                font-size: 1.5em;
-            }
+.container {
+    flex-direction: column; /* 将容器的子元素改为垂直排列 */
+}
 
-            .sidebar .details a img {
-                width: 14px;
-                height: 14px;
-                margin-left: 50px;
-            }
+.sidebar {
+    width: 100%; /* 侧边栏宽度占满屏幕 */
+    margin-bottom: 20px; /* 与下方内容之间添加 20px 的间距 */
+}
 
-            .sidebar .details a {
-                font-size: 0.7em;
-            }
+.sidebar img {
+    width: 80px; /* 侧边栏头像宽度为 80px */
+    height: 80px; /* 侧边栏头像高度为 80px */
+}
 
-            .content {
-                margin-left: 0;
-            }
+.sidebar .details {
+    font-size: 1.5em; /* 增大侧边栏内容的文字大小 */
+}
 
-            footer {
-                width: 100%;
-                left: 0;
-            }
-        }
+.sidebar .details a img {
+    width: 14px; /* 缩小链接中图标的宽度为 14px */
+    height: 14px; /* 缩小链接中图标的高度为 14px */
+    margin-left: 50px; /* 图标与文本之间保持左侧 50px 的间距 */
+}
+
+.sidebar .details a {
+    font-size: 0.7em; /* 缩小链接中文本的字体大小为父级字体大小的 70% */
+}
+
+.content {
+    margin-left: 0; /* 移除内容区域的左侧外边距 */
+}
+
+footer {
+    width: 100%; /* 页脚宽度占满屏幕 */
+    left: 0; /* 确保页脚紧贴屏幕左侧 */
+}
