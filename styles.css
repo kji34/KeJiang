@@ -120,7 +120,7 @@ nav .has-dropdown.open .dropdown {
     align-items: center; /* 图标和文本在垂直方向上居中对齐 */
     color: #000; /* 文本颜色设置为黑色 */
     text-decoration: none; /* 去掉默认的下划线 */
-    font-size: 0.8em; /* 设置链接文字的大小为父级的 80% */
+    font-size: 0.7em; /* 设置链接文字的大小为父级的 80% */
     margin: 7px 0; /* 在上下方向上添加 7px 的外边距 */
 }
 
