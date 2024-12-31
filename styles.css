@@ -19,12 +19,11 @@ header {
     flex: 1; /* 使 logo 占用多余的空间 */
     font-weight: bold; /* 设置字体加粗 */
     font-size: 1.5em; /* 设置字体大小 */
+    transform: translate(70px, 40px);
 }
 
 .logo img {
-    max-width: 300px; /* 限制 logo 图片的最大宽度 */
-    max-height: 100px; /* 限制 logo 图片的最大高度 */
-    height: auto; /* 保持图片纵横比 */
+    height: 100px; /* 保持图片纵横比 */
     width: auto; /* 保持图片纵横比 */
 }
 
@@ -96,7 +95,8 @@ nav .has-dropdown.open .dropdown {
     width: 250px; /* 设置侧边栏宽度 */
     padding: 20px; /* 设置内边距 */
     text-align: center; /* 文本居中对齐 */
-    font-size: 1.2em; /* 设置字体大小 */
+    font-size: 1.5em; /* 设置字体大小 */
+    margin-top: 2%; /* 设置上边距 */
 }
 
 .sidebar img {
