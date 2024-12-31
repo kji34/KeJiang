@@ -33,19 +33,19 @@ nav {
     gap: 5%; /* 设置导航链接之间的间距 */
     position: absolute; /* 绝对定位导航栏 */
     top: 40px; /* 距离页面顶部 40px */
-    left: 375px; /* 距离页面左侧 375px */
+    left: 380px; /* 距离页面左侧 375px */
     right: 25%;
-    font-family: "Gill Sans", sans-serif; /* 设置字体 */
+    font-family: math; /* 设置字体 */
     justify-content: space-between;
 }
 
 /* 控制导航栏中各个链接的样式 */
 nav a {
     color: #000; /* 设置导航链接文字颜色为黑色 */
-    text-decoration: none; /* 去除下划线 */
+    text-decoration: revert; /* 去除下划线 */
     font-weight: 1000; /* 设置文字粗细 */
     position: relative; /* 定义相对定位，为后续样式提供基础 */
-    font-size: 1.2em; /* 设置文字大小 */
+    font-size: 1.3em; /* 设置文字大小 */
 }
 
 /* 添加导航链接的鼠标悬停效果 */
