@@ -3,7 +3,7 @@ body {
     font-family: math; /* 设置页面的默认字体样式为 "math" 字体 */
     margin: 0; /* 去除页面的默认外边距 */
     padding: 0; /* 去除页面的默认内边距 */
-    transform: translate(50px, 30px); /* 将整个页面向右下方偏移 50px 和 30px */
+    transform: translate(1%, 3%); /* 将整个页面向右下方偏移 50px 和 30px */
 }
 
 /* 定义页眉的基本外观和布局 */
@@ -144,7 +144,7 @@ nav .has-dropdown.open .dropdown {
     flex: 1; /* 内容区域占据剩余空间 */
     padding: 20px; /* 设置内边距 */
     margin-left: 5%; /* 设置左外边距 */
-    margin-right: 7%; /* 设置右外边距 */
+    margin-right: 10%; /* 设置右外边距 */
     margin-top: -5%;
 }
 
