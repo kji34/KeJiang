@@ -162,7 +162,7 @@ footer {
     margin: 0; /* 去除外边距 */
     width: 100vw; /* 页脚宽度占满视口 */
     position: relative; /* 相对定位 */
-    left: -100px; /* 向左偏移 100px */
+
 }
 
 /* 选择页脚中的所有段落标签*/
