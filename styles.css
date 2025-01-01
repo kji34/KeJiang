@@ -162,7 +162,8 @@ nav a:hover {
 
 a {
     color: #000000;          /* 链接颜色 */
-    text-decoration: none;   /* 去除下划线 */
+    text-decoration: underline;   /* 去除下划线 */
+    text-decoration-thickness: revert;
 }
 
 a:hover {
