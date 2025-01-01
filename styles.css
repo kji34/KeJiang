@@ -35,7 +35,6 @@ nav {
     top: 40px; /* 距离页面顶部 40px */
     left: 380px; /* 距离页面左侧 375px */
     right: 25%;
-    font-family: math; /* 设置字体 */
     justify-content: space-between;
 }
 
