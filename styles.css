@@ -216,7 +216,7 @@ nav a:hover {
 .content {
     flex: 1; /* 内容区域占据剩余空间 */
     padding: 20px; /* 设置内边距 */
-    margin-left: 5%; /* 设置左外边距 */
+    margin-left: 47px; /* 设置左外边距 */
     margin-right: 10%; /* 设置右外边距 */
     margin-top: 0;
 }
