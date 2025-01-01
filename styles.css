@@ -230,7 +230,7 @@ b {
 
 .content-container {
     width: 75%;
-    padding: 24px;
+    padding: 3%;
 }
 
 .paper-title {
@@ -253,7 +253,7 @@ b {
 
 .paper-link {
     display: inline-block;
-    background-color: #3b82f6;
+    background-color: #000000;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
@@ -262,7 +262,7 @@ b {
 }
 
 .paper-link:hover {
-    background-color: #2563eb;
+    background-color: #969696;
 }
 
 /* 定义页脚的显示样式 */
