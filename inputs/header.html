@@ -23,20 +23,30 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-            const dropdownParent = document.querySelector('.has-dropdown'); // 获取 Research 菜单的父容器
-            const dropdownMenu = dropdownParent.querySelector('.dropdown'); // 获取下拉菜单
-
-            // 添加点击事件
-            dropdownParent.addEventListener('click', (event) => {
-                event.preventDefault(); // 阻止默认行为（如跳转）
-                dropdownParent.classList.toggle('open'); // 切换 "open" 类，控制菜单显示
-            });
-
-            // 点击页面其他位置时隐藏下拉菜单
-            document.addEventListener('click', (event) => {
-                if (!dropdownParent.contains(event.target)) { // 判断点击是否发生在菜单内
-                    dropdownParent.classList.remove('open'); // 移除 "open" 类，隐藏菜单
-                }
+        const dropdownParent = document.querySelector('.has-dropdown');
+        
+        // 点击Research菜单时的处理
+        dropdownParent.addEventListener('click', (event) => {
+            // 只有点击Research链接时才切换菜单
+            if (event.target === dropdownParent.querySelector('a')) {
+                event.preventDefault();
+                dropdownParent.classList.toggle('open');
+            }
+        });
+    
+        // 点击页面其他地方时关闭菜单
+        document.addEventListener('click', (event) => {
+            if (!dropdownParent.contains(event.target)) {
+                dropdownParent.classList.remove('open');
+            }
+        });
+    
+        // 允许点击下拉菜单中的链接
+        const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.stopPropagation(); // 阻止事件冒泡
             });
         });
-</script>
+    });
+    </script>
