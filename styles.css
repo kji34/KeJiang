@@ -313,35 +313,38 @@ b {
     color: #666;
 }
 /* publication table */
-.publication-table {
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .minimal-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0;
   }
   
-  .publication-table thead tr {
-    background-color: #000000;
-    color: #fff;
-  }
-  
-  .publication-table th,
-  .publication-table td {
+  .minimal-table th,
+  .minimal-table td {
     text-align: left;
     padding: 12px;
     border: 1px solid #ddd;
   }
   
-  .publication-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  .minimal-table thead th {
+    background-color: #007bff;
+    color: #fff;
   }
   
-  .publication-table tbody tr:hover {
-    background-color: #e9ecef;
+  .minimal-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
   }
   
-  .publication-table .total-row {
-    font-weight: bold;
-    background-color: #f8f9fa;
+  .minimal-table tbody tr:hover {
+    background-color: #f1f1f1;
   }
 
 /* publication罗列*/
