@@ -251,6 +251,7 @@ b {
     margin: 20px auto;
     display: flex;
     gap: 30px;
+    border-bottom: 1px solid #ffffff64;
 }
 
 .profile-image-container {
