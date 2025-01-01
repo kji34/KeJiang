@@ -46,6 +46,13 @@ nav {
     background: white;
 }
 
+.timeline-container1{
+    max-width: 800px;
+    margin: 5px 20px; /* 改为只有上下边距 */
+    padding: 0px;
+    background: white;
+}
+
 .timeline-item {
     display: flex;
     margin-bottom: 30px;
