@@ -262,7 +262,7 @@ b {
     height: 200px;
     border-radius: 10%;
     object-fit: cover;
-    margin-top: 20%;
+    margin-top: 60px;
 }
 
 .profile-content {
@@ -297,6 +297,13 @@ b {
 .education-label {
     font-weight: bold;
     color: #333;
+    font-feature-settings:  1.2em;
+}
+
+.education-items{
+    color: #333;
+    font-size:1em;
+    margin:0;
 }
 
 .sdg-goals {
@@ -308,6 +315,7 @@ b {
     font-weight: bold;
     color: #333;
     margin-bottom: 5px;
+    font: size 1.2em;
 }
 
 .sdg-items {
