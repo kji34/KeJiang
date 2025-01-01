@@ -313,15 +313,76 @@ b {
     color: #666;
 }
 
-/* 图片轮播 */
-.carousel {
+/* 创建板块容器 */
+.section-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* 标题板块样式 */
+.section-title {
+    flex: 0 0 250px;
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 15px;
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.1),
+        -5px -5px 10px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
     position: relative;
-    width: 60%;
-    max-width: 800px;
-    height: 300px;
-    margin: 20px auto;
     overflow: hidden;
-    border-radius: 12px;  /* 增加圆角 */
+}
+
+.section-title:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.1),
+        -8px -8px 15px rgba(255, 255, 255, 0.8);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.section-title:hover::after {
+    left: 100%;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 1.6em;
+    color: #333;
+}
+
+.section-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 更新轮播图样式 */
+.carousel {
+    flex: 1;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
     background: linear-gradient(to bottom,
         rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0.8) 2%,
@@ -329,48 +390,19 @@ b {
         rgba(255, 255, 255, 1) 95%,
         rgba(255, 255, 255, 0.8) 98%,
         rgba(255, 255, 255, 0) 100%
-    );  /* 垂直方向的渐变 */
-    padding: 15px;  /* 添加内边距 */
+    );
+    padding: 15px;
     box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.05),  /* 外阴影 */
-        0 0 0 1px rgba(0, 0, 0, 0.05);    /* 细边框效果 */
+        0 8px 16px rgba(0, 0, 0, 0.05),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
-/* 创建一个容器来处理水平渐变 */
-.carousel::before,
-.carousel::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50px;
-    z-index: 2;
-    pointer-events: none;  /* 确保不影响按钮点击 */
-}
-
-.carousel::before {
-    left: 0;
-    background: linear-gradient(to right,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.8) 40%,
-        rgba(255, 255, 255, 0) 100%
-    );
-}
-
-.carousel::after {
-    right: 0;
-    background: linear-gradient(to left,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.8) 40%,
-        rgba(255, 255, 255, 0) 100%
-    );
-}
-
+/* 保持其他轮播图相关样式不变 */
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
     height: 100%;
-    border-radius: 8px;  /* 图片容器也添加圆角 */
+    border-radius: 8px;
     position: relative;
 }
 
@@ -379,42 +411,8 @@ b {
     height: 300px;
     object-fit: contain;
     flex-shrink: 0;
-    background-color: transparent;  /* 移除白色背景 */
-    transition: opacity 0.3s ease;  /* 添加透明度过渡效果 */
-}
-
-.carousel-prev, .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.3);  /* 降低按钮不透明度 */
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    transition: all 0.3s ease;
-    z-index: 3;  /* 确保按钮在渐变层上方 */
-    backdrop-filter: blur(2px);  /* 添加模糊效果 */
-}
-
-.carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateY(-50%) scale(1.1);  /* 悬停时略微放大 */
-}
-
-.carousel-prev {
-    left: 20px;  /* 调整按钮位置 */
-}
-
-.carousel-next {
-    right: 20px;  /* 调整按钮位置 */
+    background-color: transparent;
+    transition: opacity 0.3s ease;
 }
 /* 字体系统 */
 .heading-medium {
