@@ -183,23 +183,22 @@ b {
     padding: 20px;
     margin: 20px auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    gap: 30px;
 }
 
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
+.profile-image-container {
+    flex-shrink: 0;
 }
 
 .profile-image {
-    width: 160px;
-    height: 200px;
-    border-radius: 0%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
-.profile-info {
+.profile-content {
     flex: 1;
 }
 
@@ -253,6 +252,7 @@ b {
 .sdg-items {
     color: #666;
 }
+
 
 /* 字体系统 */
 .heading-medium {
