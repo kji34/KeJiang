@@ -224,17 +224,11 @@ b {
     color: #666;
 }
 
-.profile-description {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.profile-faculty {
+.profile-education {
     margin-bottom: 15px;
 }
 
-.faculty-label {
+.education-label {
     font-weight: bold;
     color: #333;
 }
