@@ -92,6 +92,102 @@
     </footer>
 
     <script>
+        const itemsPerPage = 5;
+        let selectedYear = "all";
+        let currentPage = 1;
+
+        const yearFilter = document.getElementById("year-filter");
+        const publicationsContainer = document.getElementById("publications");
+        const paginationInfo = document.getElementById("page-info");
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+
+        // Populate year filter
+        const years = ["all", ...new Set(publications.map((pub) => pub.year))];
+        years.forEach((year) => {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year === "all" ? "All Years" : year;
+        yearFilter.appendChild(option);
+        });
+
+        // Render publications
+        function renderPublications() {
+        const filteredPublications =
+            selectedYear === "all"
+            ? publications
+            : publications.filter((pub) => pub.year === parseInt(selectedYear));
+
+        const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        const currentPublications = filteredPublications.slice(start, end);
+
+        publicationsContainer.innerHTML = "";
+        currentPublications.forEach((yearGroup) => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            const title = document.createElement("h2");
+            title.className = "card-title";
+            title.textContent = yearGroup.year;
+            card.appendChild(title);
+
+            yearGroup.papers.forEach((paper) => {
+            const paperDiv = document.createElement("div");
+            paperDiv.className = "card";
+
+            const paperTitle = document.createElement("h3");
+            paperTitle.textContent = paper.title;
+            paperDiv.appendChild(paperTitle);
+
+            const journal = document.createElement("p");
+            journal.className = "card-journal";
+            journal.textContent = paper.journal;
+            paperDiv.appendChild(journal);
+
+            const authors = document.createElement("p");
+            authors.className = "card-authors";
+            authors.textContent = paper.authors;
+            paperDiv.appendChild(authors);
+
+            card.appendChild(paperDiv);
+            });
+
+            publicationsContainer.appendChild(card);
+        });
+
+        paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+        }
+
+        // Event Listeners
+        yearFilter.addEventListener("change", (e) => {
+        selectedYear = e.target.value;
+        currentPage = 1;
+        renderPublications();
+        });
+
+        prevBtn.addEventListener("click", () => {
+        currentPage = Math.max(currentPage - 1, 1);
+        renderPublications();
+        });
+
+        nextBtn.addEventListener("click", () => {
+        const filteredPublications =
+            selectedYear === "all"
+            ? publications
+            : publications.filter((pub) => pub.year === parseInt(selectedYear));
+        const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+        currentPage = Math.min(currentPage + 1, totalPages);
+        renderPublications();
+        });
+
+        // Initial render
+        renderPublications();
+
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
