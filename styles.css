@@ -162,11 +162,18 @@ nav a:hover {
 
 a {
     color: #000000;          /* 链接颜色 */
-    text-decoration: dotted;   /* 去除下划线 */
+    text-decoration: none;   /* 去除下划线 */
 }
 
 a:hover {
     text-decoration: dotted;  /* 悬停时显示下划线 */
+}
+
+
+/* 字体系统 */
+.heading-medium {
+    font-size: 2em;
+    font-weight: bolder;
 }
 
 /* 字体大小系统 */
