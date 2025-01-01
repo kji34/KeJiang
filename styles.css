@@ -160,6 +160,63 @@ nav a:hover {
     font-size: 1.3em; /* 段落的文字大小设置 */
 }
 
+/* 内容盒子的基本样式 */
+.content-box {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 盒子标题样式 */
+.content-box h2 {
+    color: #000;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+}
+
+/* 网格布局容器 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 两列布局 */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 占据整行的盒子 */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* 新闻项目样式 */
+.news-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+/* 研究方向项目样式 */
+.research-area {
+    padding: 10px;
+    margin: 5px 0;
+    background: #f8f8f8;
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 在小屏幕上变为单列 */
+    }
+}
+
 /* 定义页脚的显示样式 */
 footer {
     background-color: #000; /* 背景颜色为黑色 */
