@@ -316,34 +316,78 @@ b {
 /* 图片轮播 */
 .carousel {
     position: relative;
-    width: 60%;  /* 轮播图宽度为容器的 60% */
-    max-width: 800px;  /* 设置最大宽度 */
-    height: 300px;  /* 固定高度为 300px */
-    margin: 20px auto;  /* 上下间距20px，左右自动（实现居中） */
+    width: 60%;
+    max-width: 800px;
+    height: 300px;
+    margin: 20px auto;
     overflow: hidden;
-    border-radius: 8px;  /* 圆角 */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* 阴影效果 */
+    border-radius: 12px;  /* 增加圆角 */
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 2%,
+        rgba(255, 255, 255, 1) 5%,
+        rgba(255, 255, 255, 1) 95%,
+        rgba(255, 255, 255, 0.8) 98%,
+        rgba(255, 255, 255, 0) 100%
+    );  /* 垂直方向的渐变 */
+    padding: 15px;  /* 添加内边距 */
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.05),  /* 外阴影 */
+        0 0 0 1px rgba(0, 0, 0, 0.05);    /* 细边框效果 */
+}
+
+/* 创建一个容器来处理水平渐变 */
+.carousel::before,
+.carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: 2;
+    pointer-events: none;  /* 确保不影响按钮点击 */
+}
+
+.carousel::before {
+    left: 0;
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.8) 40%,
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+.carousel::after {
+    right: 0;
+    background: linear-gradient(to left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.8) 40%,
+        rgba(255, 255, 255, 0) 100%
+    );
 }
 
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 100%;  /* 占满容器高度 */
+    height: 100%;
+    border-radius: 8px;  /* 图片容器也添加圆角 */
+    position: relative;
 }
 
 .carousel-images img {
     width: 100%;
-    height: 300px;  /* 固定高度 */
-    object-fit: contain;  /* 保持图片比例，确保完整显示 */
+    height: 300px;
+    object-fit: contain;
     flex-shrink: 0;
-    background-color: white;  /* 图片背景色 */
+    background-color: transparent;  /* 移除白色背景 */
+    transition: opacity 0.3s ease;  /* 添加透明度过渡效果 */
 }
 
 .carousel-prev, .carousel-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);  /* 降低按钮不透明度 */
     color: white;
     border: none;
     padding: 10px;
@@ -355,20 +399,22 @@ b {
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    transition: background-color 0.3s ease;
-    z-index: 1;  /* 确保按钮在图片上层 */
+    transition: all 0.3s ease;
+    z-index: 3;  /* 确保按钮在渐变层上方 */
+    backdrop-filter: blur(2px);  /* 添加模糊效果 */
 }
 
 .carousel-prev:hover, .carousel-next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-50%) scale(1.1);  /* 悬停时略微放大 */
 }
 
 .carousel-prev {
-    left: 10px;
+    left: 20px;  /* 调整按钮位置 */
 }
 
 .carousel-next {
-    right: 10px;
+    right: 20px;  /* 调整按钮位置 */
 }
 /* 字体系统 */
 .heading-medium {
