@@ -92,27 +92,36 @@
     </footer>
 
     <script>
-        const itemsPerPage = 5;
-        let selectedYear = "all";
-        let currentPage = 1;
 
-        const yearFilter = document.getElementById("year-filter");
-        const publicationsContainer = document.getElementById("publications");
-        const paginationInfo = document.getElementById("page-info");
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
+    const itemsPerPage = 5;
+    let selectedYear = "all";
+    let currentPage = 1;
 
-        // Populate year filter
-        const years = ["all", ...new Set(publications.map((pub) => pub.year))];
-        years.forEach((year) => {
+    // Define the publications data
+    const publications = [
+        { year: 2023, title: "Design of High-Strength Steel Connections", journal: "Journal of Steel Structures", authors: "John Doe, Jane Smith" },
+        { year: 2022, title: "Performance of Aluminium Structures", journal: "Aluminium Engineering Journal", authors: "Alice Brown" },
+        { year: 2021, title: "Innovative Stainless Steel Members", journal: "Stainless Innovations", authors: "Mark Green" },
+        // Add more publications as necessary
+    ];
+
+    const yearFilter = document.getElementById("year-filter");
+    const publicationsContainer = document.getElementById("publications"); // This should be the correct element for publications
+    const paginationInfo = document.getElementById("page-info");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    // Populate year filter
+    const years = ["all", ...new Set(publications.map((pub) => pub.year))];
+    years.forEach((year) => {
         const option = document.createElement("option");
         option.value = year;
         option.textContent = year === "all" ? "All Years" : year;
         yearFilter.appendChild(option);
-        });
+    });
 
-        // Render publications
-        function renderPublications() {
+    // Render publications
+    function renderPublications() {
         const filteredPublications =
             selectedYear === "all"
             ? publications
@@ -124,58 +133,46 @@
 
         const currentPublications = filteredPublications.slice(start, end);
 
-        publicationsContainer.innerHTML = "";
-        currentPublications.forEach((yearGroup) => {
-            const card = document.createElement("div");
-            card.className = "card";
+        publicationsContainer.innerHTML = ""; // Clear the container before rendering
+        currentPublications.forEach((pub) => {
+            const publicationDiv = document.createElement("div");
+            publicationDiv.className = "publication-item";
 
-            const title = document.createElement("h2");
-            title.className = "card-title";
-            title.textContent = yearGroup.year;
-            card.appendChild(title);
-
-            yearGroup.papers.forEach((paper) => {
-            const paperDiv = document.createElement("div");
-            paperDiv.className = "card";
-
-            const paperTitle = document.createElement("h3");
-            paperTitle.textContent = paper.title;
-            paperDiv.appendChild(paperTitle);
+            const title = document.createElement("h3");
+            title.textContent = pub.title;
+            publicationDiv.appendChild(title);
 
             const journal = document.createElement("p");
-            journal.className = "card-journal";
-            journal.textContent = paper.journal;
-            paperDiv.appendChild(journal);
+            journal.className = "publication-journal";
+            journal.textContent = `Journal: ${pub.journal}`;
+            publicationDiv.appendChild(journal);
 
             const authors = document.createElement("p");
-            authors.className = "card-authors";
-            authors.textContent = paper.authors;
-            paperDiv.appendChild(authors);
+            authors.className = "publication-authors";
+            authors.textContent = `Authors: ${pub.authors}`;
+            publicationDiv.appendChild(authors);
 
-            card.appendChild(paperDiv);
-            });
-
-            publicationsContainer.appendChild(card);
+            publicationsContainer.appendChild(publicationDiv);
         });
 
         paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
         prevBtn.disabled = currentPage === 1;
         nextBtn.disabled = currentPage === totalPages;
-        }
+    }
 
-        // Event Listeners
-        yearFilter.addEventListener("change", (e) => {
+    // Event Listeners
+    yearFilter.addEventListener("change", (e) => {
         selectedYear = e.target.value;
         currentPage = 1;
         renderPublications();
-        });
+    });
 
-        prevBtn.addEventListener("click", () => {
+    prevBtn.addEventListener("click", () => {
         currentPage = Math.max(currentPage - 1, 1);
         renderPublications();
-        });
+    });
 
-        nextBtn.addEventListener("click", () => {
+    nextBtn.addEventListener("click", () => {
         const filteredPublications =
             selectedYear === "all"
             ? publications
@@ -183,10 +180,11 @@
         const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
         currentPage = Math.min(currentPage + 1, totalPages);
         renderPublications();
-        });
+    });
 
-        // Initial render
-        renderPublications();
+    // Initial render
+    renderPublications();
+
 
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
