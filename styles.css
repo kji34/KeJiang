@@ -160,6 +160,16 @@ nav a:hover {
     font-size: 1.3em; /* 段落的文字大小设置 */
 }
 
+a {
+    color: #000000;          /* 链接颜色 */
+    text-decoration: none;   /* 去除下划线 */
+}
+
+a:hover {
+    text-decoration: underline;  /* 悬停时显示下划线 */
+}
+
+
 h1 {
     display: block;
     font-size: 2em;
