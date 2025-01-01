@@ -186,6 +186,12 @@ b {
     margin-bottom: 0.5em;
 }
 
+.heading-small {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.3em;
+}
+
 .text-lg {
     font-size:1.0em;
     font-weight: bolder;
