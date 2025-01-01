@@ -219,7 +219,7 @@ nav a:hover {
     padding: 20px; /* 设置内边距 */
     margin-left: 5%; /* 设置左外边距 */
     margin-right: 10%; /* 设置右外边距 */
-    margin-top: -5%;
+    margin-top: 0;
 }
 
 /* 选择容器内的所有段落标签 */
