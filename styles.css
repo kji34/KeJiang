@@ -4,7 +4,6 @@ body {
     margin: 0; /* 去除页面的默认外边距 */
     padding: 0; /* 去除页面的默认内边距 */
     transform: translate(1%, 3%); /* 将整个页面向右下方偏移 50px 和 30px */
-    display: flex;
 }
 
 /* 定义页眉的基本外观和布局 */
