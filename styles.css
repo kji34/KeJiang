@@ -170,6 +170,11 @@ a:hover {
     text-decoration: underline;  /* 悬停时显示下划线 */
 }
 
+b {
+    color: #000000;         
+    text-decoration: underline;   
+    font-weight: bold;
+}
 
 /* 字体系统 */
 .heading-medium {
