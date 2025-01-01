@@ -394,6 +394,38 @@ b {
     border-radius: 10px;
 }
 
+/* 页面切换 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .page-info {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
 /* Box 容器 */
 .research-box {
     width: 90%;
