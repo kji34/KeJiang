@@ -177,7 +177,82 @@ b {
     font-size: 1.0em;
 }
 
+/* team 介绍*/
+.profile-card {
+    max-width: 800px;
+    padding: 20px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.profile-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color: #666;
+}
+
+.profile-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.profile-faculty {
+    margin-bottom: 15px;
+}
+
+.faculty-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.sdg-goals {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sdg-label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.sdg-items {
+    color: #666;
+}
 
 /* 字体系统 */
 .heading-medium {
