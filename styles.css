@@ -238,6 +238,7 @@ b {
     font-weight: bold;
     color: #1a1a1a;
     margin-bottom: 8px;
+    text-decoration: dashed;
 }
 
 .authors {
