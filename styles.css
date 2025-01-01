@@ -317,7 +317,7 @@ b {
 .carousel {
     position: relative;
     width: 60%;  /* 缩小轮播图宽度为容器的 60% */
-    max-width: 600px;  /* 设置最大宽度 */
+    max-width: 300px;  /* 设置最大宽度 */
     margin: 20px 2em;  /* 上下间距20px，左侧对齐（与标题保持一致的缩进） */
     overflow: hidden;
     border-radius: 8px;  /* 添加圆角 */
