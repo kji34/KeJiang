@@ -169,7 +169,113 @@ a:hover {
     text-decoration: dotted;  /* 悬停时显示下划线 */
 }
 
+/* 字体大小系统 */
+.text-xs {
+    font-size: 0.75em;  /* 12px */
+}
 
+.text-sm {
+    font-size: 0.875em; /* 14px */
+}
+
+.text-base {
+    font-size: 1em;     /* 16px */
+}
+
+.text-lg {
+    font-size: 1.125em; /* 18px */
+}
+
+.text-xl {
+    font-size: 1.25em;  /* 20px */
+}
+
+.text-2xl {
+    font-size: 1.5em;   /* 24px */
+}
+
+.text-3xl {
+    font-size: 1.875em; /* 30px */
+}
+
+.text-4xl {
+    font-size: 2.25em;  /* 36px */
+}
+
+/* 字体粗细系统 */
+.font-light {
+    font-weight: 300;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}
+
+/* 标题样式组合 */
+.heading-large {
+    font-size: 2.25em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+
+.heading-medium {
+    font-size: 1.875em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+.heading-small {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+
+/* 正文样式组合 */
+.body-large {
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.body-medium {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.body-small {
+    font-size: 0.875em;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* 特殊文本样式 */
+.caption {
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #666;
+}
+
+.highlight {
+    font-weight: 600;
+    color: #000;
+}
 
 /* 定义页脚的显示样式 */
 footer {
@@ -195,6 +301,22 @@ footer p {
         transform: none; /* 移除页面的整体偏移 */
         margin: 0; /* 去除外边距 */
         padding: 0; /* 去除内边距 */
+    }
+
+    .heading-large {
+        font-size: 1.875em;
+    }
+    
+    .heading-medium {
+        font-size: 1.5em;
+    }
+    
+    .heading-small {
+        font-size: 1.25em;
+    }
+    
+    .body-large {
+        font-size: 1em;
     }
 
     nav {
