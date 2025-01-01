@@ -162,7 +162,7 @@ nav a:hover {
 /* 定义页面主容器的布局方式 */
 .container {
     display: flex; /* 使用 Flexbox 布局 */
-    margin: auto; /* 设置外边距 */
+    margin: 20px; /* 设置外边距 */
     padding: 20px;
 }
 
