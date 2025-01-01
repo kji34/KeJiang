@@ -41,9 +41,11 @@ nav {
 
 /* news */
 .timeline-container {
-    max-width: 1200px;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: 40px auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 20px;
+    background: white;
 }
 
 .timeline-item {
@@ -65,18 +67,16 @@ nav {
     position: relative;
 }
 
-/* 添加垂直分割线 */
 .event-column::before {
     content: '';
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: -30px;
     width: 1px;
     background-color: #e0e0e0;
 }
 
-/* 添加圆点 */
 .event-column::after {
     content: '';
     position: absolute;
@@ -95,10 +95,15 @@ nav {
 
 .highlighted {
     font-style: italic;
+    color: #0056b3;
 }
 
 .institution {
     color: #666;
+}
+
+.timeline-item:last-child .event-column::before {
+    bottom: 0;
 }
 
 /* 控制导航栏中各个链接的样式 */
