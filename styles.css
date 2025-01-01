@@ -654,6 +654,27 @@ b {
     background-color: #969696;
 }
 
+/* 筛选器 */
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .filter-label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .filter-select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
 /* 定义页脚的显示样式 */
 footer {
     background-color: #000; /* 背景颜色为黑色 */
