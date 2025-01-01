@@ -39,6 +39,44 @@ nav {
     justify-content: space-between;
 }
 
+/* news */
+.news-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.news-item {
+    display: flex;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.date-column {
+    width: 120px;
+    flex-shrink: 0;
+    padding-right: 20px;
+}
+
+.date {
+    font-weight: 500;
+    color: #333;
+    text-decoration: underline;
+}
+
+.content-column {
+    flex: 1;
+    color: #222;
+}
+
+.person-name {
+    font-style: italic;
+}
+
+.institution {
+    color: #555;
+}
+
 /* 控制导航栏中各个链接的样式 */
 nav a {
     color: #000; /* 设置导航链接文字颜色为黑色 */
