@@ -312,6 +312,37 @@ b {
 .sdg-items {
     color: #666;
 }
+/* publication table */
+.publication-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+  }
+  
+  .publication-table thead tr {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  .publication-table th,
+  .publication-table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  .publication-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .publication-table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
+  .publication-table .total-row {
+    font-weight: bold;
+    background-color: #f8f9fa;
+  }
 
 /* publication罗列*/
 .layered-container {
