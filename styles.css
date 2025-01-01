@@ -19,7 +19,7 @@ header {
     flex: 1; /* 使 logo 占用多余的空间 */
     font-weight: bold; /* 设置字体加粗 */
     font-size: 1.5em; /* 设置字体大小 */
-    transform: translate(70px, 40px);
+    transform: translate(70px, 0px);
 }
 
 .logo img {
