@@ -314,30 +314,6 @@ b {
 }
 /* publication table */
 
-  .minimal-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .minimal-table th,
-  .minimal-table td {
-    text-align: left;
-    padding: 12px;
-    border: 1px solid #ddd;
-  }
-  
-  .minimal-table thead th {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  .minimal-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .minimal-table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
 
 /* publication罗列*/
 .layered-container {
