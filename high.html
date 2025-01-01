@@ -18,25 +18,7 @@
             <h1 class="heading-medium">High-Performance Structures</h1>
             <p>I have been conducting experimental and numerical studies into high-performance steel, aluminium and composite structures and developing new design approaches accordingly. The high performance of metallic structures is achieved by advanced materials (stainless steel, high strength steel and high strength aluminium) or advanced manufacturing methods (cold-formed customised sections and 3D metal printing). All of the published papers can be found on this page.</p>
             <h2 class="heading-small"style="text-indent: 2em;">•	 <a href="Stainless.html">Stainless Steel Connections & Members</a></h2>
-            <div id="imgList">
-                <div class="img">
-                <ul>
-                    <li id="imgLi" data="0"></li>
-                </ul>
-                </div>
-                <div class="num">
-                    <ul>
-                        <li class="class"><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                        <li><a></a></li>
-                    </ul>
-                </div>
-                <div id="button">
-                    <div class="pre" onclick="pre();">&lt;</div>
-                    <div class="next" onclick="pre();">&gt;</div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <footer>
@@ -44,49 +26,7 @@
     </footer>
 
     <script>
-        var imgArr=["s1.jpg","s2.jpg","s3.jpg","s4.jpg"];
-        var index=0;
-        function show(){//自动切换
-            if(index<3){
-                index++;
-                //改变li的背景图片并加上一个data属性值
-                $("#imgLi").css("background-image","url("+imgArr[index]+")").attr("data",index);
-                //改变选中圆点
-                $(".num ul li").eq(index).addClass("class").siblings().removeClass("class");
-            }else{
-                index=0;
-                $("#imgLi").css("background-image","url("+imgArr[index]+")").attr("data",index);
-                $(".num ul li").eq(index).addClass("class").siblings().removeClass("class");
-            }
-        }
-        setInterval(show,6000);
-        function pre(){//上一个按钮
-            var data= $("#imgLi").attr("data");
-            var num=parseInt(data)-1;
-            if(num<0){
-                num=3;
-                $("#imgLi").css("background-image","url("+imgArr[num]+")").attr("data",num);
-                $(".num ul li").eq(num).addClass("class").siblings().removeClass("class");
-            }else{
-                $("#imgLi").css("background-image","url("+imgArr[num]+")").attr("data",num);
-                $(".num ul li").eq(num).addClass("class").siblings().removeClass("class");
-            }
-        }
-        function next(){//下一个按钮
-            var data= $("#imgLi").attr("data");
-            var num=parseInt(data)+1;
-            if(num>3){
-                num=0;
-                $("#imgLi").css("background-image","url("+imgArr[num]+")").attr("data",num);
-            }else{
-                $("#imgLi").css("background-image","url("+imgArr[num]+")").attr("data",num);
-            }
-        }
-        $(".num ul li").click(function(){//圆点按钮
-            $(".num ul li").eq($(this).index()).addClass("class").siblings().removeClass("class");
-            var number=$(this).index();
-            $("#imgLi").css("background-image","url("+imgArr[number]+")").attr("data",number);
-        })
+            
 
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
