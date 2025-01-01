@@ -48,24 +48,6 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const titleItems = document.querySelectorAll('.title-item');
-            const imageWrapper = document.querySelector('.image-wrapper');
-            
-            titleItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // Remove active class from all titles
-                    titleItems.forEach(title => title.classList.remove('active'));
-                    
-                    // Add active class to clicked title
-                    this.classList.add('active');
-                    
-                    // Get index and update image position
-                    const index = this.getAttribute('data-index');
-                    imageWrapper.style.transform = `translateX(-${index * 500}px)`;
-                });
-            });
-        });
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
