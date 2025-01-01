@@ -313,107 +313,125 @@ b {
     color: #666;
 }
 
-/* 创建板块容器 */
-.section-container {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+/* 主要区域容器 */
+.research-section {
+    width: 100%;
+    max-width: 1400px;
     margin: 40px auto;
-    width: 90%;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0 20px;
 }
 
-/* 标题板块样式 */
-.section-title {
-    flex: 0 0 250px;
-    padding: 20px;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border-radius: 15px;
-    box-shadow: 
-        5px 5px 10px rgba(0, 0, 0, 0.1),
-        -5px -5px 10px rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-    cursor: pointer;
+/* 左侧文本区域 */
+.research-content {
+    padding-right: 20px;
+}
+
+.research-content h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.research-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.research-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.research-link {
+    font-size: 1.3em;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
     position: relative;
-    overflow: hidden;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-.section-title:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        8px 8px 15px rgba(0, 0, 0, 0.1),
-        -8px -8px 15px rgba(255, 255, 255, 0.8);
-}
-
-.section-title::after {
+.research-link::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-    );
-    transition: 0.5s;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.section-title:hover::after {
-    left: 100%;
+.research-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
-.section-title h2 {
-    margin: 0;
-    font-size: 1.6em;
-    color: #333;
-}
-
-.section-title a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* 更新轮播图样式 */
+/* 右侧图片轮播区域 */
 .carousel {
-    flex: 1;
+    width: 100%;
+    height: 400px;
     position: relative;
-    height: 300px;
     overflow: hidden;
     border-radius: 12px;
-    background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.8) 2%,
-        rgba(255, 255, 255, 1) 5%,
-        rgba(255, 255, 255, 1) 95%,
-        rgba(255, 255, 255, 0.8) 98%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    padding: 15px;
-    box-shadow: 
-        0 8px 16px rgba(0, 0, 0, 0.05),
-        0 0 0 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* 保持其他轮播图相关样式不变 */
 .carousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out;
     height: 100%;
-    border-radius: 8px;
-    position: relative;
 }
 
 .carousel-images img {
     width: 100%;
-    height: 300px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     flex-shrink: 0;
-    background-color: transparent;
-    transition: opacity 0.3s ease;
 }
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-prev {
+    left: 20px;
+}
+
+.carousel-next {
+    right: 20px;
+}
+
 /* 字体系统 */
 .heading-medium {
     font-size: 2.5em;
