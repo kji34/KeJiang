@@ -200,7 +200,7 @@ b {
 /* 文献box */
 .paper-card {
     max-width: 1000px;
-    margin: 20px auto;
+    margin: 0;
     padding: 16px;
 }
 
