@@ -320,13 +320,12 @@ b {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
 }
 
 .image-section {
     position: relative;
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 200px;
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
