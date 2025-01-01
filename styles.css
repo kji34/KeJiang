@@ -42,7 +42,7 @@ nav {
 /* news */
 .timeline-container {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 20px 0; /* 改为只有上下边距 */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     padding: 20px;
     background: white;
