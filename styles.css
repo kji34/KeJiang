@@ -351,17 +351,6 @@ b {
     object-fit: cover;
 }
 
-.coordinates {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
 .titles-section {
     flex: 1;
 }
@@ -380,14 +369,8 @@ b {
 }
 
 .title-item.active {
-    background: #007bff;
+    background: #070707;
     color: white;
-}
-
-.coords-display {
-    font-size: 14px;
-    color: #666;
-    margin-top: 5px;
 }
 
 /* 字体系统 */
