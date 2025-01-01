@@ -109,9 +109,9 @@ nav {
 nav a {
     color: #000; /* 设置导航链接文字颜色为黑色 */
     text-decoration: revert; /* 去除下划线 */
-    font-weight: 1000; /* 设置文字粗细 */
+    font-weight: bold; /* 设置文字粗细 */
     position: relative; /* 定义相对定位，为后续样式提供基础 */
-    font-size: 1.3em; /* 设置文字大小 */
+    font-size: 1.4em; /* 设置文字大小 */
 }
 
 /* 添加导航链接的鼠标悬停效果 */
