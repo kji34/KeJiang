@@ -157,7 +157,7 @@ nav a:hover {
 
 /* 选择容器内的所有段落标签 */
 .content p {
-    font-size: 1.3em; /* 段落的文字大小设置 */
+    font-size: 1.2em; /* 段落的文字大小设置 */
 }
 
 a {
@@ -166,14 +166,21 @@ a {
 }
 
 a:hover {
-    text-decoration: dotted;  /* 悬停时显示下划线 */
+    text-decoration: underline;  /* 悬停时显示下划线 */
 }
 
 
 /* 字体系统 */
 .heading-medium {
-    font-size: 4em;
+    font-size: 2.5em;
     font-weight: bolder;
+    margin-bottom: 0.5em;
+}
+
+.text-lg {
+    font-size:1.2em;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /* 字体大小系统 */
@@ -189,9 +196,6 @@ a:hover {
     font-size: 1em;     /* 16px */
 }
 
-.text-lg {
-    font-size: 1.125em; /* 18px */
-}
 
 .text-xl {
     font-size: 1.25em;  /* 20px */
@@ -240,13 +244,6 @@ a:hover {
     font-weight: 700;
     margin-bottom: 0.5em;
 }
-
-.heading-medium {
-    font-size: 1.875em;
-    font-weight: 600;
-    margin-bottom: 0.5em;
-}
-
 .heading-small {
     font-size: 1.5em;
     font-weight: 600;
