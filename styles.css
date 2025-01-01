@@ -166,20 +166,10 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;  /* 悬停时显示下划线 */
+    text-decoration: dotted;  /* 悬停时显示下划线 */
 }
 
 
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
-}
 
 /* 定义页脚的显示样式 */
 footer {
