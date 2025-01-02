@@ -184,8 +184,6 @@ nav a:hover {
     padding: 20px;
     width: 100%;
     max-width: 1200px;        /* 添加最大宽度限制 */
-    min-height: 1836px;       /* 设置最小高度 */
-    height: 1836px;           /* 设置固定高度 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
     margin-right: auto;       /* 水平居中 */
 }
@@ -245,9 +243,6 @@ nav a:hover {
     margin-right: 10%;
     margin-top: -40px;
     width: 355px;             /* 添加固定宽度 */
-    height: 1836px;           /* 添加固定高度 */
-    min-height: 1836px;       /* 确保最小高度 */
-    max-height: 1836px;       /* 确保最大高度 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
 }
 
@@ -725,14 +720,15 @@ b {
 
 /* 定义页脚的显示样式 */
 footer {
-    background-color: #000; /* 背景颜色为黑色 */
-    color: #fff; /* 文字颜色为白色 */
-    text-align: center; /* 文本居中对齐 */
-    padding: 50px 0; /* 设置上下内边距 */
-    margin: 0; /* 去除外边距 */
-    width: 100vw; /* 页脚宽度占满视口 */
-    position: relative; /* 相对定位 */
-    left: 0; /* 向左偏移 100px */
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+    margin: 0;
+    width: 100vw;
+    position: relative;
+    left: 0;
+    margin-top: auto;    /* 确保footer始终在底部 */
 }
 
 /* 选择页脚中的所有段落标签*/
