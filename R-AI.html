@@ -18,8 +18,25 @@
             <h1>AI in structures</h1>
             <p>I have been working on developing machine-learning-based design framework for steel connections and members. All of the published papers can be found on this page.</p>
 
-            <h1>News and Updates</h1>
-            <p>Details about news and updates will go here.</p>
+            <div class="research-box">
+                <div class="box-content">
+                    <div class="box-title">
+                        <h2><a href="">Stainless Steel Connections & Members</a></h2>
+                    </div>
+                    
+                    <div class="carousel">
+                        <div class="carousel-images">
+                            <img src="Research/" alt="Image 1">
+                            <img src="Research/" alt="Image 2">
+                            <img src="Research/" alt="Image 3">
+                        </div>
+                        <button class="carousel-prev">&#8249;</button>
+                        <button class="carousel-next">&#8250;</button>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
     <footer>
@@ -27,6 +44,40 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        // 获取所有轮播组件
+        const carousels = document.querySelectorAll('.carousel');
+        
+        // 为每个轮播组件设置功能
+        carousels.forEach(carousel => {
+            const images = carousel.querySelector('.carousel-images');
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
+            const imageCount = images.children.length;
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                images.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                updateCarousel();
+            });
+
+            // 为每个轮播组件设置自动轮播
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
+            }, 3000);
+        });
+    });
+
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
