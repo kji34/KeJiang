@@ -182,8 +182,13 @@ nav a:hover {
     display: flex;
     margin: 20px;
     padding: 20px;
-    min-height: calc(100vh - 200px); /* 减去header和footer的高度 */
-    flex: 1;          /* 让container占据剩余空间 */
+    width: 100%;
+    max-width: 1200px;        /* 添加最大宽度限制 */
+    min-height: 1836px;       /* 设置最小高度 */
+    height: 1836px;           /* 设置固定高度 */
+    box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
+    margin-left: auto;        /* 水平居中 */
+    margin-right: auto;       /* 水平居中 */
 }
 
 /* 控制侧边栏及其内容（如头像）的显示样式 */
@@ -240,8 +245,12 @@ nav a:hover {
     margin-left: 47px;
     margin-right: 10%;
     margin-top: -40px;
-    min-height: 600px;    /* 设置最小高度 */
-    overflow-y: auto;     /* 内容过多时显示滚动条 */
+    width: 355px;             /* 添加固定宽度 */
+    height: 1836px;           /* 添加固定高度 */
+    min-height: 1836px;       /* 确保最小高度 */
+    max-height: 1836px;       /* 确保最大高度 */
+    overflow-y: auto;         /* 内容过多时显示滚动条 */
+    box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
 }
 
 /* 选择容器内的所有段落标签 */
@@ -443,9 +452,23 @@ b {
   }
 
   .page {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    min-height: 500px;    /* 设置最小高度 */
+    width: 355px;             /* 固定页面宽度 */
+    min-height: 1836px;       /* 最小高度 */
+    height: 1836px;           /* 固定高度 */
+    margin: 0 auto;           /* 水平居中 */
+    position: relative;       /* 相对定位 */
+    box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
+}
+
+.page-content {
+    position: absolute;      /* 绝对定位 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;       /* 内容过多时显示滚动条 */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .page.active {
