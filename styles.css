@@ -33,7 +33,7 @@ header {
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
     display: flex; /* 使用 Flexbox 布局 */
-    gap: 5%; /* 设置导航链接之间的间距 */
+    gap: 2%; /* 设置导航链接之间的间距 */
     position: absolute; /* 绝对定位导航栏 */
     top: 40px; /* 距离页面顶部 40px */
     left: 400px; /* 距离页面左侧 375px */
