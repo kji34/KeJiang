@@ -473,7 +473,7 @@ b {
 .research-box {
     width: 90%;
     max-width: 800px;
-    margin: auto;
+    margin: 10px auto;
     background: linear-gradient(145deg, #ffffff, #f8f8f8);
     border-radius: 20px;
     box-shadow: 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPMS Research Group</title>
+    <title>HPMS Research Group - Research</title>
     <!-- 添加网站图标 -->
     <link rel="icon" type="image/jpeg" href="images/1.jpg">
     <link rel="stylesheet" href="styles.css">
@@ -18,8 +18,11 @@
             <h1>Anti-seismic devices</h1>
             <p>I have been working on developing and assessing the performance of seismic mitigation devices, including plate dampers, rubber bearing damper and BRBs. All of the published papers can be found on this page.</p>
 
-            <h1>News and Updates</h1>
-            <p>Details about news and updates will go here.</p>
+            
+            
+
+
+
         </div>
     </div>
     <footer>
@@ -28,6 +31,40 @@
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        // 获取所有轮播组件
+        const carousels = document.querySelectorAll('.carousel');
+        
+        // 为每个轮播组件设置功能
+        carousels.forEach(carousel => {
+            const images = carousel.querySelector('.carousel-images');
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
+            const imageCount = images.children.length;
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                images.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                updateCarousel();
+            });
+
+            // 为每个轮播组件设置自动轮播
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
+            }, 3000);
+        });
+    });
+
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
