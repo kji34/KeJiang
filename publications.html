@@ -86,10 +86,158 @@
 
     // Define the publications data
     const publications = [
-        { year: 2023, title: "Design of High-Strength Steel Connections", journal: "Journal of Steel Structures", authors: "John Doe, Jane Smith" },
-        { year: 2022, title: "Performance of Aluminium Structures", journal: "Aluminium Engineering Journal", authors: "Alice Brown" },
-        { year: 2021, title: "Innovative Stainless Steel Members", journal: "Stainless Innovations", authors: "Mark Green" },
-        // Add more publications as necessary
+
+        // 2025
+        {year: 2025, title: "[36] Hysteretic and Low-cycle Fatigue Performance of Arc-shaped Corrugated Steel Plate Dampers", 
+            journal: "Journal of Constructional Steel Research",
+            authors: "Shang, C., Zhou, Y., Li, J., Jiang, K., Zhong, G."},
+
+        // 2024
+        {year: 2024, title: "[35] Assess seismic resilience of unreinforced stone loess cave retrofitted with composite materials by shaking table tests",
+            journal: "Structures",
+            authors: "Du, J., Zhao, X., Jiang, K., Jiang, L., Xue, J."},
+        
+        {year: 2024, title: "[34] Unified machine-learning-aided design of cold-formed steel channel section columns with different buckling modes at ambient and elevated temperatures",
+            journal: "Engineering Structures",
+            authors: "Huang, X., Jiang, K., Zhao, O."},
+
+        {year: 2024, title: "[33] Experimental and numerical investigation of arc-shaped corrugated steel plate damper",
+            journal: "Journal of Building Engineering",
+            authors: "Shang, C., Zhou, Y., Li, J., Jiang, K."},
+
+        {year: 2024, title: "[32] Local buckling and capacities of stainless steel hexagonal hollow sections under axial compression",
+            journal: "Thin-Walled Structures",
+            authors: "Zhong, Y., Jiang, K., Su, A., Fu, J., Liu, A., Zhao, O."},
+
+        {year: 2024, title: "[31] Post-fire behavior and residual resistances of S890 ultra-high strength steel circular hollow sections under combined compression and bending",
+            journal: "Engineering Structures",
+            authors: "Zhang, J., Su, A., Jiang, K."},
+
+        {year: 2024,title: "[30] Bearing–curling interaction of austenitic stainless steel thin sheet bolted connections",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Li, S., Zhong, Y., Zhao, O."},
+        
+        {year: 2024, title: "[29] Full-scale laboratory investigation on laminated rubber bearings for metro-induced vibration mitigation",
+            journal: "Engineering Structures",
+            authors: "Ke, X., Luo, W., Zhou, Y., Liang, Q., Li, J., Wang, S., Jiang, K."},
+
+        {year: 2024, title: "[28] Experimental and numerical investigations of high-strength cold-formed steel multi-limb built-up section columns",
+            journal: "Engineering Structures",
+            authors: "Ma, C., Wei, C., Jiang, K., Zhao, O., Su, A."},
+
+        {year: 2024, title: "[27] Novel Thick Layer Damping Rubber Bearing (TLDRB) with Reduced Vertical Stiffness: Laboratory Tests and Mechanical Models",
+            journal: "Journal of Building Engineering",
+            authors: "Lu, Z., Liang, Q., Zhou, Y., Luo, W., Li, J., Jiang, K."},
+        
+        {year: 2024, title: "[26] Cross-section behaviour and capacity of cold-formed austenitic stainless steel flat-oval hollow sections under combined compression and bending",
+            journal: "Thin-Walled Structures",
+            authors: "Li, S., Jiang, K., Chen, MT., Su, A., Guo, T., Zhao, O."},
+
+        {year: 2024, title: "[25] Machine-learning-assisted design of high strength steel I-section columns",
+            journal: "Engineering Structures",
+            authors: "Cheng, J., Li, X., Jiang, K., Li, S., Su, A., Zhao, O."},
+
+        {year: 2024, title: "[24] Unified machine-learning-based design method of normal and high strength steel I-section beam–columns",
+            journal: "Thin-Walled Structures",
+            authors: "Su, A., Cheng, J., Li, X., Li, S., Zhong, Y., Zhao, O., Jiang, K."},
+
+        {year: 2024, title: "[23] Web crippling of stainless steel built-up I-sections under End-Two-Flange loading: Tests, simulations and design",
+            journal: "Engineering Structures",
+            authors: "Jing, Y., Jiang, K., Zhao, O., Gardner, L."},
+
+        {year: 2024, title: "[22] Investigation on mechanical behavior of shear panel damper under bidirectional loading",
+            journal: "Journal of Constructional Steel Research",
+            authors: "Shang, C., Zhou, Y., Shi, F, Li, J., Jiang, K."},
+
+        {year: 2024, title: "[21] Post-fire behaviour and resistances of square recycled aggregate concrete-filled stainless steel tube stub columns",
+            journal: "Thin-Walled Structures",
+            authors: "Wang, Z., Zhong, Y., Jiang, K., Su, M., Zhao, O."},
+
+        {year: 2024, title: "[20] Testing, numerical modelling and design of G550 high strength cold-formed steel built-up section columns",
+            journal: "Thin-Walled Structures",
+            authors: "Cui, Y., Zhang, J., Ma, C., Niu, M., Jiang, K., Li, S., Su, A."},
+
+        {year: 2024, title: "[19] Local–flexural interactive buckling behaviour and design of press-braked stainless steel slender Z-section columns",
+            journal: "Thin-Walled Structures",
+            authors: "Li, S., Jiang, K., Zhao, O."},
+
+        // 2023
+        {year: 2023, title: "[18] Stainless steel built-up section stub columns: Testing, numerical modelling and design",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2023, title: "[17] Ferritic stainless steel bolted connections failing by bearing–curling interaction: Tests, modelling and design",
+            journal: "Engineering Structures",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2023, title: "[16] Unified machine-learning-assisted design of stainless steel bolted connections",
+            journal: "Journal of Constructional Steel Research",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2023, title: "[15] Press-braked ferritic stainless steel slender channel section beam–columns: Tests, simulations and design",
+            journal: "Thin-Walled Structures",
+            authors: "Li, S., Jiang, K., Zhao, O."},
+
+        {year: 2023, title: "[14] Experimental and numerical investigations into S960 ultra-high strength steel welded I-section stub columns after exposure to elevated temperatures",
+            journal: "Thin-Walled Structures",
+            authors: "Su, A., Jiang, K., Wang, Y., Zhao, O."},
+
+        // 2022
+        {year: 2022, title: "[13] Machine-learning-based design of high strength steel bolted connections",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Liang, Y., Zhao, O."},
+
+        {year: 2022, title: "[12] Testing, numerical modelling and design of S690 high strength steel channel-to-plate connections",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2022, title: "[11] Experimental and numerical study of stainless steel channel-to-gusset plate connections",
+            journal: "Engineering Structures",
+            authors: "Jiang, K., Zhao, O., Young, B."},
+
+        {year: 2022, title: "[10] S960 ultra-high strength steel slender welded I-section beam–columns: Testing, numerical modelling and design",
+            journal: "Thin-Walled Structures",
+            authors: "Su, A., Jiang, K., Wang, M., Zhao, O."},
+
+        {year: 2022, title: "[9] Experimental and numerical studies of stainless steel angle-to-plate connections",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2022, title: "[8] Net Section Failure of S690 High-Strength Steel Angle-to-Plate Connections",
+            journal: "Journal of Structural Engineering (ASCE)",
+            authors: "Jiang, K., Zhao, O."},
+
+        {year: 2022, title: "[7] Post-fire behaviour and capacity of high strength concrete-filled high strength steel tub (HCFHST) stub columns under combined compression and bending",
+            journal: "Engineering Structures",
+            authors: "Zhong, Y., Jiang, K., Zhao, O."},
+
+        // 2021
+        {year: 2021, title: "[6] Post-fire behaviour and resistances of S690 high strength steel welded I-section stub columns",
+            journal: "Thin-Walled Structures",
+            authors: "Su, A., Jiang, K., Liang, Y., Zhao, O."},
+
+        {year: 2021,title: "[5] Block tearing of S700 high strength steel bolted connections: Testing, numerical modelling and design",
+            journal: "Engineering Structures",
+            authors: "Jiang, K., Tan, KH., Zhao, O., Gardner, L."},
+
+        {year: 2021, title: "[4] Testing, numerical modelling and design of stainless steel welded I-sections under minor-axis combined loading",
+            journal: "Engineering Structures",
+            authors: "Sun, Y., Su, A., Jiang, K., Liang, Y., Zhao, O."},
+
+        {year: 2021, title: "[3] Net section fracture of S700 high strength steel staggered bolted connections",
+            journal: "Thin-Walled Structures",
+            authors: "Jiang, K., Tan, KH., Zhao, O."},
+
+        {year: 2021, title: "[2] Experimental and numerical studies of high-chromium stainless steel welded I-section beam–columns",
+            journal: "Engineering Structures",
+            authors: "Sun, Y., Jiang, K., Liang, Y., Zhao, O."},
+
+        // 2020
+        {year: 2020, title: "[1] Experimental and numerical study of S700 high strength steel double shear bolted connections in tension",
+            journal: "Engineering Structures",
+            authors: "Jiang, K., Zhao, O., Tan, KH."},
+        
+            
     ];
 
     const yearFilter = document.getElementById("year-filter");
