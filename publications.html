@@ -59,8 +59,9 @@
             <div class="filter">
                 <label for="year-filter" class="filter-label">Filter by Year:</label>
                 <select id="year-filter" class="filter-select">
-                <option value="all">All Years</option>
+                    <option value="all">All Years</option>
                 </select>
+                <div class="publication-count" id="publication-count"></div>
             </div>
 
             <div id="publications" class="publications"></div>
@@ -255,45 +256,51 @@
         yearFilter.appendChild(option);
     });
 
+
+
     // Render publications
     function renderPublications() {
-        const filteredPublications =
-            selectedYear === "all"
-            ? publications
-            : publications.filter((pub) => pub.year === parseInt(selectedYear));
+            const filteredPublications =
+                selectedYear === "all"
+                ? publications
+                : publications.filter((pub) => pub.year === parseInt(selectedYear));
 
-        const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
+            // Update publication count
+            const countDisplay = document.getElementById("publication-count");
+            countDisplay.textContent = `${filteredPublications.length} publication${filteredPublications.length !== 1 ? 's' : ''} ${selectedYear !== 'all' ? `in ${selectedYear}` : 'total'}`;
 
-        const currentPublications = filteredPublications.slice(start, end);
+            const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
 
-        publicationsContainer.innerHTML = ""; // Clear the container before rendering
-        currentPublications.forEach((pub) => {
-            const publicationDiv = document.createElement("div");
-            publicationDiv.className = "publication-item";
+            const currentPublications = filteredPublications.slice(start, end);
 
-            const title = document.createElement("h3");
-            title.textContent = pub.title;
-            publicationDiv.appendChild(title);
+            publicationsContainer.innerHTML = "";
+            currentPublications.forEach((pub) => {
+                const publicationDiv = document.createElement("div");
+                publicationDiv.className = "publication-item";
 
-            const journal = document.createElement("p");
-            journal.className = "publication-journal";
-            journal.textContent = `Journal: ${pub.journal}`;
-            publicationDiv.appendChild(journal);
+                const title = document.createElement("h3");
+                title.textContent = pub.title;
+                publicationDiv.appendChild(title);
 
-            const authors = document.createElement("p");
-            authors.className = "publication-authors";
-            authors.textContent = `Authors: ${pub.authors}`;
-            publicationDiv.appendChild(authors);
+                const journal = document.createElement("p");
+                journal.className = "publication-journal";
+                journal.textContent = `Journal: ${pub.journal}`;
+                publicationDiv.appendChild(journal);
 
-            publicationsContainer.appendChild(publicationDiv);
-        });
+                const authors = document.createElement("p");
+                authors.className = "publication-authors";
+                authors.textContent = `Authors: ${pub.authors}`;
+                publicationDiv.appendChild(authors);
 
-        paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages;
-    }
+                publicationsContainer.appendChild(publicationDiv);
+            });
+
+            paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === totalPages;
+        }
 
     // Event Listeners
     yearFilter.addEventListener("change", (e) => {
