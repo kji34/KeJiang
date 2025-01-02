@@ -36,7 +36,7 @@ nav {
     gap: 2%; /* 设置导航链接之间的间距 */
     position: absolute; /* 绝对定位导航栏 */
     top: 40px; /* 距离页面顶部 40px */
-    left: 390px; /* 距离页面左侧 375px */
+    left: 410px; /* 距离页面左侧 375px */
     right: 25%;
     justify-content: space-between;
 }
