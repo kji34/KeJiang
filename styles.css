@@ -183,9 +183,9 @@ nav a:hover {
     margin: 20px;
     padding: 20px;
     width: 100%;
-    max-width: 1200px;        /* 添加最大宽度限制 */
-    min-height: 1836px;       /* 设置最小高度 */
-    height: 1836px;           /* 设置固定高度 */
+    max-width: 1500px;        /* 添加最大宽度限制 */
+    min-height: 1500px;       /* 设置最小高度 */
+    height: 1500px;           /* 设置固定高度 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
     margin-left: auto;        /* 水平居中 */
     margin-right: auto;       /* 水平居中 */
@@ -246,9 +246,9 @@ nav a:hover {
     margin-right: 10%;
     margin-top: -40px;
     width: 355px;             /* 添加固定宽度 */
-    height: 1836px;           /* 添加固定高度 */
-    min-height: 1836px;       /* 确保最小高度 */
-    max-height: 1836px;       /* 确保最大高度 */
+    height: 1500px;           /* 添加固定高度 */
+    min-height: 1500px;       /* 确保最小高度 */
+    max-height: 1500px;       /* 确保最大高度 */
     overflow-y: auto;         /* 内容过多时显示滚动条 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
 }
