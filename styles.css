@@ -248,7 +248,6 @@ nav a:hover {
     height: 1836px;           /* 添加固定高度 */
     min-height: 1836px;       /* 确保最小高度 */
     max-height: 1836px;       /* 确保最大高度 */
-    overflow-y: auto;         /* 内容过多时显示滚动条 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
 }
 
@@ -641,9 +640,13 @@ b {
     padding: 16px;
 }
 
-.cards-container {
-    min-height: 600px;  /* 根据你的内容调整具体高度 */
-    position: relative;
+.card-container {
+    display: flex;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .card-container:hover {
