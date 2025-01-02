@@ -452,7 +452,7 @@ b {
 
 /* 左侧标题区域 */
 .box-title {
-    flex: 0 0 300px;
+    flex: 0 0 150px;
     padding: 20px;
     position: relative;
     transition: all 0.3s ease;
