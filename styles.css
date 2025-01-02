@@ -187,7 +187,6 @@ nav a:hover {
     min-height: 1500px;       /* 设置最小高度 */
     height: 1500px;           /* 设置固定高度 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
-    margin-left: auto;        /* 水平居中 */
     margin-right: auto;       /* 水平居中 */
 }
 
