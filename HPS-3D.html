@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPMS Research Group - Research</title>
+    <!-- 添加网站图标 -->
+    <link rel="icon" type="image/jpeg" href="images/1.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div> <!-- 公共 HTML 文件占位符 -->
+    <div class="container">
+        <div class="sidebar">
+            <div id="author_bio-placeholder"></div>
+        </div>
+        <div class="content">
+            <h1 class="heading-medium"><a href="R-HPS.html">High-Performance Structures</a></h1>
+            
+            <h2 class="heading-small">•	 3D metal printing</h2>
+            
+            <!---->         
+            <div class="paper-card">
+                <div class="card-container">
+                    <div class="image-container">
+                        <img src="Research/High-performance structures/Stainless steel connections & members/" alt="Paper diagram">
+                    </div>
+                    <div class="content-container">
+                        <div class="paper-title">
+                            
+                        </div>
+                        <div class="authors">
+                            
+                        </div>
+                        <div class="journal">
+                            
+                        </div>
+                        <a href="" class="paper-link">[Paper]</a>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </div>
+    </div>
+    <footer>
+        <p>High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
+    </footer>
+
+    <script>
+        // 动态加载公共 HTML 文件
+        document.addEventListener('DOMContentLoaded', () => {
+            // 加载 header.html
+            fetch('inputs/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // header 加载完成后初始化导航菜单
+                    initializeNavigation();
+                })
+                .catch(error => console.error('加载失败:', error));
+    
+            // 加载 author_bio.html
+            fetch('inputs/author_bio.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('author_bio-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('加载失败:', error));
+        });
+    
+        // 导航菜单初始化函数
+        function initializeNavigation() {
+            // 移动端菜单切换
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('open');
+                });
+            }
+    
+            // Research 下拉菜单
+            const dropdownParent = document.querySelector('.has-dropdown');
+            if (dropdownParent) {
+                // 点击 Research 菜单时的处理
+                dropdownParent.addEventListener('click', (event) => {
+                    // 只有点击 Research 链接时才切换菜单
+                    if (event.target === dropdownParent.querySelector('a')) {
+                        event.preventDefault();
+                        dropdownParent.classList.toggle('open');
+                    }
+                });
+    
+                // 点击页面其他地方时关闭菜单
+                document.addEventListener('click', (event) => {
+                    if (!dropdownParent.contains(event.target)) {
+                        dropdownParent.classList.remove('open');
+                    }
+                });
+    
+                // 允许点击下拉菜单中的链接
+                const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+                dropdownLinks.forEach(link => {
+                    link.addEventListener('click', (event) => {
+                        event.stopPropagation(); // 阻止事件冒泡
+                    });
+                });
+            }
+        }
+        </script>
+</body>
+</html>

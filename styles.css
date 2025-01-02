@@ -183,7 +183,7 @@ nav a:hover {
     margin: 20px;
     padding: 20px;
     width: 100%;
-    max-width: 1200px        /* 添加最大宽度限制 */
+    max-width: 1200px;        /* 添加最大宽度限制 */
     min-height: 1836px;       /* 设置最小高度 */
     height: 1836px;           /* 设置固定高度 */
     box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
