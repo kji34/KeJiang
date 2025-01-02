@@ -11,18 +11,20 @@ body {
 
 /* 定义页眉的基本外观和布局 */
 header {
-    color: #000000; /* 设置文本颜色为黑色 */
-    padding: 0px 20px 10px; /* 设置页眉的内边距：上、左右、下 */
-    display: flex; /* 使用 Flexbox 布局 */
-    align-items: center; /* 垂直居中对齐内容 */
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #000000;
+    padding: 0px 20px 10px;
+    display: flex;
+    align-items: center;
 }
-
 /* 定义页眉课题组logo样式 */
 .logo {
-    flex: 1; /* 使 logo 占用多余的空间 */
-    font-weight: bold; /* 设置字体加粗 */
-    font-size: 1.5em; /* 设置字体大小 */
-    transform: translate(70px, 0px);
+    flex: 1;
+    font-weight: bold;
+    font-size: 1.5em;
+    transform: none; /* 移除transform偏移 */
 }
 
 .logo img {
@@ -32,13 +34,14 @@ header {
 
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
-    display: flex; /* 使用 Flexbox 布局 */
-    gap: 2%; /* 设置导航链接之间的间距 */
-    position: absolute; /* 绝对定位导航栏 */
-    top: 40px; /* 距离页面顶部 40px */
-    left: 410px; /* 距离页面左侧 375px */
-    right: 25%;
-    justify-content: space-between;
+    display: flex;
+    gap: 2%;
+    position: absolute;
+    top: 40px;
+    left: 50%; /* 居中定位 */
+    transform: translateX(-50%); /* 向左偏移自身宽度的一半 */
+    width: 60%; /* 设置合适的宽度 */
+    justify-content: center; /* 导航项居中显示 */
 }
 
 /* news */
@@ -177,17 +180,16 @@ nav a:hover {
     text-decoration: underline #000000; /* 鼠标悬停时显示下划线 */
 }
 
-/* 定义页面主容器的布局方式 */
+
 .container {
     display: flex;
-    margin: 20px;
+    margin: 20px auto; /* 使用auto边距实现水平居中 */
     padding: 20px;
-    width: 100%;
-    max-width: 1500px;        /* 添加最大宽度限制 */
-    min-height: 1000px;       /* 设置最小高度 */
-    height: 1000px;           /* 设置固定高度 */
-    box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
-    margin-right: auto;       /* 水平居中 */
+    width: 90%; /* 使用百分比宽度而不是固定宽度 */
+    max-width: 1500px;
+    min-height: 1000px;
+    height: 1000px;
+    box-sizing: border-box;
 }
 
 /* 控制侧边栏及其内容（如头像）的显示样式 */
@@ -243,8 +245,7 @@ nav a:hover {
     /* 保持原有的内容样式 */
     flex: 1;
     padding: 20px;
-    margin-left: 60px;
-    margin-right: 10%;
+    margin: 0 auto; /* 使用auto边距实现水平居中 */
     margin-top: -40px;
     width: 355px;
     height: 1000px;
@@ -804,10 +805,9 @@ footer {
     text-align: center;
     padding: 50px 0;
     margin: 0;
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 0;
-    margin-top: auto;    /* 确保footer始终在底部 */
+    margin-top: auto;
 }
 
 /* 选择页脚中的所有段落标签*/
