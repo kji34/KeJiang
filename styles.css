@@ -64,6 +64,7 @@ nav {
     font-weight: bold;
     color: #333;
     position: relative;
+    text-indent: 2em;
 }
 
 .event-column {
@@ -313,6 +314,7 @@ b {
     font-weight: bold;
     color: #333;
     font-feature-settings:  1.2em;
+    font-size: 1.2em;
 }
 
 .education-items{
