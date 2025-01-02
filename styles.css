@@ -237,19 +237,78 @@ nav a:hover {
     text-decoration: underline; /* 鼠标悬停时添加下划线 */
 }
 
-/* 控制内容区域的宽度和位置 */
+
+/* 初始隐藏滚动条但保留滚动功能 */
 .content {
+    /* 保持原有的内容样式 */
     flex: 1;
     padding: 20px;
     margin-left: 60px;
     margin-right: 10%;
     margin-top: -40px;
-    width: 355px;             /* 添加固定宽度 */
-    height: 1000px;           /* 添加固定高度 */
-    min-height: 1000px;       /* 确保最小高度 */
-    max-height: 1000px;       /* 确保最大高度 */
-    overflow-y: auto;         /* 内容过多时显示滚动条 */
-    box-sizing: border-box;   /* 确保padding不会影响整体尺寸 */
+    width: 355px;
+    height: 1000px;
+    min-height: 1000px;
+    max-height: 1000px;
+    box-sizing: border-box;
+
+    /* 默认隐藏滚动条但保持可滚动 */
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* 隐藏 Webkit 浏览器的默认滚动条 */
+.content::-webkit-scrollbar {
+    width: 10px; /* 滚动条宽度 */
+    background: transparent;
+}
+
+/* 鼠标悬停时显示滚动条 */
+.content:hover::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 滚动条轨道样式 */
+.content:hover::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+/* 滚动条滑块样式 */
+.content:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: background-color 0.3s;
+}
+
+/* 滚动条滑块悬停效果 */
+.content:hover::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* 滚动条滑块激活状态 */
+.content:hover::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Firefox 滚动条样式 */
+@supports (scrollbar-width: thin) {
+    .content {
+        scrollbar-width: none; /* 默认隐藏 */
+    }
+    
+    .content:hover {
+        scrollbar-width: thin; /* 悬停时显示 */
+        scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05); /* 滑块和轨道颜色 */
+    }
 }
 
 /* 选择容器内的所有段落标签 */
