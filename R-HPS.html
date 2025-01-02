@@ -116,9 +116,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const images = document.querySelector('.carousel-images');
-            const nextButton = document.querySelector('.carousel-next');
-            const prevButton = document.querySelector('.carousel-prev');
+        // 获取所有轮播组件
+        const carousels = document.querySelectorAll('.carousel');
+        
+        // 为每个轮播组件设置功能
+        carousels.forEach(carousel => {
+            const images = carousel.querySelector('.carousel-images');
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
             const imageCount = images.children.length;
             let currentIndex = 0;
 
@@ -136,12 +141,13 @@
                 updateCarousel();
             });
 
-            // 自动轮播
+            // 为每个轮播组件设置自动轮播
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % imageCount;
                 updateCarousel();
             }, 3000);
         });
+    });
 
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
