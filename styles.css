@@ -447,7 +447,7 @@ b {
 .box-content {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 0;
 }
 
 /* 左侧标题区域 */
@@ -496,7 +496,7 @@ b {
 /* 右侧轮播区域 */
 .carousel {
     flex: 1;
-    height: 300px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
