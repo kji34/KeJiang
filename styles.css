@@ -742,4 +742,91 @@ footer p {
     margin: 0; /* 选择页脚 (<footer>) 中的所有段落标签 */
 }
 
+ /* 在移动设备上将导航栏转换为汉堡菜单 */
+ @media screen and (max-width: 768px) {
+    nav {
+        display: none; /* 默认隐藏导航菜单 */
+    }
 
+    .nav-toggle {
+        display: block; /* 显示汉堡菜单按钮 */
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .dropdown {
+        position: static;
+        width: 100%;
+    }
+}
+
+/* 侧边栏响应式设计 */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+    }
+
+    .profile-image {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+/* 表格响应式设计 */
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .card-table {
+        font-size: 14px;
+    }
+}
+
+/* 研究盒子响应式设计 */
+@media screen and (max-width: 768px) {
+    .research-box {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .box-content {
+        flex-direction: column;
+    }
+
+    .carousel {
+        width: 100%;
+    }
+}
+
+/* 出版物卡片响应式设计 */
+@media screen and (max-width: 768px) {
+    .paper-card {
+        padding: 10px;
+    }
+
+    .card-container {
+        flex-direction: column;
+    }
+
+    .image-container,
+    .content-container {
+        width: 100%;
+    }
+}
