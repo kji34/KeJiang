@@ -262,8 +262,6 @@ b {
 /* team 介绍*/
 .profile-card {
     max-width: 800px;
-    padding: 20px;
-    margin: 20px auto;
     display: flex;
     gap: 30px;
     border-bottom: 1px solid #e0e0e0;
