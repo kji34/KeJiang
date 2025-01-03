@@ -526,14 +526,13 @@ b {
 /* Box 容器 */
 .research-box {
     width: 90%;
-    max-width: 800px;
     margin: 10px auto;
     background: linear-gradient(145deg, #ffffff, #f8f8f8);
     border-radius: 20px;
     box-shadow: 
         8px 8px 16px rgba(0, 0, 0, 0.05),
         -8px -8px 16px rgba(255, 255, 255, 0.8);
-    padding: 30px;
+    padding: 0;
     transition: all 0.3s ease;
     overflow: hidden;
 }
