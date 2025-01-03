@@ -16,22 +16,23 @@ header {
     top: 0;
     left: 0;
     background-color: #ffffff;
-    padding: 20px 0;
     z-index: 1000;
     border-bottom: 1px solid #eaeaea;
+    height: 80px; /* 设置固定高度 */
 }
 
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
-    width: 800px; /* 固定宽度 */
-    margin: 0 auto;
+    width: 800px;
+    position: fixed; /* 改为固定定位 */
+    top: 20px; /* 与header顶部的距离 */
+    left: 50%; /* 居中定位的起点 */
+    transform: translateX(-50%); /* 水平居中 */
+    padding-left: calc(250px + 40px); /* sidebar width + padding */
     display: flex;
     gap: 40px;
-    justify-content: flex-start;
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
+    background-color: #ffffff;
+    z-index: 1001; /* 确保在其他元素之上 */
 }
 
 /* news */
@@ -147,6 +148,7 @@ nav a:hover {
     flex-direction: column;
     min-width: 200px;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 显示下拉菜单的状态 */
@@ -181,6 +183,7 @@ nav a:hover {
     padding: 0;
     position: relative;
     min-height: calc(100vh - 80px); /* 减去header高度 */
+
 }
 
 /* 控制侧边栏及其内容（如头像）的显示样式 */
