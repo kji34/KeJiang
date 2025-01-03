@@ -174,8 +174,6 @@ nav a:hover {
 .container {
     width: 90%; /* 使用百分比宽度而不是固定宽度 */
     max-width: 1500px;
-    min-height: 920px;
-    height: 1000px;
     box-sizing: border-box;
 
     display: flex;
@@ -242,16 +240,8 @@ nav a:hover {
     flex: 1;
     padding: 20px;
     margin: 0 auto; /* 使用auto边距实现水平居中 */
-    margin-top: -40px;
-    height: 1000px;
-    min-height: 1000px;
-    max-height: 1000px;
+    margin-top: 0;
     box-sizing: border-box;
-
-    /* 默认隐藏滚动条但保持可滚动 */
-    overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
 
     margin-left: 300px; /* 侧边栏宽度 + 间距 */
     width: 800px; /* 固定宽度 */
