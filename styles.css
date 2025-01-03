@@ -23,13 +23,12 @@ header {
 
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
+    width: 100%; /* 去除固定宽度，改为占满父容器 */
     display: flex;
-    gap: 40px; /* 导航项之间的间距 */
+    gap: 40px;
     justify-content: flex-start;
-    width: 100%; /* 保证宽度和 alignment-container 一致 */
-    max-width: 1200px; /* 设置最大宽度，和 content 保持一致 */
-    position: relative;
-    box-sizing: border-box;
+    padding-left: 300px; /* 与内容区域左间距保持一致 */
+    box-sizing: border-box; /* 包含内边距 */
 }
 
 /* news */
@@ -232,14 +231,6 @@ nav a:hover {
     text-decoration: underline; /* 鼠标悬停时添加下划线 */
 }
 
-/* 公共容器，保证居中 */
-.alignment-container {
-    display: flex;
-    flex-direction: column; /* 垂直排列 */
-    align-items: center; /* 水平居中 */
-    width: 100%; /* 占满页面 */
-    position: relative;
-}
 
 /* 初始隐藏滚动条但保留滚动功能 */
 .content {
@@ -248,10 +239,12 @@ nav a:hover {
     padding: 20px;
     margin: 0 auto; /* 使用auto边距实现水平居中 */
     margin-top: 0;
-    margin-left: 300px; /* 确保与导航栏一致 */
-    width: auto; /* 去掉固定宽度 */
     box-sizing: border-box;
+
+    margin-left: 300px; /* 侧边栏宽度 + 间距 */
+    width: 800px; /* 固定宽度 */
 }
+
 /* 隐藏 Webkit 浏览器的默认滚动条 */
 .content::-webkit-scrollbar {
     width: 10px; /* 滚动条宽度 */
