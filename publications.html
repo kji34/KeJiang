@@ -120,6 +120,7 @@
 
     const yearFilter = document.getElementById("year-filter");
     const publicationsContainer = document.getElementById("publications");
+    const publicationCount = document.getElementById("publication-count");
 
     // Populate year filter
     const years = ["all", ...new Set(publications.map((pub) => pub.year))];
@@ -137,6 +138,10 @@
             ? publications 
             : publications.filter(pub => pub.year === parseInt(selectedYear));
 
+        // Update publication count
+        publicationCount.textContent = `Number of publications: ${filteredPublications.length}`;
+
+        // Display publications
         publicationsContainer.innerHTML = filteredPublications
             .map(pub => `<p>${pub.title}</p>`)
             .join('');
