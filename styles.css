@@ -548,7 +548,7 @@ b {
 /* Box 内部布局 */
 .box-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
 }
 
