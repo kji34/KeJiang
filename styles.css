@@ -24,7 +24,7 @@ header {
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
     width: 800px; /* 固定宽度 */
-    margin: 0 auto;
+    margin: 0;
     display: flex;
     gap: 40px;
     justify-content: flex-start;
@@ -32,7 +32,7 @@ nav {
     top: 0;
     left: 0;
     transform: none;
-    padding-left: calc(250px + 40px); /* sidebar width + padding */
+    padding-left: 387px; /* sidebar width + padding */
 }
 
 /* news */
