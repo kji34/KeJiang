@@ -552,50 +552,7 @@ b {
     gap: 0;
 }
 
-/* 左侧标题区域 */
-.box-title {
-    flex: 0 0 150px;
-    padding: 20px;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.box-title h2 {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.box-title a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-/* 标题悬停效果 */
-.box-title:hover h2 {
-    transform: translateX(10px);
-}
-
-.box-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 20px;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #333, #999);
-    transition: width 0.3s ease;
-}
-
-.box-title:hover::after {
-    width: 80%;
-}
-
-/* 右侧轮播区域 */
+/* 左侧轮播区域 */
 .carousel {
     flex: 1;
     height: 200px;
@@ -706,6 +663,51 @@ b {
 .carousel-next {
     right: 10px;
 }
+
+/* 右侧标题区域 */
+.box-title {
+    flex: 0 0 150px;
+    padding: 20px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.box-title h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.box-title a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* 标题悬停效果 */
+.box-title:hover h2 {
+    transform: translateX(10px);
+}
+
+.box-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #333, #999);
+    transition: width 0.3s ease;
+}
+
+.box-title:hover::after {
+    width: 80%;
+}
+
+
 /* 字体系统 */
 .heading-medium {
     font-size: 2.5em;
