@@ -79,10 +79,6 @@
 
     <script>
 
-    const itemsPerPage = 5;
-    let selectedYear = "all";
-    let currentPage = 1;
-
     // Define the publications data
     const publications = [
 
@@ -140,9 +136,6 @@
 
     const yearFilter = document.getElementById("year-filter");
     const publicationsContainer = document.getElementById("publications"); // This should be the correct element for publications
-    const paginationInfo = document.getElementById("page-info");
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
 
     // Populate year filter
     const years = ["all", ...new Set(publications.map((pub) => pub.year))];
@@ -153,66 +146,6 @@
         yearFilter.appendChild(option);
     });
 
-
-
-    // Render publications
-    function renderPublications() {
-            const filteredPublications =
-                selectedYear === "all"
-                ? publications
-                : publications.filter((pub) => pub.year === parseInt(selectedYear));
-
-            // Update publication count
-            const countDisplay = document.getElementById("publication-count");
-            countDisplay.textContent = `${filteredPublications.length} publication${filteredPublications.length !== 1 ? 's' : ''} ${selectedYear !== 'all' ? `in ${selectedYear}` : 'total'}`;
-
-            const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-
-            const currentPublications = filteredPublications.slice(start, end);
-
-            publicationsContainer.innerHTML = "";
-            currentPublications.forEach((pub) => {
-                const publicationDiv = document.createElement("div");
-                publicationDiv.className = "publication-item";
-
-                const title = document.createElement("p");
-                title.textContent = pub.title;
-                publicationDiv.appendChild(title);
-
-                publicationsContainer.appendChild(publicationDiv);
-            });
-
-            paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
-        }
-
-    // Event Listeners
-    yearFilter.addEventListener("change", (e) => {
-        selectedYear = e.target.value;
-        currentPage = 1;
-        renderPublications();
-    });
-
-    prevBtn.addEventListener("click", () => {
-        currentPage = Math.max(currentPage - 1, 1);
-        renderPublications();
-    });
-
-    nextBtn.addEventListener("click", () => {
-        const filteredPublications =
-            selectedYear === "all"
-            ? publications
-            : publications.filter((pub) => pub.year === parseInt(selectedYear));
-        const totalPages = Math.ceil(filteredPublications.length / itemsPerPage);
-        currentPage = Math.min(currentPage + 1, totalPages);
-        renderPublications();
-    });
-
-    // Initial render
-    renderPublications();
 
 
         // 动态加载公共 HTML 文件
