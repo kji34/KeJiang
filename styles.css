@@ -23,7 +23,7 @@ header {
 
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
-    width: 800px; /* 固定宽度 */
+    width: 100%; /* 固定宽度 */
     display: flex;
     gap: 40px;
     justify-content: center;
@@ -31,8 +31,6 @@ nav {
     top: 0;
     left: 0;
     transform: none;
-    padding-left: 320px;
-    margin-left: 5%;
 }
 
 /* news */
@@ -173,7 +171,7 @@ nav a:hover {
 
 
 .container {
-    width: 90%; /* 使用百分比宽度而不是固定宽度 */
+    width: 100%; /* 使用百分比宽度而不是固定宽度 */
     max-width: 1500px;
     min-height: 920px;
     height: 1000px;
