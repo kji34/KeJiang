@@ -23,13 +23,18 @@ header {
 
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
-    width: 100%; /* 去除固定宽度，改为占满父容器 */
+    width: 800px; /* 固定宽度 */
+    margin: 0;
     display: flex;
     gap: 40px;
     justify-content: flex-start;
-    padding-left: 300px; /* 与内容区域左间距保持一致 */
-    box-sizing: border-box; /* 包含内边距 */
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    padding-left: 387px; /* sidebar width + padding */
 }
+
 
 /* news */
 .timeline-container {
