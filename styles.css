@@ -36,7 +36,6 @@ nav {
 
 /* news */
 .timeline-container {
-    max-width: 800px;
     margin: 20px 0; /* 改为只有上下边距 */
     padding: 20px;
     background: white;
@@ -52,6 +51,11 @@ nav {
 .timeline-item {
     display: flex;
     margin-bottom: 30px;
+}
+
+.timeline-item1 {
+    display: flex;
+    margin-bottom: 0px;
 }
 
 .date-column {
