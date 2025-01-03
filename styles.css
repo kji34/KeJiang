@@ -83,7 +83,7 @@ nav {
     background-color: #e0e0e0;
 }
 
-.event-column::after {
+.event-column1::after {
     content: '';
     position: absolute;
     left: -4px;
