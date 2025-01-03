@@ -549,7 +549,7 @@ b {
 .box-content {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 20px;
 }
 
 /* 左侧轮播区域 */
