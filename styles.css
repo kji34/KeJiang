@@ -173,8 +173,6 @@ nav a:hover {
 .container {
     width: 85%; /* 使用百分比宽度而不是固定宽度 */
     max-width: 1500px;
-    min-height: 920px;
-    height: 1000px;
     box-sizing: border-box;
 
     display: flex;
