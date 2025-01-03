@@ -26,10 +26,9 @@ nav {
     width: 100%; /* 固定宽度 */
     display: flex;
     gap: 40px;
-    justify-content: center;
     position: relative;
     top: 0;
-    left: 0;
+    left: 5%;
     transform: none;
 }
 
