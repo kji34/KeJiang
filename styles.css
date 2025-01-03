@@ -67,6 +67,34 @@ nav {
     text-indent: 2em;
 }
 
+.event-column1 {
+    flex: 1;
+    padding-left: 40px;
+    position: relative;  
+}
+
+.event-column1::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0px;
+    width: 1px;
+    background-color: #e0e0e0;
+}
+
+.event-column::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #000000;
+}
+
+
 .event-column {
     flex: 1;
     padding-left: 40px;
