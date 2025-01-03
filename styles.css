@@ -24,7 +24,7 @@ header {
 /* 定义导航栏（菜单栏）的位置、布局和样式 */
 nav {
     width: 800px; /* 固定宽度 */
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     gap: 40px;
     justify-content: flex-start;
@@ -32,9 +32,7 @@ nav {
     top: 0;
     left: 0;
     transform: none;
-    padding-left: 387px; /* sidebar width + padding */
 }
-
 
 /* news */
 .timeline-container {
@@ -125,7 +123,6 @@ nav a {
     font-weight: bold; /* 设置文字粗细 */
     position: relative; /* 定义相对定位，为后续样式提供基础 */
     font-size: 1.4em; /* 设置文字大小 */
-    white-space: nowrap; /* Prevent link text from wrapping */
 }
 
 /* 添加导航链接的鼠标悬停效果 */
@@ -874,6 +871,23 @@ footer p {
     }
 }
 
+/* 移动端适配 */
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    nav {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .content {
+        width: calc(100% - 300px);
+    }
+}
+
 /* 侧边栏响应式设计 */
 @media screen and (max-width: 768px) {
     .sidebar {
@@ -934,59 +948,5 @@ footer p {
     .image-container,
     .content-container {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    nav {
-        padding-left: 40px; /* Remove sidebar offset on medium screens */
-        width: 100%;
-        justify-content: flex-start;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 20px;
-        padding: 10px;
-    }
-    
-    nav a {
-        font-size: 1.2em;
-    }
-    
-    /* Dropdown menu adjustments for mobile */
-    .dropdown {
-        position: static;
-        width: 100%;
-        margin-left: 20px; /* Indent dropdown items */
-    }
-    
-    .has-dropdown.open .dropdown {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/* Menu toggle button for mobile */
-.menu-toggle {
-    display: none;
-    padding: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-    }
-    
-    nav:not(.open) {
-        display: none;
     }
 }
