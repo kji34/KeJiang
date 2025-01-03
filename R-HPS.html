@@ -141,55 +141,38 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const carousels = document.querySelectorAll('.carousel');
-            
-            carousels.forEach(carousel => {
-                const images = carousel.querySelector('.carousel-images');
-                const nextButton = carousel.querySelector('.carousel-next');
-                const prevButton = carousel.querySelector('.carousel-prev');
-                const items = carousel.querySelectorAll('.carousel-item');
-                const imageCount = items.length;
-                let currentIndex = 0;
-                let autoPlayInterval;
+        // 获取所有轮播组件
+        const carousels = document.querySelectorAll('.carousel');
+        
+        // 为每个轮播组件设置功能
+        carousels.forEach(carousel => {
+            const images = carousel.querySelector('.carousel-images');
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
+            const imageCount = images.children.length;
+            let currentIndex = 0;
 
-                function updateCarousel() {
-                    images.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
+            function updateCarousel() {
+                images.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
 
-                function startAutoPlay() {
-                    autoPlayInterval = setInterval(() => {
-                        currentIndex = (currentIndex + 1) % imageCount;
-                        updateCarousel();
-                    }, 5000); // 5秒切换一次
-                }
-
-                function stopAutoPlay() {
-                    clearInterval(autoPlayInterval);
-                }
-
-                nextButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % imageCount;
-                    updateCarousel();
-                    stopAutoPlay();
-                    startAutoPlay();
-                });
-
-                prevButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + imageCount) % imageCount;
-                    updateCarousel();
-                    stopAutoPlay();
-                    startAutoPlay();
-                });
-
-                // 鼠标悬停时暂停自动播放
-                carousel.addEventListener('mouseenter', stopAutoPlay);
-                carousel.addEventListener('mouseleave', startAutoPlay);
-
-                // 开始自动播放
-                startAutoPlay();
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
             });
-        });
 
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                updateCarousel();
+            });
+
+            // 为每个轮播组件设置自动轮播
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                updateCarousel();
+            }, 3000);
+        });
+    });
         // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
