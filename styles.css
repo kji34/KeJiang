@@ -457,46 +457,6 @@ b {
     color: #fc0606;
   }
 
-/* 页面切换 */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .pagination-container {
-    min-height: 800px;  /* 设置一个固定的最小高度 */
-    position: relative;
-}
-
-.pagination-controls {
-    position: absolute;  /* 固定分页控制器位置 */
-    bottom: 0;          /* 固定在底部 */
-    left: 0;
-    right: 0;
-    padding: 20px 0;
-    background-color: white;
-}
-  
-  .pagination-btn {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .pagination-btn:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
   
   .page-info {
     font-size: 14px;
