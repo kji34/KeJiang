@@ -873,23 +873,6 @@ footer p {
     }
 }
 
-/* 移动端适配 */
-@media screen and (max-width: 1200px) {
-    .container {
-        width: 100%;
-        padding: 0 20px;
-    }
-
-    nav {
-        width: 100%;
-        padding: 0 20px;
-    }
-
-    .content {
-        width: calc(100% - 300px);
-    }
-}
-
 /* 侧边栏响应式设计 */
 @media screen and (max-width: 768px) {
     .sidebar {
