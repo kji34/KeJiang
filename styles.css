@@ -180,7 +180,7 @@ nav a:hover {
     display: flex;
     margin: 80px auto 0; /* 顶部margin为header高度 */
     padding: 0;
-    padding-left:3%
+    padding-left:5%
     position: relative;
     min-height: calc(100vh - 80px); /* 减去header高度 */
 }
