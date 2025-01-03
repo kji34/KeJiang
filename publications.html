@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HPMS Research Group</title>
-    <!-- 添加网站图标 -->
     <link rel="icon" type="image/jpeg" href="images/1.jpg">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="header-placeholder"></div> <!-- 公共 HTML 文件占位符 -->
+    <div id="header-placeholder"></div>
     <div class="container">
         <div class="sidebar">
         </div>
@@ -47,13 +46,12 @@
                 <td>1</td>
                 </tr>
                 <tr>
-                <td> <b>Total</b></td>
+                <td><b>Total</b></td>
                 <td><b>36</b></td>
                 </tr>
             </tbody>
             </table>
             <br>
-            <!-- Filter Section -->
             <div class="filter">
                 <label for="year-filter" class="filter-label">Filter by Year:</label>
                 <select id="year-filter" class="filter-select">
@@ -63,14 +61,6 @@
             </div>
 
             <div id="publications" class="publications"></div>
-
-
-            <div id="pagination" class="pagination">
-                <button id="prev-btn" class="pagination-btn" disabled>←</button>
-                <span id="page-info" class="page-info">Page 1 of 1</span>
-                <button id="next-btn" class="pagination-btn" disabled>→</button>
-              </div>
-            </div>
         </div>
     </div>
     <footer>
@@ -78,10 +68,7 @@
     </footer>
 
     <script>
-
-    // Define the publications data
     const publications = [
-
         // 2025
         {year: 2025, title: "[36] Shang, C., Zhou, Y., Li, J., Jiang, K., Zhong., G. (2025). Hysteretic and Low-cycle Fatigue Performance of Arc-shaped Corrugated Steel Plate Dampers. Journal of Constructional Steel Research, 224, 109168."},
 
@@ -111,7 +98,6 @@
         {year: 2023, title: "[15] Li, S., Jiang, K., Zhao, O. (2023). Press-braked ferritic stainless steel slender channel section beam–columns: Tests, simulations and design. Thin-Walled Structures, 183, 110302."},
         {year: 2023, title: "[14] Su, A., Jiang, K., Wang, Y., Zhao, O. (2023). Experimental and numerical investigations into S960 ultra-high strength steel welded I-section stub columns after exposure to elevated temperatures. Thin-Walled Structures, 183, 110349."},
 
-
         // 2022
         {year: 2022, title: "[13] Jiang, K., Liang, Y., Zhao, O. (2022). Machine-learning-based design of high strength steel bolted connections. Thin-Walled Structures, 179, 109575."},
         {year: 2022, title: "[12] Jiang, K., Zhao, O. (2022). Testing, numerical modelling and design of S690 high strength steel channel-to-plate connections. Thin-Walled Structures, 179, 109545."},
@@ -127,15 +113,13 @@
         {year: 2021, title: "[4] Sun, Y., Su, A., Jiang, K., Liang, Y., Zhao, O. (2021). Testing, numerical modelling and design of stainless steel welded I-sections under minor-axis combined loading. Engineering Structures, 243, 112513."},
         {year: 2021, title: "[3] Jiang, K., Tan, KH., Zhao, O. (2021). Net section fracture of S700 high strength steel staggered bolted connections. Thin-Walled Structures, 164, 107904."},
         {year: 2021, title: "[2] Sun, Y., Jiang, K., Liang, Y., Zhao, O. (2021). Experimental and numerical studies of high-chromium stainless steel welded I-section beam–columns. Engineering Structures, 236, 112065."},
-
         
         // 2020
         {year: 2020, title: "[1] Jiang, K., Zhao, O., Tan, KH. (2020). Experimental and numerical study of S700 high strength steel double shear bolted connections in tension. Engineering Structures, 225, 111175."}
-
     ];
 
     const yearFilter = document.getElementById("year-filter");
-    const publicationsContainer = document.getElementById("publications"); // This should be the correct element for publications
+    const publicationsContainer = document.getElementById("publications");
 
     // Populate year filter
     const years = ["all", ...new Set(publications.map((pub) => pub.year))];
@@ -146,69 +130,77 @@
         yearFilter.appendChild(option);
     });
 
+    // Display publications function
+    function displayPublications() {
+        const selectedYear = yearFilter.value;
+        const filteredPublications = selectedYear === "all" 
+            ? publications 
+            : publications.filter(pub => pub.year === parseInt(selectedYear));
 
+        publicationsContainer.innerHTML = filteredPublications
+            .map(pub => `<p>${pub.title}</p>`)
+            .join('');
+    }
 
-        // 动态加载公共 HTML 文件
-        document.addEventListener('DOMContentLoaded', () => {
-            // 加载 header.html
-            fetch('inputs/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    
-                    // header 加载完成后初始化导航菜单
-                    initializeNavigation();
-                })
-                .catch(error => console.error('加载失败:', error));
-    
-            // 加载 author_bio.html
-            fetch('inputs/author_bio.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('author_bio-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('加载失败:', error));
-        });
-    
-        // 导航菜单初始化函数
-        function initializeNavigation() {
-            // 移动端菜单切换
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('open');
-                });
-            }
-    
-            // Research 下拉菜单
-            const dropdownParent = document.querySelector('.has-dropdown');
-            if (dropdownParent) {
-                // 点击 Research 菜单时的处理
-                dropdownParent.addEventListener('click', (event) => {
-                    // 只有点击 Research 链接时才切换菜单
-                    if (event.target === dropdownParent.querySelector('a')) {
-                        event.preventDefault();
-                        dropdownParent.classList.toggle('open');
-                    }
-                });
-    
-                // 点击页面其他地方时关闭菜单
-                document.addEventListener('click', (event) => {
-                    if (!dropdownParent.contains(event.target)) {
-                        dropdownParent.classList.remove('open');
-                    }
-                });
-    
-                // 允许点击下拉菜单中的链接
-                const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
-                dropdownLinks.forEach(link => {
-                    link.addEventListener('click', (event) => {
-                        event.stopPropagation(); // 阻止事件冒泡
-                    });
-                });
-            }
+    // Add event listener for year filter
+    yearFilter.addEventListener("change", displayPublications);
+
+    // Initial display
+    displayPublications();
+
+    // 加载公共 HTML 文件
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('inputs/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                initializeNavigation();
+            })
+            .catch(error => console.error('加载失败:', error));
+
+        fetch('inputs/author_bio.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('author_bio-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('加载失败:', error));
+    });
+
+    function initializeNavigation() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('open');
+            });
         }
-        </script>
+
+        const dropdownParent = document.querySelector('.has-dropdown');
+        if (dropdownParent) {
+            // 点击 Research 菜单时的处理
+            dropdownParent.addEventListener('click', (event) => {
+                if (event.target === dropdownParent.querySelector('a')) {
+                    event.preventDefault();
+                    dropdownParent.classList.toggle('open');
+                }
+            });
+
+            // 点击页面其他地方时关闭菜单
+            document.addEventListener('click', (event) => {
+                if (!dropdownParent.contains(event.target)) {
+                    dropdownParent.classList.remove('open');
+                }
+            });
+
+            // 允许点击下拉菜单中的链接
+            const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+            });
+        }
+    }
+    </script>
 </body>
 </html>
