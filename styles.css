@@ -307,6 +307,7 @@ nav a:hover {
 /* 选择容器内的所有段落标签 */
 .content p {
     font-size: 1.2em; /* 段落的文字大小设置 */
+    margin-block: 0.5em;
 }
 
 a {
@@ -434,7 +435,7 @@ b {
 .publications {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
   }
   
   .card {
