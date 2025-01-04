@@ -168,13 +168,7 @@
                         .map(pub => 
                             `<p style="margin-bottom: 1em;">
                                 ${pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>')}
-                                
-                                ${pub.title.replace(/Thin-Walled Structures\./g, '<b>Thin-Walled Structures</b>')}
-                                ${pub.title.replace(/Engineering Structures\./g, '<b>Engineering Structures</b>')}
-                                ${pub.title.replace(/Journal of Constructional Steel Research \./g, '<b>Journal of Constructional Steel Research </b>')}
-                                ${pub.title.replace(/Journal of Building Engineering\./g, '<b>Journal of Building Engineering</b>')}
-                                ${pub.title.replace(/Journal of Structural Engineering\./g, '<b>Journal of Structural Engineering </b>')}
-                                ${pub.title.replace(/Structures\./g, '<b>Structures</b>')}
+
                             </p>`)
                         .join('')}
 
@@ -182,6 +176,12 @@
                 `;
             });
 
+            //${pub.title.replace(/Thin-Walled Structures\./g, '<b>Thin-Walled Structures</b>')}
+              //                  ${pub.title.replace(/Engineering Structures\./g, '<b>Engineering Structures</b>')}
+                //                ${pub.title.replace(/Journal of Constructional Steel Research \./g, '<b>Journal of Constructional Steel Research </b>')}
+                  //              ${pub.title.replace(/Journal of Building Engineering\./g, '<b>Journal of Building Engineering</b>')}
+                    //            ${pub.title.replace(/Journal of Structural Engineering\./g, '<b>Journal of Structural Engineering </b>')}
+                      //          ${pub.title.replace(/Structures\./g, '<b>Structures</b>')}
             // Display publications
             publicationsContainer.innerHTML = html;
     }
