@@ -233,7 +233,6 @@ nav a:hover {
     margin-top: 0;
     box-sizing: border-box;
     width: 100%; /* 使用全宽 */
-    max-width: 1200px; /* 设置最大宽度 */
     margin-left: 0; /* 移除为sidebar预留的左边距 */
 }
 .sidebar img {
@@ -490,9 +489,10 @@ b {
 /* 左侧轮播区域 */
 .carousel {
     flex: 1;
-    height: 200px;
+    max-height: 400px;
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
     border-radius: 15px;
     margin-top: 30px;
     margin-left: 20px;
