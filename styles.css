@@ -501,7 +501,7 @@ b {
 /* 左侧轮播区域 */
 .carousel {
     flex: 1;
-    max-height: 400px;
+    height: 400px;
     position: relative;
     overflow: hidden;
     aspect-ratio: 16 / 9;
