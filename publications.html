@@ -153,6 +153,14 @@
         // Create HTML content
         let html = '';
 
+
+        const journalsToBold = ["Thin-Walled Structures",
+                                "Engineering Structures", 
+                                "Journal of Constructional Steel Research", 
+                                "Journal of Building Engineering", 
+                                "Journal of Structural Engineering", 
+                                "Structures"]; // 需要加粗的期刊名称
+
          // Sort years in descending order and create content
         Object.keys(groupedPublications)
             .sort((a, b) => b - a)
@@ -164,25 +172,21 @@
                             ${year}
                         </h2>
 
-                        ${groupedPublications[year]
-                        .map(pub => 
-                            `<p style="margin-bottom: 1em;">
-                                ${pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>')}
-
-                            </p>`)
+                       ${groupedPublications[year]
+                        .map(pub => {
+                            let updatedTitle = pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>'); // 加粗作者名
+                            journalsToBold.forEach(journal => {
+                                const regex = new RegExp(journal, 'g');
+                                updatedTitle = updatedTitle.replace(regex, `<b>${journal}</b>`); // 加粗期刊名
+                            });
+                            return `<p style="margin-bottom: 1em;">${updatedTitle}</p>`;
+                        })
                         .join('')}
 
                     </div>
                 `;
             });
 
-            //${pub.title.replace(/Thin-Walled Structures\./g, '<b>Thin-Walled Structures</b>')}
-              //                  ${pub.title.replace(/Engineering Structures\./g, '<b>Engineering Structures</b>')}
-                //                ${pub.title.replace(/Journal of Constructional Steel Research \./g, '<b>Journal of Constructional Steel Research </b>')}
-                  //              ${pub.title.replace(/Journal of Building Engineering\./g, '<b>Journal of Building Engineering</b>')}
-                    //            ${pub.title.replace(/Journal of Structural Engineering\./g, '<b>Journal of Structural Engineering </b>')}
-                      //          ${pub.title.replace(/Structures\./g, '<b>Structures</b>')}
-            // Display publications
             publicationsContainer.innerHTML = html;
     }
 
