@@ -544,10 +544,11 @@ b {
 
 .carousel-caption {
     position: absolute;
-    bottom: 0;
+    bottom: 150px;
     left: 0;
     right: 0;
     padding: 12px 20px;
+    padding-bottom: 140px;
     background: rgba(255, 255, 255, 0.9);
     color: #333;
     font-size: 0.9em;
