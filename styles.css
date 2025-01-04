@@ -34,7 +34,7 @@ nav {
     justify-content: center;
 }
 
-/* news */
+/* news & 履历*/
 .timeline-container {
     margin: 20px 0; /* 改为只有上下边距 */
     padding: 20px;
@@ -93,8 +93,6 @@ nav {
     border-radius: 50%;
     background-color: #000000;
 }
-
-
 .event-column {
     flex: 1;
     padding-left: 40px;
@@ -277,47 +275,6 @@ nav a:hover {
 
     margin-left: 300px; /* 侧边栏宽度 + 间距 */
     width: 800px; /* 固定宽度 */
-}
-
-/* 隐藏 Webkit 浏览器的默认滚动条 */
-.content::-webkit-scrollbar {
-    width: 10px; /* 滚动条宽度 */
-    background: transparent;
-}
-
-/* 鼠标悬停时显示滚动条 */
-.content:hover::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* 滚动条轨道样式 */
-.content:hover::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 5px;
-    margin: 5px;
-}
-
-/* 滚动条滑块样式 */
-.content:hover::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    transition: background-color 0.3s;
-}
-
-/* 滚动条滑块悬停效果 */
-.content:hover::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
-
-/* 滚动条滑块激活状态 */
-.content:hover::-webkit-scrollbar-thumb:active {
-    background: rgba(0, 0, 0, 0.4);
-    border: 2px solid transparent;
-    background-clip: padding-box;
 }
 
 /* Firefox 滚动条样式 */
