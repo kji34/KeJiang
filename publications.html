@@ -143,10 +143,37 @@
         // Update publication count
         publicationCount.textContent = `Number of publications: ${filteredPublications.length}`;
 
-        // Display publications
-        publicationsContainer.innerHTML = filteredPublications
-            .map(pub => `<p>${pub.title}</p>`)
-            .join('');
+        // Group publications by year
+        const groupedPublications = filteredPublications.reduce((acc, pub) => {
+            if (!acc[pub.year]) {
+                acc[pub.year] = [];
+            }
+            acc[pub.year].push(pub);
+            return acc;
+        }, {});
+
+        // Create HTML content
+        let html = '';
+
+         // Sort years in descending order and create content
+        Object.keys(groupedPublications)
+            .sort((a, b) => b - a)
+            .forEach(year => {
+                // Add year header
+                html += `
+                    <div class="year-section" style="margin-bottom: 2em;">
+                        <h2 style="font-size: 1.5em; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 0.5em; margin-bottom: 1em;">
+                            ${year}
+                        </h2>
+                        ${groupedPublications[year]
+                            .map(pub => `<p style="margin-bottom: 1em;">${pub.title}</p>`)
+                            .join('')}
+                    </div>
+                `;
+            });
+
+            // Display publications
+            publicationsContainer.innerHTML = html;
     }
 
     // Add event listener for year filter
