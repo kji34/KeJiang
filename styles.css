@@ -438,7 +438,7 @@ b {
   .card-journal,
   .card-authors {
     font-size: 14px;
-    color: #fc0606;
+    color: #000000;
   }
 
 /* 页面切换 */
@@ -474,33 +474,7 @@ b {
 }
 
 
-/* Box 容器 */
-.research-box {
-    width: 100%;
-    margin: 10px auto;
-    background: linear-gradient(145deg, #ffffff, #f8f8f8);
-    border-radius: 20px;
-    box-shadow: 
-        8px 8px 16px rgba(0, 0, 0, 0.05),
-        -8px -8px 16px rgba(255, 255, 255, 0.8);
-    padding: 0;
-    transition: all 0.3s ease;
-    overflow: hidden;
-}
 
-.research-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        12px 12px 20px rgba(0, 0, 0, 0.1),
-        -12px -12px 20px rgba(255, 255, 255, 0.9);
-}
-
-/* Box 内部布局 */
-.box-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-}
 
 /* 左侧轮播区域 */
 .carousel {
@@ -617,7 +591,7 @@ b {
 
 /* 右侧标题区域 */
 .box-title {
-    flex: 0 0 65%;
+    flex: 0 0 60%;
     padding: 20px;
     position: relative;
     transition: all 0.3s ease;
@@ -646,7 +620,7 @@ b {
 .box-title::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left: 20px;
     width: 0;
     height: 3px;
