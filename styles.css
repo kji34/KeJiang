@@ -211,6 +211,7 @@ nav a:hover {
     padding: 0;
     position: relative;
     min-height: calc(100vh - 80px); /* 减去header高度 */
+    justify-content: center;
 }
 
 
