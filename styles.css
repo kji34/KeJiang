@@ -213,6 +213,7 @@ nav a:hover {
     min-height: calc(100vh - 80px); /* 减去header高度 */
 }
 
+
 /* 控制侧边栏及其内容（如头像）的显示样式 */
 .sidebar {
     width: 250px; /* 设置侧边栏宽度 */
@@ -224,7 +225,16 @@ nav a:hover {
     height: calc(100vh - 80px); /* 减去header高度 */
     background-color: #ffffff;
 }
-
+.content1 {
+    flex: 1;
+    padding: 20px;
+    margin: 0 auto; /* 使用auto边距实现水平居中 */
+    margin-top: 0;
+    box-sizing: border-box;
+    width: 100%; /* 使用全宽 */
+    max-width: 1200px; /* 设置最大宽度 */
+    margin-left: 0; /* 移除为sidebar预留的左边距 */
+}
 .sidebar img {
     width: 140px; /* 设置图片宽度 */
     height: 140px; /* 设置图片高度 */
