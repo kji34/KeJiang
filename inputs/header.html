@@ -1,10 +1,10 @@
 <header>
-    <div class="menu-toggle">
+    <button class="menu-toggle">
         <span></span>
         <span></span>
         <span></span>
-    </div>
     </button>
+
     <nav>
         <a href="index.html">Home</a>
         <div class="has-dropdown">
@@ -49,4 +49,16 @@
             });
         });
     });
+
+    function initializeNavigation() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    // 处理汉堡菜单点击
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+    }
+}
     </script>
