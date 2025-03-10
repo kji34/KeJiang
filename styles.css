@@ -930,7 +930,7 @@ footer p {
         width: 100%; /* 宽度占满整个屏幕 */
         padding: 15px;
         position:relative
-
+        margin-top: 400px;
     }
 
     .timeline-container, .timeline-container1 {
