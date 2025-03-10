@@ -798,95 +798,6 @@ footer p {
     margin: 0; /* 选择页脚 (<footer>) 中的所有段落标签 */
 }
 
- /* 在移动设备上将导航栏转换为汉堡菜单 */
- @media screen and (max-width: 768px) {
-    nav {
-        display: none; /* 默认隐藏导航菜单 */
-    }
-
-    .nav-toggle {
-        display: block; /* 显示汉堡菜单按钮 */
-    }
-
-    nav.active {
-        display: block;
-    }
-
-    nav a {
-        display: block;
-        padding: 10px;
-        width: 100%;
-    }
-
-    .dropdown {
-        position: static;
-        width: 100%;
-    }
-}
-
-/* 侧边栏响应式设计 */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 100%;
-        margin: 0;
-        padding: 15px;
-    }
-
-    .profile-card {
-        flex-direction: column;
-    }
-
-    .profile-image {
-        width: 100%;
-        max-width: 200px;
-        margin: 0 auto;
-    }
-}
-
-/* 表格响应式设计 */
-@media screen and (max-width: 768px) {
-    table {
-        display: block;
-        overflow-x: auto;
-    }
-
-    .card-table {
-        font-size: 14px;
-    }
-}
-
-/* 研究盒子响应式设计 */
-@media screen and (max-width: 768px) {
-    .research-box {
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    .box-content {
-        flex-direction: column;
-    }
-
-    .carousel {
-        width: 100%;
-    }
-}
-
-/* 出版物卡片响应式设计 */
-@media screen and (max-width: 768px) {
-    .paper-card {
-        padding: 10px;
-    }
-
-    .card-container {
-        flex-direction: column;
-    }
-
-    .image-container,
-    .content-container {
-        width: 100%;
-    }
-}
-
 /* 汉堡菜单按钮基础样式 */
 .menu-toggle {
     display: none; /* 默认隐藏 */
@@ -924,6 +835,7 @@ footer p {
         background: white;
         padding: 20px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
     }
 
     nav.open {
@@ -948,5 +860,133 @@ footer p {
 
     .has-dropdown.open .dropdown {
         display: block;
+    }
+}
+
+/* 侧边栏响应式设计 */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        position: static; /* 取消固定定位 */
+        height: auto; /* 高度自适应 */
+    }
+
+    .content {
+        margin-left: 0; /* 移除侧边栏的左边距 */
+        width: 100%; /* 宽度占满整个屏幕 */
+    }
+
+    .profile-card {
+        flex-direction: column;
+    }
+
+    .profile-image {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+/* 内容区域响应式设计 */
+@media screen and (max-width: 768px) {
+    .container, .container1 {
+        width: 100%;
+        padding: 0 15px;
+        margin-top: 60px; /* 给导航栏留出空间 */
+    }
+
+    .content {
+        margin-left: 0; /* 移除侧边栏的左边距 */
+        width: 100%; /* 宽度占满整个屏幕 */
+        padding: 15px;
+    }
+
+    .timeline-container, .timeline-container1 {
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .timeline-item, .timeline-item1 {
+        flex-direction: column;
+    }
+
+    .date-column {
+        width: 100%;
+        text-indent: 0;
+        margin-bottom: 10px;
+    }
+
+    .event-column, .event-column1 {
+        padding-left: 0;
+    }
+
+    .event-column::before, .event-column1::before {
+        display: none; /* 隐藏时间线 */
+    }
+}
+
+/* 轮播图响应式设计 */
+@media screen and (max-width: 768px) {
+    .carousel {
+        height: 200px; /* 调整高度 */
+        margin: 15px 0;
+    }
+
+    .carousel-caption {
+        bottom: 50px; /* 调整说明文字的位置 */
+        padding-bottom: 50px;
+    }
+
+    .carousel-prev, .carousel-next {
+        opacity: 1; /* 始终显示按钮 */
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* 页脚响应式设计 */
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 30px 0;
+    }
+
+    footer p {
+        font-size: 0.9em; /* 调整字体大小 */
+    }
+}
+
+/* 其他响应式调整 */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px; /* 调整基础字体大小 */
+    }
+
+    .heading-medium {
+        font-size: 2em; /* 调整标题大小 */
+    }
+
+    .heading-small {
+        font-size: 1.4em; /* 调整小标题大小 */
+    }
+
+    .text-lg {
+        font-size: 1em; /* 调整大文本大小 */
+    }
+
+    .profile-name {
+        font-size: 20px; /* 调整简介名称大小 */
+    }
+
+    .profile-title {
+        font-size: 0.9em; /* 调整简介标题大小 */
+    }
+
+    .education-label, .sdg-label {
+        font-size: 1em; /* 调整教育标签大小 */
+    }
+
+    .education-items, .sdg-items {
+        font-size: 0.9em; /* 调整教育项大小 */
     }
 }

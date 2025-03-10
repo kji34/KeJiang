@@ -136,101 +136,103 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        // 获取所有轮播组件
-        const carousels = document.querySelectorAll('.carousel');
-        
-        // 为每个轮播组件设置功能
-        carousels.forEach(carousel => {
-            const images = carousel.querySelector('.carousel-images');
-            const nextButton = carousel.querySelector('.carousel-next');
-            const prevButton = carousel.querySelector('.carousel-prev');
-            const imageCount = images.children.length;
-            let currentIndex = 0;
-
-            function updateCarousel() {
-                images.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % imageCount;
-                updateCarousel();
-            });
-
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + imageCount) % imageCount;
-                updateCarousel();
-            });
-
-            // 为每个轮播组件设置自动轮播
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % imageCount;
-                updateCarousel();
-            }, 3000);
-        });
-    });
-
-        // 动态加载公共 HTML 文件
         document.addEventListener('DOMContentLoaded', () => {
             // 加载 header.html
             fetch('inputs/header.html')
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
-                    
-                    // header 加载完成后初始化导航菜单
-                    initializeNavigation();
+                    initializeNavigation(); // 初始化导航栏
                 })
-                .catch(error => console.error('加载失败:', error));
-    
+                .catch(error => console.error('加载 header.html 失败:', error));
+        
             // 加载 author_bio.html
             fetch('inputs/author_bio.html')
-                .then(response => response.text())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
                 .then(data => {
                     document.getElementById('author_bio-placeholder').innerHTML = data;
                 })
-                .catch(error => console.error('加载失败:', error));
-        });
-    
-        // 导航菜单初始化函数
-        function initializeNavigation() {
-            // 移动端菜单切换
-            const menuToggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('nav');
-            if (menuToggle && nav) {
-                menuToggle.addEventListener('click', () => {
-                    nav.classList.toggle('open');
-                });
-            }
-    
-            // Research 下拉菜单
-            const dropdownParent = document.querySelector('.has-dropdown');
-            if (dropdownParent) {
-                // 点击 Research 菜单时的处理
-                dropdownParent.addEventListener('click', (event) => {
-                    // 只有点击 Research 链接时才切换菜单
-                    if (event.target === dropdownParent.querySelector('a')) {
-                        event.preventDefault();
-                        dropdownParent.classList.toggle('open');
-                    }
-                });
-    
-                // 点击页面其他地方时关闭菜单
-                document.addEventListener('click', (event) => {
-                    if (!dropdownParent.contains(event.target)) {
-                        dropdownParent.classList.remove('open');
-                    }
-                });
-    
-                // 允许点击下拉菜单中的链接
-                const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
-                dropdownLinks.forEach(link => {
-                    link.addEventListener('click', (event) => {
-                        event.stopPropagation(); // 阻止事件冒泡
+                .catch(error => console.error('加载 author_bio.html 失败:', error));
+        
+            // 初始化导航栏函数
+            function initializeNavigation() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const nav = document.querySelector('nav');
+        
+                // 移动端菜单切换
+                if (menuToggle && nav) {
+                    menuToggle.addEventListener('click', () => {
+                        nav.classList.toggle('open');
                     });
-                });
+                }
+        
+                // Research 下拉菜单
+                const dropdownParent = document.querySelector('.has-dropdown');
+                if (dropdownParent) {
+                    dropdownParent.addEventListener('click', (event) => {
+                        if (event.target === dropdownParent.querySelector('a')) {
+                            event.preventDefault();
+                            dropdownParent.classList.toggle('open');
+                        }
+                    });
+        
+                    // 点击页面其他地方时关闭菜单
+                    document.addEventListener('click', (event) => {
+                        if (!dropdownParent.contains(event.target)) {
+                            dropdownParent.classList.remove('open');
+                        }
+                    });
+        
+                    // 允许点击下拉菜单中的链接
+                    const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+                    dropdownLinks.forEach(link => {
+                        link.addEventListener('click', (event) => {
+                            event.stopPropagation(); // 阻止事件冒泡
+                        });
+                    });
+                }
             }
-        }
+        
+            // 轮播图功能
+            const carousels = document.querySelectorAll('.carousel');
+            carousels.forEach(carousel => {
+                const images = carousel.querySelector('.carousel-images');
+                const nextButton = carousel.querySelector('.carousel-next');
+                const prevButton = carousel.querySelector('.carousel-prev');
+                const imageCount = images.children.length;
+                let currentIndex = 0;
+        
+                function updateCarousel() {
+                    images.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+        
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % imageCount;
+                    updateCarousel();
+                });
+        
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                    updateCarousel();
+                });
+        
+                // 自动轮播
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % imageCount;
+                    updateCarousel();
+                }, 3000);
+            });
+        });
         </script>
 </body>
 </html>
