@@ -921,6 +921,7 @@ footer p {
 
     .profile-card {
         flex-direction: column;
+        gap:0;
     }
 
     .profile-image {
