@@ -869,7 +869,7 @@ footer p {
         width: 100%;
         margin: 0;
         padding: 15px;
-        position: absolute;
+        position: center;
         height: auto; /* 高度自适应 */
         text-align: left;
     }
