@@ -225,14 +225,35 @@
         
                 // 创建 HTML 内容
                 let html = '';
+
+                const journalsToBold = ["Thin-Walled Structures",
+                                "Engineering Structures", 
+                                "Journal of Constructional Steel Research", 
+                                "Journal of Building Engineering", 
+                                "Journal of Structural Engineering", 
+                                "Earthquake Engineering and Engineering Vibration",
+                                "Structures"]; // 需要加粗的期刊名称
+
+                
                 Object.keys(groupedPublications)
                     .sort((a, b) => b - a)
                     .forEach(year => {
                         html += `
-                            <div class="year-section">
-                                <h2>${year}</h2>
-                                ${groupedPublications[year].map(pub => `<p>${pub.title}</p>`).join('')}
-                            </div>
+                            <div class="year-section" style="margin-bottom: 0em;">
+                        <h2 style="font-size: 1.5em; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 0.5em;">
+                            ${year}
+                        </h2>
+
+                       ${groupedPublications[year]
+                        .map(pub => {
+                            let updatedTitle = pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>'); // 加粗作者名
+                            journalsToBold.forEach(journal => {
+                                const regex = new RegExp(journal, 'g');
+                                updatedTitle = updatedTitle.replace(regex, `<b style="font-weight: normal">${journal}</b>`); // 加粗期刊名
+                            });
+                            return `<p style="margin-bottom: 1em;">${updatedTitle}</p>`;
+                        })
+                        .join('')}
                         `;
                     });
         
