@@ -65,58 +65,6 @@
         <p>High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
     </footer>
 
-    const publications = [
-        // 2025
-        {year: 2025, title: "[39] Jiang, K., Li, S., Guo, T., Liang, Y., & Zhao, O. (2025). Net section fracture of aluminium alloy angle-to-plate connections: Testing, modelling and design. Engineering Structures, 326, 119450."},
-        {year: 2025, title: "[38] Ning, K., Yang, L., Jiang, K., & Han, Y. (2025). Experimental investigation on seismic performance of austenitic stainless steel full-scale frames: Component response. Engineering Structures, 326, 119521."},
-        {year: 2025, title: "[37] Shang, C., Zhou, Y., Li, J., Jiang, K., Zhong., G. (2025). Hysteretic and Low-cycle Fatigue Performance of Arc-shaped Corrugated Steel Plate Dampers. Journal of Constructional Steel Research, 224, 109168."},
-        {year: 2025, title: "[36] Jing, Y., Jiang, K., Li, S., Lan, X., Liang, Y., & Zhao, O. (2025). Experimental and numerical study of stainless steel built-up tubular sections subjected to End-Two-Flange loading. Thin-Walled Structures, 112871."},
-
-        // 2024
-        {year: 2024, title: "[35] Du, J., Zhao, X., Jiang, K., Jiang, L., Xue, J. (2024). Assess seismic resilience of unreinforced stone loess cave retrofitted with composite materials by shaking table tests. Structures, 70, 107762."},
-        {year: 2024, title: "[34] Huang, X., Jiang, K., Zhao, O. (2024). Unified machine-learning-aided design of cold-formed steel channel section columns with different buckling modes at ambient and elevated temperatures. Engineering Structures, 320, 118875."},
-        {year: 2024, title: "[33] Shang, C., Zhou, Y., Li, J., Jiang, K. (2024). Experimental and numerical investigation of arc-shaped corrugated steel plate damper. Journal of Building Engineering, 96, 110479."},
-        {year: 2024, title: "[32] Zhong, Y., Jiang, K., Su, A., Fu, J., Liu, A., Zhao, O. (2024). Local buckling and capacities of stainless steel hexagonal hollow sections under axial compression. Thin-Walled Structures, 205, 112431."},
-        {year: 2024, title: "[31] Zhang, J., Su, A., Jiang, K. (2024). Post-fire behavior and residual resistances of S890 ultra-high strength steel circular hollow sections under combined compression and bending. Engineering Structures, 316, 118519."},
-        {year: 2024, title: "[30] Jiang, K., Li, S., Zhong, Y., Zhao, O. (2024). Bearing–curling interaction of austenitic stainless steel thin sheet bolted connections. Thin-Walled Structures, 200, 111912."},
-        {year: 2024, title: "[29] Ke, X., Luo, W., Zhou, Y., Liang, Q., Li, J., Wang, S., Jiang, K. (2024). Full-scale laboratory investigation on laminated rubber bearings for metro-induced vibration mitigation. Engineering Structures, 314, 118269."},
-        {year: 2024, title: "[28] Ma, C., Wei, C., Jiang, K., Zhao, O., Su, A. (2024). Experimental and numerical investigations of high-strength cold-formed steel multi-limb built-up section columns. Engineering Structures, 309, 118012."},
-        {year: 2024, title: "[27] Lu, Z., Liang, Q., Zhou, Y., Luo, W., Li, J., Jiang, K. (2024). Novel Thick Layer Damping Rubber Bearing (TLDRB) with Reduced Vertical Stiffness: Laboratory Tests and Mechanical Models. Journal of Building Engineering, 109839."},
-        {year: 2024, title: "[26] Li, S., Jiang, K., Chen, MT., Su, A., Guo, T., Zhao, O. (2024). Cross-section behaviour and capacity of cold-formed austenitic stainless steel flat-oval hollow sections under combined compression and bending. Thin-Walled Structures, 199, 111877."},
-        {year: 2024, title: "[25] Cheng, J., Li, X., Jiang, K., Li, S., Su, A., Zhao, O. (2024). Machine-learning-assisted design of high strength steel I-section columns. Engineering Structures, 308, 118018."},
-        {year: 2024, title: "[24] Su, A., Cheng, J., Li, X., Li, S., Zhong, Y., Zhao, O., Jiang, K. (2024). Unified machine-learning-based design method of normal and high strength steel I-section beam–columns. Thin-Walled Structures, 119, 111835."},
-        {year: 2024, title: "[23] Jing, Y., Jiang, K., Zhao, O., Gardner, L. (2024). Web crippling of stainless steel built-up I-sections under End-Two-Flange loading: Tests, simulations and design. Engineering Structures, 304, 117576."},
-        {year: 2024, title: "[22] Shang, C., Zhou, Y., Shi, F., Li, J., Jiang, K. (2024). Investigation on mechanical behavior of shear panel damper under bidirectional loading. Journal of Constructional Steel Research, 216, 108580."},
-        {year: 2024, title: "[21] Wang, Z., Zhong, Y., Jiang, K., Su, M., Zhao, O. (2024). Post-fire behaviour and resistances of square recycled aggregate concrete-filled stainless steel tube stub columns. Thin-Walled Structures, 197, 111564."},
-        {year: 2024, title: "[20] Cui, Y., Zhang, J., Ma, C., Niu, M., Jiang, K., Li, S., Su, A. (2024). Testing, numerical modelling and design of G550 high strength cold-formed steel built-up section columns. Thin-Walled Structures, 196, 111529."},
-        {year: 2024, title: "[19] Li, S., Jiang, K., Zhao, O. (2024). Local–flexural interactive buckling behaviour and design of press-braked stainless steel slender Z-section columns. Thin-Walled Structures, 195, 111317."},
-
-        // 2023
-        {year: 2023, title: "[18] Jiang, K., Zhao, O. (2023). Stainless steel built-up section stub columns: Testing, numerical modelling and design. Thin-Walled Structures, 191, 111070."},
-        {year: 2023, title: "[17] Jiang, K., Zhao, O. (2023). Ferritic stainless steel bolted connections failing by bearing–curling interaction: Tests, modelling and design. Engineering Structures, 283, 115919."},
-        {year: 2023, title: "[16] Jiang, K., Zhao, O. (2023). Unified machine-learning-assisted design of stainless steel bolted connections. Journal of Constructional Steel Research, 211, 108155."},
-        {year: 2023, title: "[15] Li, S., Jiang, K., Zhao, O. (2023). Press-braked ferritic stainless steel slender channel section beam–columns: Tests, simulations and design. Thin-Walled Structures, 183, 110302."},
-        {year: 2023, title: "[14] Su, A., Jiang, K., Wang, Y., Zhao, O. (2023). Experimental and numerical investigations into S960 ultra-high strength steel welded I-section stub columns after exposure to elevated temperatures. Thin-Walled Structures, 183, 110349."},
-
-        // 2022
-        {year: 2022, title: "[13] Jiang, K., Liang, Y., Zhao, O. (2022). Machine-learning-based design of high strength steel bolted connections. Thin-Walled Structures, 179, 109575."},
-        {year: 2022, title: "[12] Jiang, K., Zhao, O. (2022). Testing, numerical modelling and design of S690 high strength steel channel-to-plate connections. Thin-Walled Structures, 179, 109545."},
-        {year: 2022, title: "[11] Jiang, K., Zhao, O., Young, B. (2022). Experimental and numerical study of stainless steel channel-to-gusset plate connections. Engineering Structures, 265, 114461."},
-        {year: 2022, title: "[10] Su, A., Jiang, K., Wang, M., Zhao, O. (2022). S960 ultra-high strength steel slender welded I-section beam–columns: Testing, numerical modelling and design. Thin-Walled Structures, 177, 109452."},
-        {year: 2022, title: "[9] Jiang, K., Zhao, O. (2022). Experimental and numerical studies of stainless steel angle-to-plate connections. Thin-Walled Structures, 173, 109026."},
-        {year: 2022, title: "[8] Jiang, K., Zhao, O. (2022). Net Section Failure of S690 High-Strength Steel Angle-to-Plate Connections. Journal of Structural Engineering (ASCE), 148(4), 04022021."},
-        {year: 2022, title: "[7] Zhong, Y., Jiang, K., Zhao, O. (2022). Post-fire behaviour and capacity of high strength concrete-filled high strength steel tub (HCFHST) stub columns under combined compression and bending. Engineering Structures, 253, 113837."},
-
-        // 2021
-        {year: 2021, title: "[6] Su, A., Jiang, K., Liang, Y., Zhao, O. (2021). Post-fire behaviour and resistances of S690 high strength steel welded I-section stub columns. Thin-Walled Structures, 169, 108422."},
-        {year: 2021, title: "[5] Jiang, K., Tan, KH., Zhao, O., Gardner, L. (2021). Block tearing of S700 high strength steel bolted connections: Testing, numerical modelling and design. Engineering Structures, 246, 112979."},
-        {year: 2021, title: "[4] Sun, Y., Su, A., Jiang, K., Liang, Y., Zhao, O. (2021). Testing, numerical modelling and design of stainless steel welded I-sections under minor-axis combined loading. Engineering Structures, 243, 112513."},
-        {year: 2021, title: "[3] Jiang, K., Tan, KH., Zhao, O. (2021). Net section fracture of S700 high strength steel staggered bolted connections. Thin-Walled Structures, 164, 107904."},
-        {year: 2021, title: "[2] Sun, Y., Jiang, K., Liang, Y., Zhao, O. (2021). Experimental and numerical studies of high-chromium stainless steel welded I-section beam–columns. Engineering Structures, 236, 112065."},
-        
-        // 2020
-        {year: 2020, title: "[1] Jiang, K., Zhao, O., Tan, KH. (2020). Experimental and numerical study of S700 high strength steel double shear bolted connections in tension. Engineering Structures, 225, 111175."}
-    ];
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
