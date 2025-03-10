@@ -878,7 +878,7 @@ footer p {
         display: flex; /* 使用 Flexbox 布局 */
         flex-direction: column; /* 子元素垂直排列（从上到下） */
         align-items: center; /* 子元素水平居中对齐 */
-        text-align: left; /* 文本左对齐 */
+        text-align: center; /* 文本左对齐 */
         width: 100%; /* 宽度占满父容器 */
     }
     
