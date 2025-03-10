@@ -955,6 +955,12 @@ footer p {
     .event-column::before, .event-column1::before {
         display: none; /* 隐藏时间线 */
     }
+    
+    .event-column::after, .event-column1::after{
+        display: none;
+    }
+
+    
 }
 
 /* 轮播图响应式设计 */
