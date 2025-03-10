@@ -247,6 +247,19 @@ nav a:hover {
     width: 100%; /* 使用全宽 */
     margin-left: 0; /* 移除为sidebar预留的左边距 */
 }
+
+.content2 {
+    /* 保持原有的内容样式 */
+    flex: 1;
+    padding: 20px;
+    margin: 0 auto; /* 使用auto边距实现水平居中 */
+    margin-top: 0;
+    box-sizing: border-box;
+
+    margin-left: 300px; /* 侧边栏宽度 + 间距 */
+    width: 800px; /* 固定宽度 */
+}
+
 .sidebar img {
     width: 140px; /* 设置图片宽度 */
     height: 140px; /* 设置图片高度 */
@@ -931,6 +944,13 @@ footer p {
         padding: 15px;
         position:relative;
         margin-top: 400px;
+    }
+
+    .content2 {
+        margin-left: 0; /* 移除侧边栏的左边距 */
+        width: 100%; /* 宽度占满整个屏幕 */
+        padding: 15px;
+        position:relative;
     }
 
     .timeline-container, .timeline-container1 {
