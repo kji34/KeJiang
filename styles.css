@@ -869,7 +869,6 @@ footer p {
         width: 100%;
         margin: 0;
         padding: 15px;
-        position: static; /* 取消固定定位 */
         height: auto; /* 高度自适应 */
     }
 
