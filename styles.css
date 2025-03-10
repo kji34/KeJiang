@@ -919,7 +919,7 @@ footer p {
 
 /* 内容区域响应式设计 */
 @media screen and (max-width: 768px) {
-    .container, .container1 {
+    .container .container1 {
         width: 100%;
         padding: 0 15px;
         margin-top: 60px; /* 给导航栏留出空间 */
