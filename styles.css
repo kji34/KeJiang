@@ -871,6 +871,7 @@ footer p {
         padding: 15px;
         position: absolute;
         height: auto; /* 高度自适应 */
+        text-align: left;
     }
 
     .content {
