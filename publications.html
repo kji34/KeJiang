@@ -256,8 +256,7 @@
 
                        ${groupedPublications[year]
                         .map(pub => {
-                            let updatedTitle1 = pub.title.replace(/Jiang, K.\./g, '<b>Jiang, K.</b>'); // 加粗作者名
-                            let updatedTitle2 = pub.title.replace(/Li, B.\./g, '<b>Li, B.</b>');
+                            let updatedTitle = pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>'); // 加粗作者名
                             journalsToBold.forEach(journal => {
                                 const regex = new RegExp(journal, 'g');
                                 updatedTitle = updatedTitle.replace(regex, `<b style="font-weight: normal">${journal}</b>`); // 加粗期刊名
