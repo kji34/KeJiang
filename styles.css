@@ -940,21 +940,58 @@ footer p {
 }
 
 /* Responsive adjustments */
+/* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .gallery-container {
         gap: 30px;
+        padding: 0 10px;
     }
     
     .gallery-item {
         padding: 15px;
+        margin: 0;
+        width: 100%;
     }
     
     .gallery-item .carousel {
         height: 250px;
+        width: 100%;
+        margin: 0;
     }
     
     .gallery-item h2 {
         font-size: 1.3em;
+    }
+    
+    .gallery-item .carousel-caption {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+    
+    .gallery-item .carousel-prev,
+    .gallery-item .carousel-next {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .gallery-item .carousel {
+        height: 200px;
+    }
+    
+    .gallery-container {
+        gap: 20px;
+    }
+    
+    .gallery-item {
+        padding: 10px;
+    }
+    
+    .gallery-item h2 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
     }
 }
 
