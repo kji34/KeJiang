@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPMS Research Group - Gallery</title>
+    <!-- 添加网站图标 -->
+    <link rel="icon" type="image/jpeg" href="images/1.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div> <!-- 公共 HTML 文件占位符 -->
+    <div class="container">
+        <!-- Gallery Section -->
+        <div class="gallery-container">
+            <!-- Farewells to our dear Technical Services Manager David MacPherson -->
+            <div class="gallery-item">
+                <h2 class="heading-small">Farewells to our dear Technical Services Manager David MacPherson</h2>
+                <div class="carousel">
+                    <div class="carousel-images">
+                        <div class="carousel-item">
+                            <img src="Gallery/Farewells to our dear Technical Services Manager David MacPherson1.jpg" alt="Material Characterization">
+                
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Gallery/Farewells to our dear Technical Services Manager David MacPherson2.jpg" alt="Material Testing">
+                            
+                        </div>
+                        
+                    </div>
+                    <button class="carousel-prev">&#10094;</button>
+                    <button class="carousel-next">&#10095;</button>
+                </div>
+            </div>
+
+    <footer>
+        <p>High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load header.html
+            fetch('inputs/header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    initializeNavigation(); // Initialize navigation bar
+                })
+                .catch(error => console.error('Failed to load header.html:', error));
+            
+            // Initialize navigation function
+            function initializeNavigation() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const nav = document.querySelector('nav');
+                
+                // Mobile menu toggle
+                if (menuToggle && nav) {
+                    menuToggle.addEventListener('click', () => {
+                        nav.classList.toggle('open');
+                    });
+                }
+                
+                // Research dropdown menu
+                const dropdownParent = document.querySelector('.has-dropdown');
+                if (dropdownParent) {
+                    dropdownParent.addEventListener('click', (event) => {
+                        if (event.target === dropdownParent.querySelector('a')) {
+                            event.preventDefault();
+                            dropdownParent.classList.toggle('open');
+                        }
+                    });
+                    
+                    // Close menu when clicking elsewhere
+                    document.addEventListener('click', (event) => {
+                        if (!dropdownParent.contains(event.target)) {
+                            dropdownParent.classList.remove('open');
+                        }
+                    });
+                    
+                    // Allow clicking links in dropdown menu
+                    const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+                    dropdownLinks.forEach(link => {
+                        link.addEventListener('click', (event) => {
+                            event.stopPropagation(); // Prevent event bubbling
+                        });
+                    });
+                }
+            }
+            
+            // Initialize all carousels
+            initializeCarousels();
+        });
+        
+        // Function to initialize all carousels on the page
+        function initializeCarousels() {
+            const carousels = document.querySelectorAll('.carousel');
+            
+            carousels.forEach(carousel => {
+                const images = carousel.querySelector('.carousel-images');
+                const items = carousel.querySelectorAll('.carousel-item');
+                const prevBtn = carousel.querySelector('.carousel-prev');
+                const nextBtn = carousel.querySelector('.carousel-next');
+                
+                let currentIndex = 0;
+                const totalItems = items.length;
+                
+                // Set initial position
+                updateCarouselPosition();
+                
+                // Previous button click
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    updateCarouselPosition();
+                });
+                
+                // Next button click
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    updateCarouselPosition();
+                });
+                
+                // Function to update carousel position
+                function updateCarouselPosition() {
+                    const offset = -currentIndex * 100;
+                    images.style.transform = `translateX(${offset}%)`;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
