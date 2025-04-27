@@ -234,26 +234,7 @@
             });
         });
 
-        // Add this to your carousel JavaScript
-        function checkCarouselResponsive() {
-        const carouselContainers = document.querySelectorAll('.card-container .carousel');
-        
-        if (window.innerWidth <= 768) {
-            // Disable carousel functionality
-            carouselContainers.forEach(carousel => {
-            carousel.dataset.carouselActive = 'false';
-            });
-        } else {
-            // Re-enable carousel functionality
-            carouselContainers.forEach(carousel => {
-            carousel.dataset.carouselActive = 'true';
-            });
-        }
-        }
 
-        // Run on page load and resize
-        window.addEventListener('load', checkCarouselResponsive);
-        window.addEventListener('resize', checkCarouselResponsive);
         </script>
 </body>
 </html>

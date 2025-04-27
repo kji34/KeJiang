@@ -1121,6 +1121,25 @@ footer p {
     }
 }
 
+@media screen and (max-width: 768px) {
+    /* 在移动端隐藏轮播图部分 */
+    .card-container .image-container,
+    .card-container .carousel {
+      display: none !important; /* 完全隐藏轮播图部分 */
+    }
+    
+    /* 让文字内容占据全宽 */
+    .card-container .content-container {
+      width: 100%; /* 内容区域占满整个宽度 */
+      padding: 15px; /* 调整内边距 */
+    }
+    
+    /* 确保卡片容器样式适应单一内容 */
+    .card-container {
+      display: block; /* 改变显示方式 */
+    }
+  }
+
 /* 页脚响应式设计 */
 @media screen and (max-width: 768px) {
     footer {
