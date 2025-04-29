@@ -189,9 +189,9 @@ nav {
 /* Enhanced carousel styles for gallery */
 .gallery-item .carousel {
     margin: 0;
-    height: 450px;
+    width: 100%;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .gallery-item .carousel-caption {
@@ -954,7 +954,6 @@ footer p {
     }
     
     .gallery-item .carousel {
-        height: 250px;
         width: 100%;
         margin: 0;
     }
