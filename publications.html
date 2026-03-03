@@ -18,30 +18,30 @@
                 <th>No. of Publications</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                <td>Engineering Structures (JCR Q1, IF=5.6)</td>
-                <td>20</td>
-                </tr>
+            <tbody>  
                 <tr>
                 <td>Thin-Walled Structures (JCR Q1, IF=5.7)</td>
-                <td>19</td>
+                <td>27</td>
+                </tr>
+                <tr>
+                <td>Engineering Structures (JCR Q1, IF=5.6)</td>
+                <td>26</td>
                 </tr>
                 <tr>
                 <td>Journal of Constructional Steel Research (JCR Q1, IF=4.0)</td>
-                <td>3</td>
+                <td>5</td>
                 </tr>
                 <tr>
                 <td>Journal of Building Engineering (JCR Q1, IF=6.7)</td>
-                <td>2</td>
-                </tr>
-                <tr>
-                <td>Journal of Structural Engineering (JCR Q1, IF=3.7)</td>
-                <td>1</td>
+                <td>5</td>
                 </tr>
                 <tr>
                 <td>Structures (JCR Q1, IF=3.9)</td>
-                <td>1</td>
+                <td>4</td>
+                </tr>                
+                <tr>
+                <td>Journal of Structural Engineering (JCR Q1, IF=3.7)</td>
+                <td>2</td>
                 </tr>
                 <tr>
                 <td>Earthquake Engineering and Engineering Vibration (JCR Q2, IF=2.8)</td>
@@ -49,7 +49,7 @@
                 </tr>
 
                 <td><b>Total</b></td>
-                <td><b>47</b></td>
+                <td><b>70</b></td>
                 </tr>
             </tbody>
             </table>
@@ -139,7 +139,31 @@
             }
         
             const publications = [
+                // 2026
+                {year: 2026, title: "[70] Li, B., Jiang, K., Su, A., Yang, Y., & Ouyang, Y. (2026). Global stability and strength of high-strength aluminium alloy T-section columns. Engineering Structures, 352, 122154."},
+                {year: 2026, title: "[69] Li, J., Jiang, K., Wang, Z., Chen, M. T., & Zhao, O. (2026). Geometric properties and cross-section behaviour of wire arc additively manufactured AA5356 I-section and cruciform-section stub columns. Engineering Structures, 351, 121977."},
+                {year: 2026, title: "[68] Zeng, W., Fan, L., Jiang, K., Cashell, K. A., Qin, Y., & Zeng, K. (2026). Optimisation of shear connector design and shear lag behaviour in composite continuous beam bridges using multi-scale finite element modelling. Structures, 85, 111295."},
+                {year: 2026, title: "[67] Wu, C., Fu, J., Yu, Z., Zhao, O., Jiang, K., & Zhong, Y. (2026). Structural behaviour and capacity of recycled aggregate concrete-filled stainless steel tubular (RACFSST) columns under eccentric loading. Engineering Structures, 350, 121994."},
+                {year: 2026, title: "[66] Li, B., Sun, J., Qin, Y., & Jiang, K. (2026). Ferritic stainless steel built-up I-section columns: Testing, numerical modelling and design. Thin-Walled Structures, 114726."},
                 // 2025
+                {year: 2025, title: "[65] Fang, H., Guo, T., Qin, Y., Shu, G., Jiang, K., & Liu, Z. (2025). Development and analysis of a double-stage yielding coupling beam with a low yield point corrugated web steel link. Journal of Building Engineering, 116."},
+                {year: 2025, title: "[64] Qin, Y., Mei, K., Wang, J., Zhou, G., & Jiang, K. (2025). Tensile behavior of truss connectors in double-skin composite walls. Journal of Structural Engineering, 151(12), 04025209."},
+                {year: 2025, title: "[63] Cao, Y., Zhou, Y., Zhong, G., & Jiang, K. (2025). Structural performance of cruciform butted connected gusset plates under tensile loading. Journal of Constructional Steel Research, 235, 109934."},
+                {year: 2025, title: "[62] Shang, C., Zhou, Y., Li, J., & Jiang, K. (2025). Hysteretic performance of shear-type steel plate dampers with out-of-plane buckling design. Journal of Building Engineering, 117, 114818."},
+                {year: 2025, title: "[61] Jing, Y., Jiang, K., Su, A., Liang, Y., & Zhao, O. (2025). Testing, numerical modelling and design of stainless steel built-up box-sections under interior-one-flange loading. Engineering Structures, 343, 121087."},
+                {year: 2025, title: "[60] Sun, Z., Zhang, S., Su, A., Jiang, K., & Zhao, O. (2025). Experimental and numerical studies of S700 high strength cold-formed steel built-up box section columns. Engineering Structures, 343, 121041."},
+                {year: 2025, title: "[59] Fang, H., Guo, T., Qin, Y., Shu, G., Jiang, K., & Liu, Z. (2025). Development and analysis of a double-stage yielding coupling beam with a LYP corrugated web steel link. Journal of Building Engineering, 114609."},
+                {year: 2025, title: "[58] Zhou, Y., Lin, Y., Cao, Y., Fang, C., Luo, D., Jiang, K., & Liu, W. (2025). Performance of novel core-perforated double-stage yielding concrete-filled steel tube buckling-restrained braces. Structures, 81, 110287."},
+                {year: 2025, title: "[57] Ma, C., Su, A., Jiang, K., Zhao, O., & Gardner, L. (2025). Local buckling of S700 high strength cold-formed steel built-up I-sections subjected to combined compression and minor-axis bending. Thin-Walled Structures, 114166."},
+                {year: 2025, title: "[56] Li, J., Jiang, K., Chen, M. T., Wang, Z., Zhao, O., & Gardner, L. (2025). Mechanical properties and constitutive modelling of wire arc additively manufactured aluminium alloy after exposure to elevated temperatures. Thin-Walled Structures, 114119."},
+                {year: 2025, title: "[55] Shi, Y., Wang, K., Shi, Y., Jiang, K., Wang, M., Liang, Y., & Zhao, O. (2025). Experimental and numerical study of full-scale column-base connections with enlarged bolt holes infilled by high strength grout. Engineering Structures, 341, 120839."},
+                {year: 2025, title: "[54] Zhou, Y., Lin, Y., Cao, Y., Zhuang, Z., Jiang, K., & Han, W. (2025). Experimental and numerical investigations of perforated triple square steel tube buckling-restrained braces. Structures, 80, 109717."},
+                {year: 2025, title: "[53] Li, J., Zhou, Y., Shang, C., Jiang, K. (2025). Study on the hysteretic performance and application of hollow laminated viscoelastomer-filled austenitic stainless steel tube dampers. Thin-Walled Structures, 215, 113499."},
+                {year: 2025, title: "[52] Jing, Y., Li, S., Jiang, K., & Zhao, O. (2025). Web crippling of stainless steel built-up sections subjected to interior-two-flange loading. Thin-Walled Structures, 215, 113427."},
+                {year: 2025, title: "[51] Zhang, J., Yang, H., Jiang, K., & Su, A. (2025). High strength concrete-filled cold-formed high strength steel built-up box-section stub columns: Testing, numerical modeling and design. Thin-Walled Structures, 214, 113381."},
+                {year: 2025, title: "[50] Li, B., Jiang, K., Yang, Y., & Ouyang, Y. (2025). Local stability of high-strength aluminium alloy T-sections. Thin-Walled Structures, 113873."},
+                {year: 2025, title: "[49] Fang, H., Qin, Y., Shu, G., & Jiang, K. (2025). Uniaxial non-incremental constitutive model for LYP steel based on Giuffrè-Menegotto-Pinto model. Journal of Constructional Steel Research, 231, 109607."},
+                {year: 2025, title: "[48] Cheng, J., Su, A., Jiang, K., & Zhao, O. (2025). Flexural buckling and flexural–torsional buckling behaviour of S960 ultra-high strength steel (UHSS) welded T-section columns. Thin-Walled Structures, 113745."},
                 {year: 2025, title: "[47] Ma, C., Jiang, K., Su, A., Zhao, O., & Gardner, L. (2025). S700 high-strength cold-formed steel built-up I-section stub columns: Testing, numerical modelling and design. Engineering Structures, 334, 120261."},
                 {year: 2025, title: "[46] Li, J., Jiang, K., Chen, M. T., Zhao, O., & Gardner, L. (2025). Post-fire behaviour of wire arc additively manufactured ER70S-6 steel. Engineering Structures, 334, 120192."},
                 {year: 2025, title: "[45] Wang, Y., Chen, B., Dai, P., Wang, Y., Song, Y., Jiang, K., & Hai, L. (2025). Experimental and numerical study on lateral-torsional buckling of welded QN1803 high-strength stainless steel I-girders. Thin-Walled Structures, 212, 113190."},
