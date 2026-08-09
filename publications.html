@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,70 +9,21 @@
 </head>
 <body>
     <div id="header-placeholder"></div>
-    <div class="container">
+    <main class="container">
         <div class="content1">
-            <table class="card-table">
-            <thead>
-                <tr>
-                <th>Journal</th>
-                <th>No. of Publications</th>
-                </tr>
-            </thead>
-            <tbody>  
-                <tr>
-                <td>Thin-Walled Structures (JCR Q1, IF=6.6)</td>
-                <td>27</td>
-                </tr>
-                <tr>
-                <td>Engineering Structures (JCR Q1, IF=6.4)</td>
-                <td>26</td>
-                </tr>
-                <tr>
-                <td>Journal of Constructional Steel Research (JCR Q1, IF=4.3)</td>
-                <td>5</td>
-                </tr>
-                <tr>
-                <td>Journal of Building Engineering (JCR Q1, IF=7.4)</td>
-                <td>5</td>
-                </tr>
-                <tr>
-                <td>Structures (JCR Q1, IF=4.3)</td>
-                <td>4</td>
-                </tr>                
-                <tr>
-                <td>Journal of Structural Engineering (JCR Q1, IF=3.9)</td>
-                <td>2</td>
-                </tr>
-                <tr>
-                <td>Earthquake Engineering and Engineering Vibration (JCR Q2, IF=3.3)</td>
-                <td>1</td>
-                </tr>
-
-                <td><b>Total</b></td>
-                <td><b>70</b></td>
-                </tr>
-            </tbody>
-            </table>
-            <br>
-            <div class="filter">
-                <label for="year-filter" class="filter-label">Filter by Year:</label>
-                <select id="year-filter" class="filter-select">
-                    <option value="all">All Years</option>
-                </select>
-                <div class="publication-count" id="publication-count"></div>
-            </div>
-
-            <div id="publications" class="publications"></div>
+            <h1 class="heading-medium">Publications</h1>
+            <div id="publication-stats" class="publication-stats"></div>
+            <div id="publication-controls" class="publication-controls"></div>
+            <div id="publications-content" class="publication-list-wrapper"></div>
         </div>
-    </div>
+    </main>
     <footer>
         <p>High-Performance Metallic Structure (HPMS) Research Group @ University of Canterbury, New Zealand</p>
     </footer>
 
-
+    <script src="scripts/publications-render.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 加载 header.html
             fetch('inputs/header.html')
                 .then(response => {
                     if (!response.ok) {
@@ -82,224 +33,43 @@
                 })
                 .then(data => {
                     document.getElementById('header-placeholder').innerHTML = data;
-                    initializeNavigation(); // 初始化导航栏
+                    initializeNavigation();
                 })
-                .catch(error => console.error('加载 header.html 失败:', error));
-        
-            // 加载 author_bio.html
-            fetch('inputs/author_bio.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok ' + response.statusText);
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    document.getElementById('author_bio-placeholder').innerHTML = data;
-                })
-                .catch(error => console.error('加载 author_bio.html 失败:', error));
-        
-            // 初始化导航栏函数
-            function initializeNavigation() {
-                const menuToggle = document.querySelector('.menu-toggle');
-                const nav = document.querySelector('nav');
-        
-                // 移动端菜单切换
-                if (menuToggle && nav) {
-                    menuToggle.addEventListener('click', () => {
-                        nav.classList.toggle('open');
-                    });
-                }
-        
-                // Research 下拉菜单
-                const dropdownParent = document.querySelector('.has-dropdown');
-                if (dropdownParent) {
-                    dropdownParent.addEventListener('click', (event) => {
-                        if (event.target === dropdownParent.querySelector('a')) {
-                            event.preventDefault();
-                            dropdownParent.classList.toggle('open');
-                        }
-                    });
-        
-                    // 点击页面其他地方时关闭菜单
-                    document.addEventListener('click', (event) => {
-                        if (!dropdownParent.contains(event.target)) {
-                            dropdownParent.classList.remove('open');
-                        }
-                    });
-        
-                    // 允许点击下拉菜单中的链接
-                    const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
-                    dropdownLinks.forEach(link => {
-                        link.addEventListener('click', (event) => {
-                            event.stopPropagation(); // 阻止事件冒泡
-                        });
-                    });
-                }
-            }
-        
-            const publications = [
-                // 2026
-                {year: 2026, title: "[70] Li, B., Jiang, K., Su, A., Yang, Y., & Ouyang, Y. (2026). Global stability and strength of high-strength aluminium alloy T-section columns. Engineering Structures, 352, 122154."},
-                {year: 2026, title: "[69] Li, J., Jiang, K., Wang, Z., Chen, M. T., & Zhao, O. (2026). Geometric properties and cross-section behaviour of wire arc additively manufactured AA5356 I-section and cruciform-section stub columns. Engineering Structures, 351, 121977."},
-                {year: 2026, title: "[68] Zeng, W., Fan, L., Jiang, K., Cashell, K. A., Qin, Y., & Zeng, K. (2026). Optimisation of shear connector design and shear lag behaviour in composite continuous beam bridges using multi-scale finite element modelling. Structures, 85, 111295."},
-                {year: 2026, title: "[67] Wu, C., Fu, J., Yu, Z., Zhao, O., Jiang, K., & Zhong, Y. (2026). Structural behaviour and capacity of recycled aggregate concrete-filled stainless steel tubular (RACFSST) columns under eccentric loading. Engineering Structures, 350, 121994."},
-                {year: 2026, title: "[66] Li, B., Sun, J., Qin, Y., & Jiang, K. (2026). Ferritic stainless steel built-up I-section columns: Testing, numerical modelling and design. Thin-Walled Structures, 114726."},
-                // 2025
-                {year: 2025, title: "[65] Fang, H., Guo, T., Qin, Y., Shu, G., Jiang, K., & Liu, Z. (2025). Development and analysis of a double-stage yielding coupling beam with a low yield point corrugated web steel link. Journal of Building Engineering, 116."},
-                {year: 2025, title: "[64] Qin, Y., Mei, K., Wang, J., Zhou, G., & Jiang, K. (2025). Tensile behavior of truss connectors in double-skin composite walls. Journal of Structural Engineering, 151(12), 04025209."},
-                {year: 2025, title: "[63] Cao, Y., Zhou, Y., Zhong, G., & Jiang, K. (2025). Structural performance of cruciform butted connected gusset plates under tensile loading. Journal of Constructional Steel Research, 235, 109934."},
-                {year: 2025, title: "[62] Shang, C., Zhou, Y., Li, J., & Jiang, K. (2025). Hysteretic performance of shear-type steel plate dampers with out-of-plane buckling design. Journal of Building Engineering, 117, 114818."},
-                {year: 2025, title: "[61] Jing, Y., Jiang, K., Su, A., Liang, Y., & Zhao, O. (2025). Testing, numerical modelling and design of stainless steel built-up box-sections under interior-one-flange loading. Engineering Structures, 343, 121087."},
-                {year: 2025, title: "[60] Sun, Z., Zhang, S., Su, A., Jiang, K., & Zhao, O. (2025). Experimental and numerical studies of S700 high strength cold-formed steel built-up box section columns. Engineering Structures, 343, 121041."},
-                {year: 2025, title: "[59] Fang, H., Guo, T., Qin, Y., Shu, G., Jiang, K., & Liu, Z. (2025). Development and analysis of a double-stage yielding coupling beam with a LYP corrugated web steel link. Journal of Building Engineering, 114609."},
-                {year: 2025, title: "[58] Zhou, Y., Lin, Y., Cao, Y., Fang, C., Luo, D., Jiang, K., & Liu, W. (2025). Performance of novel core-perforated double-stage yielding concrete-filled steel tube buckling-restrained braces. Structures, 81, 110287."},
-                {year: 2025, title: "[57] Ma, C., Su, A., Jiang, K., Zhao, O., & Gardner, L. (2025). Local buckling of S700 high strength cold-formed steel built-up I-sections subjected to combined compression and minor-axis bending. Thin-Walled Structures, 114166."},
-                {year: 2025, title: "[56] Li, J., Jiang, K., Chen, M. T., Wang, Z., Zhao, O., & Gardner, L. (2025). Mechanical properties and constitutive modelling of wire arc additively manufactured aluminium alloy after exposure to elevated temperatures. Thin-Walled Structures, 114119."},
-                {year: 2025, title: "[55] Shi, Y., Wang, K., Shi, Y., Jiang, K., Wang, M., Liang, Y., & Zhao, O. (2025). Experimental and numerical study of full-scale column-base connections with enlarged bolt holes infilled by high strength grout. Engineering Structures, 341, 120839."},
-                {year: 2025, title: "[54] Zhou, Y., Lin, Y., Cao, Y., Zhuang, Z., Jiang, K., & Han, W. (2025). Experimental and numerical investigations of perforated triple square steel tube buckling-restrained braces. Structures, 80, 109717."},
-                {year: 2025, title: "[53] Li, J., Zhou, Y., Shang, C., Jiang, K. (2025). Study on the hysteretic performance and application of hollow laminated viscoelastomer-filled austenitic stainless steel tube dampers. Thin-Walled Structures, 215, 113499."},
-                {year: 2025, title: "[52] Jing, Y., Li, S., Jiang, K., & Zhao, O. (2025). Web crippling of stainless steel built-up sections subjected to interior-two-flange loading. Thin-Walled Structures, 215, 113427."},
-                {year: 2025, title: "[51] Zhang, J., Yang, H., Jiang, K., & Su, A. (2025). High strength concrete-filled cold-formed high strength steel built-up box-section stub columns: Testing, numerical modeling and design. Thin-Walled Structures, 214, 113381."},
-                {year: 2025, title: "[50] Li, B., Jiang, K., Yang, Y., & Ouyang, Y. (2025). Local stability of high-strength aluminium alloy T-sections. Thin-Walled Structures, 113873."},
-                {year: 2025, title: "[49] Fang, H., Qin, Y., Shu, G., & Jiang, K. (2025). Uniaxial non-incremental constitutive model for LYP steel based on Giuffrè-Menegotto-Pinto model. Journal of Constructional Steel Research, 231, 109607."},
-                {year: 2025, title: "[48] Cheng, J., Su, A., Jiang, K., & Zhao, O. (2025). Flexural buckling and flexural–torsional buckling behaviour of S960 ultra-high strength steel (UHSS) welded T-section columns. Thin-Walled Structures, 113745."},
-                {year: 2025, title: "[47] Ma, C., Jiang, K., Su, A., Zhao, O., & Gardner, L. (2025). S700 high-strength cold-formed steel built-up I-section stub columns: Testing, numerical modelling and design. Engineering Structures, 334, 120261."},
-                {year: 2025, title: "[46] Li, J., Jiang, K., Chen, M. T., Zhao, O., & Gardner, L. (2025). Post-fire behaviour of wire arc additively manufactured ER70S-6 steel. Engineering Structures, 334, 120192."},
-                {year: 2025, title: "[45] Wang, Y., Chen, B., Dai, P., Wang, Y., Song, Y., Jiang, K., & Hai, L. (2025). Experimental and numerical study on lateral-torsional buckling of welded QN1803 high-strength stainless steel I-girders. Thin-Walled Structures, 212, 113190."},
-                {year: 2025, title: "[44] Jiang, K., Li, B., Jing, Y., Su, A., & Zhao, O. (2025). Structural performance of aluminium alloy channel section tensile members connected with gusset plates. Engineering Structures, 333, 120177."},
-                {year: 2025, title: "[43] Qin, Y., Hao, W., Yin, R., Ren, W., & Jiang, K. (2025). Behavior of truss connectors in composite walls subjected to cyclic loading. Engineering Structures, 331, 120015."},
-                {year: 2025, title: "[42] Wang, M., Jiang, K., Shi, Y., Grassl, P., Liang, Y., & Zhao, O. (2025). Experimental investigation and analysis of full-scale steel–recyclable aggregate concrete composite beams with bolted shear connectors. Engineering Structures, 328, 119737."},
-                {year: 2025, title: "[41] Zhang, J., Yang, H., Su, A., & Jiang, K. (2025). Experimental and numerical investigations of S890 and S960 ultra-high strength steel circular hollow section stub columns after fire exposure. Thin-Walled Structures, 209, 112933."},
-                {year: 2025, title: "[40] Jiang, K., Li, S., Guo, T., Liang, Y., & Zhao, O. (2025). Net section fracture of aluminium alloy angle-to-plate connections: Testing, modelling and design. Engineering Structures, 326, 119450."},
-                {year: 2025, title: "[39] Ning, K., Yang, L., Jiang, K., & Han, Y. (2025). Experimental investigation on seismic performance of austenitic stainless steel full-scale frames: Component response. Engineering Structures, 326, 119521."},
-                {year: 2025, title: "[38] Shang, C., Zhou, Y., Li, J., Jiang, K., Zhong., G. (2025). Hysteretic and Low-cycle Fatigue Performance of Arc-shaped Corrugated Steel Plate Dampers. Journal of Constructional Steel Research, 224, 109168."},
-                {year: 2025, title: "[37] Jing, Y., Jiang, K., Li, S., Lan, X., Liang, Y., & Zhao, O. (2025). Experimental and numerical study of stainless steel built-up tubular sections subjected to End-Two-Flange loading. Thin-Walled Structures, 112871."},
-
-                // 2024
-                {year: 2024, title: "[36] Cao, Y., Zhou, Y., Takagi, J., Jiang, K., Deng, X., Fang, X. (2024). Experimental and numerical study of buckling-restrained braces configured with out-of-plane eccentricity under cyclic loading. Earthquake Engineering and Engineering Vibration, 23 (4), 957-971."},
-                {year: 2024, title: "[35] Du, J., Zhao, X., Jiang, K., Jiang, L., Xue, J. (2024). Assess seismic resilience of unreinforced stone loess cave retrofitted with composite materials by shaking table tests. Structures, 70, 107762."},
-                {year: 2024, title: "[34] Huang, X., Jiang, K., Zhao, O. (2024). Unified machine-learning-aided design of cold-formed steel channel section columns with different buckling modes at ambient and elevated temperatures. Engineering Structures, 320, 118875."},
-                {year: 2024, title: "[33] Shang, C., Zhou, Y., Li, J., Jiang, K. (2024). Experimental and numerical investigation of arc-shaped corrugated steel plate damper. Journal of Building Engineering, 96, 110479."},
-                {year: 2024, title: "[32] Zhong, Y., Jiang, K., Su, A., Fu, J., Liu, A., Zhao, O. (2024). Local buckling and capacities of stainless steel hexagonal hollow sections under axial compression. Thin-Walled Structures, 205, 112431."},
-                {year: 2024, title: "[31] Zhang, J., Su, A., Jiang, K. (2024). Post-fire behavior and residual resistances of S890 ultra-high strength steel circular hollow sections under combined compression and bending. Engineering Structures, 316, 118519."},
-                {year: 2024, title: "[30] Jiang, K., Li, S., Zhong, Y., Zhao, O. (2024). Bearing–curling interaction of austenitic stainless steel thin sheet bolted connections. Thin-Walled Structures, 200, 111912."},
-                {year: 2024, title: "[29] Ke, X., Luo, W., Zhou, Y., Liang, Q., Li, J., Wang, S., Jiang, K. (2024). Full-scale laboratory investigation on laminated rubber bearings for metro-induced vibration mitigation. Engineering Structures, 314, 118269."},
-                {year: 2024, title: "[28] Ma, C., Wei, C., Jiang, K., Zhao, O., Su, A. (2024). Experimental and numerical investigations of high-strength cold-formed steel multi-limb built-up section columns. Engineering Structures, 309, 118012."},
-                {year: 2024, title: "[27] Lu, Z., Liang, Q., Zhou, Y., Luo, W., Li, J., Jiang, K. (2024). Novel Thick Layer Damping Rubber Bearing (TLDRB) with Reduced Vertical Stiffness: Laboratory Tests and Mechanical Models. Journal of Building Engineering, 109839."},
-                {year: 2024, title: "[26] Li, S., Jiang, K., Chen, MT., Su, A., Guo, T., Zhao, O. (2024). Cross-section behaviour and capacity of cold-formed austenitic stainless steel flat-oval hollow sections under combined compression and bending. Thin-Walled Structures, 199, 111877."},
-                {year: 2024, title: "[25] Cheng, J., Li, X., Jiang, K., Li, S., Su, A., Zhao, O. (2024). Machine-learning-assisted design of high strength steel I-section columns. Engineering Structures, 308, 118018."},
-                {year: 2024, title: "[24] Su, A., Cheng, J., Li, X., Li, S., Zhong, Y., Zhao, O., Jiang, K. (2024). Unified machine-learning-based design method of normal and high strength steel I-section beam–columns. Thin-Walled Structures, 119, 111835."},
-                {year: 2024, title: "[23] Jing, Y., Jiang, K., Zhao, O., Gardner, L. (2024). Web crippling of stainless steel built-up I-sections under End-Two-Flange loading: Tests, simulations and design. Engineering Structures, 304, 117576."},
-                {year: 2024, title: "[22] Shang, C., Zhou, Y., Shi, F., Li, J., Jiang, K. (2024). Investigation on mechanical behavior of shear panel damper under bidirectional loading. Journal of Constructional Steel Research, 216, 108580."},
-                {year: 2024, title: "[21] Wang, Z., Zhong, Y., Jiang, K., Su, M., Zhao, O. (2024). Post-fire behaviour and resistances of square recycled aggregate concrete-filled stainless steel tube stub columns. Thin-Walled Structures, 197, 111564."},
-                {year: 2024, title: "[20] Cui, Y., Zhang, J., Ma, C., Niu, M., Jiang, K., Li, S., Su, A. (2024). Testing, numerical modelling and design of G550 high strength cold-formed steel built-up section columns. Thin-Walled Structures, 196, 111529."},
-                {year: 2024, title: "[19] Li, S., Jiang, K., Zhao, O. (2024). Local–flexural interactive buckling behaviour and design of press-braked stainless steel slender Z-section columns. Thin-Walled Structures, 195, 111317."},
-
-                // 2023
-                {year: 2023, title: "[18] Jiang, K., Zhao, O. (2023). Stainless steel built-up section stub columns: Testing, numerical modelling and design. Thin-Walled Structures, 191, 111070."},
-                {year: 2023, title: "[17] Jiang, K., Zhao, O. (2023). Ferritic stainless steel bolted connections failing by bearing–curling interaction: Tests, modelling and design. Engineering Structures, 283, 115919."},
-                {year: 2023, title: "[16] Jiang, K., Zhao, O. (2023). Unified machine-learning-assisted design of stainless steel bolted connections. Journal of Constructional Steel Research, 211, 108155."},
-                {year: 2023, title: "[15] Li, S., Jiang, K., Zhao, O. (2023). Press-braked ferritic stainless steel slender channel section beam–columns: Tests, simulations and design. Thin-Walled Structures, 183, 110302."},
-                {year: 2023, title: "[14] Su, A., Jiang, K., Wang, Y., Zhao, O. (2023). Experimental and numerical investigations into S960 ultra-high strength steel welded I-section stub columns after exposure to elevated temperatures. Thin-Walled Structures, 183, 110349."},
-
-                // 2022
-                {year: 2022, title: "[13] Jiang, K., Liang, Y., Zhao, O. (2022). Machine-learning-based design of high strength steel bolted connections. Thin-Walled Structures, 179, 109575."},
-                {year: 2022, title: "[12] Jiang, K., Zhao, O. (2022). Testing, numerical modelling and design of S690 high strength steel channel-to-plate connections. Thin-Walled Structures, 179, 109545."},
-                {year: 2022, title: "[11] Jiang, K., Zhao, O., Young, B. (2022). Experimental and numerical study of stainless steel channel-to-gusset plate connections. Engineering Structures, 265, 114461."},
-                {year: 2022, title: "[10] Su, A., Jiang, K., Wang, M., Zhao, O. (2022). S960 ultra-high strength steel slender welded I-section beam–columns: Testing, numerical modelling and design. Thin-Walled Structures, 177, 109452."},
-                {year: 2022, title: "[9] Jiang, K., Zhao, O. (2022). Experimental and numerical studies of stainless steel angle-to-plate connections. Thin-Walled Structures, 173, 109026."},
-                {year: 2022, title: "[8] Jiang, K., Zhao, O. (2022). Net Section Failure of S690 High-Strength Steel Angle-to-Plate Connections. Journal of Structural Engineering (ASCE), 148(4), 04022021."},
-                {year: 2022, title: "[7] Zhong, Y., Jiang, K., Zhao, O. (2022). Post-fire behaviour and capacity of high strength concrete-filled high strength steel tub (HCFHST) stub columns under combined compression and bending. Engineering Structures, 253, 113837."},
-
-                // 2021
-                {year: 2021, title: "[6] Su, A., Jiang, K., Liang, Y., Zhao, O. (2021). Post-fire behaviour and resistances of S690 high strength steel welded I-section stub columns. Thin-Walled Structures, 169, 108422."},
-                {year: 2021, title: "[5] Jiang, K., Tan, KH., Zhao, O., Gardner, L. (2021). Block tearing of S700 high strength steel bolted connections: Testing, numerical modelling and design. Engineering Structures, 246, 112979."},
-                {year: 2021, title: "[4] Sun, Y., Su, A., Jiang, K., Liang, Y., Zhao, O. (2021). Testing, numerical modelling and design of stainless steel welded I-sections under minor-axis combined loading. Engineering Structures, 243, 112513."},
-                {year: 2021, title: "[3] Jiang, K., Tan, KH., Zhao, O. (2021). Net section fracture of S700 high strength steel staggered bolted connections. Thin-Walled Structures, 164, 107904."},
-                {year: 2021, title: "[2] Sun, Y., Jiang, K., Liang, Y., Zhao, O. (2021). Experimental and numerical studies of high-chromium stainless steel welded I-section beam–columns. Engineering Structures, 236, 112065."},
-                
-                // 2020
-                {year: 2020, title: "[1] Jiang, K., Zhao, O., Tan, KH. (2020). Experimental and numerical study of S700 high strength steel double shear bolted connections in tension. Engineering Structures, 225, 111175."}
-            ];
-
-            // 处理年份筛选功能
-            const yearFilter = document.getElementById("year-filter");
-            const publicationsContainer = document.getElementById("publications");
-            const publicationCount = document.getElementById("publication-count");
-        
-            // 填充年份筛选器
-            const years = ["all", ...new Set(publications.map((pub) => pub.year))];
-            years.forEach((year) => {
-                const option = document.createElement("option");
-                option.value = year;
-                option.textContent = year === "all" ? "All Years" : year;
-                yearFilter.appendChild(option);
-            });
-        
-            // 显示出版物
-            function displayPublications() {
-                const selectedYear = yearFilter.value;
-                const filteredPublications = selectedYear === "all" 
-                    ? publications 
-                    : publications.filter(pub => pub.year === parseInt(selectedYear));
-        
-                // 更新出版物数量
-                publicationCount.textContent = `Number of publications: ${filteredPublications.length}`;
-        
-                // 按年份分组
-                const groupedPublications = filteredPublications.reduce((acc, pub) => {
-                    if (!acc[pub.year]) {
-                        acc[pub.year] = [];
-                    }
-                    acc[pub.year].push(pub);
-                    return acc;
-                }, {});
-        
-                // 创建 HTML 内容
-                let html = '';
-
-                const journalsToBold = ["Thin-Walled Structures",
-                                "Engineering Structures", 
-                                "Journal of Constructional Steel Research", 
-                                "Journal of Building Engineering", 
-                                "Journal of Structural Engineering", 
-                                "Earthquake Engineering and Engineering Vibration",
-                                "Structures",
-                                "Earthquake Engineering and Engineering Vibration"]; // 需要加粗的期刊名称
-
-                
-                Object.keys(groupedPublications)
-                    .sort((a, b) => b - a)
-                    .forEach(year => {
-                        html += `
-                            <div class="year-section" style="margin-bottom: 0em;">
-                        <h2 style="font-size: 1.5em; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 0.5em;">
-                            ${year}
-                        </h2>
-
-                       ${groupedPublications[year]
-                        .map(pub => {
-                            let updatedTitle = pub.title.replace(/Jiang, K\./g, '<b>Jiang, K.</b>'); // 加粗作者名
-                            journalsToBold.forEach(journal => {
-                                const regex = new RegExp(journal, 'g');
-                                updatedTitle = updatedTitle.replace(regex, `<b style="font-weight: normal">${journal}</b>`); // 加粗期刊名
-                            });
-                            return `<p style="margin-bottom: 1em;">${updatedTitle}</p>`;
-                        })
-                        .join('')}
-                        `;
-                    });
-        
-                publicationsContainer.innerHTML = html;
-            }
-        
-            // 监听年份筛选器变化
-            yearFilter.addEventListener("change", displayPublications);
-        
-            // 初始显示
-            displayPublications();
+                .catch(error => console.error('Failed to load header.html:', error));
         });
-        </script>
+
+        function initializeNavigation() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', () => {
+                    nav.classList.toggle('open');
+                });
+            }
+
+            const dropdownParent = document.querySelector('.has-dropdown');
+            if (dropdownParent) {
+                dropdownParent.addEventListener('click', (event) => {
+                    if (event.target === dropdownParent.querySelector('a')) {
+                        event.preventDefault();
+                        dropdownParent.classList.toggle('open');
+                    }
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!dropdownParent.contains(event.target)) {
+                        dropdownParent.classList.remove('open');
+                    }
+                });
+
+                const dropdownLinks = dropdownParent.querySelectorAll('.dropdown a');
+                dropdownLinks.forEach(link => {
+                    link.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                    });
+                });
+            }
+        }
+    </script>
 </body>
 </html>
