@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-09T22:45:41Z",
+  "generatedAt": "2026-08-10T03:49:55Z",
   "sourceUrl": "https://scholar.google.com/citations?hl=en&user=2YQxaJgAAAAJ&view_op=list_works&sortby=pubdate",
- "impactFactors": {
+  "impactFactors": {
     "Engineering Structures": "7.6",
     "Journal of Constructional Steel Research": "4.6",
     "Thin-Walled Structures": "8.3",
@@ -21,7 +21,7 @@
     "Earthquake Engineering and Engineering Vibration": "3.4"
   },
   "stats": [
-   {
+    {
       "journal": "Engineering Structures",
       "count": 30,
       "impactDisplay": "(JCR Q1, IF=7.6)"
@@ -49,7 +49,7 @@
     {
       "journal": "Bulletin of the New Zealand Society for Earthquake Engineering",
       "count": 2,
-      "impactDisplay": "(JCR Q4, IF=0.6)"
+      "impactDisplay": "(JCR Q1, IF=0.6)"
     },
     {
       "journal": "Journal of Structural Engineering",
@@ -57,14 +57,24 @@
       "impactDisplay": "(JCR Q1, IF=3.8)"
     },
     {
-      "journal": "Earthquake Engineering and Resilience",
+      "journal": "New Zealand Society for Earthquake Engineering",
       "count": 1,
-      "impactDisplay": ""
+      "impactDisplay": "(JCR Q1, IF=n/a)"
     },
     {
-      "journal": "Earthquake Engineering and Engineering Vibration",
+      "journal": "Earthquake Engineering and Resilience 4 (1), 24-40",
       "count": 1,
-      "impactDisplay": "(JCR Q2, IF=3.4)"
+      "impactDisplay": "(JCR Q1, IF=n/a)"
+    },
+    {
+      "journal": "Earthquake Engineering and Engineering Vibration 23 (4), 957-971",
+      "count": 1,
+      "impactDisplay": "(JCR Q1, IF=n/a)"
+    },
+    {
+      "journal": "Nanyang Technological University",
+      "count": 1,
+      "impactDisplay": "(JCR Q1, IF=n/a)"
     }
   ],
   "years": [
