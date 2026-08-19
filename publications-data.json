@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T03:49:55Z",
+  "generatedAt": "2026-08-19T02:53:02Z",
   "sourceUrl": "https://scholar.google.com/citations?hl=en&user=2YQxaJgAAAAJ&view_op=list_works&sortby=pubdate",
   "impactFactors": {
     "Engineering Structures": "7.6",
@@ -33,7 +33,7 @@
     },
     {
       "journal": "Structures",
-      "count": 7,
+      "count": 8,
       "impactDisplay": "(JCR Q1, IF=4.9)"
     },
     {
@@ -55,6 +55,11 @@
       "journal": "Journal of Structural Engineering",
       "count": 2,
       "impactDisplay": "(JCR Q1, IF=3.8)"
+    },
+    {
+      "journal": "Plos one 21 (5), e0348872",
+      "count": 1,
+      "impactDisplay": "(JCR Q1, IF=n/a)"
     },
     {
       "journal": "New Zealand Society for Earthquake Engineering",
@@ -98,6 +103,14 @@
           "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:rO6llkc54NcC"
         },
         {
+          "title": "Flexural behavior of novel prestressed steel reinforced RPC composite beams with high-strength steel bars",
+          "authors": "J Ji, M Ma, K Jiang, L Jiang, X Hou, D Wang, P Huang, L Ma",
+          "venue": "Structures 92, 112796 , 2026",
+          "journal": "Structures",
+          "year": 2026,
+          "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:u_35RYKgDlwC"
+        },
+        {
           "title": "Performance of perforated cruciform core concrete-filled steel tube buckling-restrained braces",
           "authors": "Y Cao, Z Zhuang, Y Zhou, Y Lin, K Jiang, D Fang, C Shang, W Han",
           "venue": "Journal of Constructional Steel Research 244, 110472 , 2026",
@@ -128,6 +141,14 @@
           "journal": "Structures",
           "year": 2026,
           "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:g5m5HwL7SMYC"
+        },
+        {
+          "title": "Experimental and numerical study on the flexural capacity of fiber mesh fabric-reinforced RC slabs",
+          "authors": "C Guo, X Bao, Z Shao, S Yan, X Zhang, C Ge, Z Wu, K Jiang",
+          "venue": "Plos one 21 (5), e0348872 , 2026",
+          "journal": "Plos one 21 (5), e0348872",
+          "year": 2026,
+          "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:fPk4N6BV_jEC"
         },
         {
           "title": "Experimental and numerical investigations into stainless steel built-up tubular sections subjected to end-one-flange (EOF) loading",
@@ -804,6 +825,14 @@
       "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:rO6llkc54NcC"
     },
     {
+      "title": "Flexural behavior of novel prestressed steel reinforced RPC composite beams with high-strength steel bars",
+      "authors": "J Ji, M Ma, K Jiang, L Jiang, X Hou, D Wang, P Huang, L Ma",
+      "venue": "Structures 92, 112796 , 2026",
+      "journal": "Structures",
+      "year": 2026,
+      "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:u_35RYKgDlwC"
+    },
+    {
       "title": "Performance of perforated cruciform core concrete-filled steel tube buckling-restrained braces",
       "authors": "Y Cao, Z Zhuang, Y Zhou, Y Lin, K Jiang, D Fang, C Shang, W Han",
       "venue": "Journal of Constructional Steel Research 244, 110472 , 2026",
@@ -834,6 +863,14 @@
       "journal": "Structures",
       "year": 2026,
       "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:g5m5HwL7SMYC"
+    },
+    {
+      "title": "Experimental and numerical study on the flexural capacity of fiber mesh fabric-reinforced RC slabs",
+      "authors": "C Guo, X Bao, Z Shao, S Yan, X Zhang, C Ge, Z Wu, K Jiang",
+      "venue": "Plos one 21 (5), e0348872 , 2026",
+      "journal": "Plos one 21 (5), e0348872",
+      "year": 2026,
+      "citationUrl": "https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=2YQxaJgAAAAJ&amp;pagesize=100&amp;sortby=pubdate&amp;citation_for_view=2YQxaJgAAAAJ:fPk4N6BV_jEC"
     },
     {
       "title": "Experimental and numerical investigations into stainless steel built-up tubular sections subjected to end-one-flange (EOF) loading",
