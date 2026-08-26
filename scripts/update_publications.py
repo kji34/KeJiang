@@ -2,39 +2,29 @@
 import json
 import re
 import urllib.request
-from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path.cwd()
-OUTPUT = ROOT / "publications-data.json"
+# Scrapes Google Scholar into publications-data-raw.json (nothing else).
+# Normally started through: python scripts/publications_excel.py refresh
+ROOT = Path(__file__).resolve().parent.parent
+OUTPUT = ROOT / "publications-data-raw.json"
 SCHOLAR_URL = "https://scholar.google.com/citations?hl=en&user=2YQxaJgAAAAJ&view_op=list_works&sortby=pubdate"
 
-DEFAULT_IMPACT_FACTORS = {
-    "Engineering Structures": "5.3",
-    "Journal of Constructional Steel Research": "4.3",
-    "Thin-Walled Structures": "5.0",
-    "Structures": "4.4",
-    "Earthquake Engineering & Structural Dynamics": "4.0",
-    "Journal of Structural Engineering": "3.8",
-    "Composite Structures": "7.8",
-    "Construction and Building Materials": "7.4",
-    "Automation in Construction": "10.3",
-    "Advances in Structural Engineering": "2.2",
-    "International Journal of Steel Structures": "2.4",
-    "Engineering Failure Analysis": "4.5",
-    "Materials & Design": "7.6",
-    "Journal of Building Engineering": "6.0",
-    "Bulletin of the New Zealand Society for Earthquake Engineering": "n/a",
-}
-
+# Canonical journal spellings. Only used to fix Google Scholar's casing slips
+# (e.g. "Engineering structures" -> "Engineering Structures"); matching is exact,
+# so "Earthquakes and Structures" is never folded into "Structures".
 KNOWN_JOURNALS = [
     "Engineering Structures",
     "Journal of Constructional Steel Research",
     "Thin-Walled Structures",
     "Structures",
+    "Earthquakes and Structures",
     "Earthquake Engineering & Structural Dynamics",
+    "Earthquake Engineering and Resilience",
+    "Earthquake Engineering and Engineering Vibration",
     "Journal of Structural Engineering",
+    "Journal of Building Engineering",
     "Composite Structures",
     "Construction and Building Materials",
     "Automation in Construction",
@@ -42,8 +32,8 @@ KNOWN_JOURNALS = [
     "International Journal of Steel Structures",
     "Engineering Failure Analysis",
     "Materials & Design",
-    "Journal of Building Engineering",
     "Bulletin of the New Zealand Society for Earthquake Engineering",
+    "PLOS ONE",
 ]
 
 
@@ -60,28 +50,43 @@ def strip_tags(value: str) -> str:
     return value
 
 
-def normalize_journal(value: str) -> str:
+def split_venue(value: str):
+    """Split a Scholar venue string into (journal, volume, issue, pages).
+
+    "Thin-Walled Structures 212, 113190 , 2025" -> ("Thin-Walled Structures", "212", "", "113190")
+    "Earthquakes and Structures 26 (5), 383 , 2024" -> ("Earthquakes and Structures", "26", "5", "383")
+    """
     text = re.sub(r"\s+", " ", value or "").strip()
+    text = re.sub(r"\s*,\s*(?:19|20)\d{2}\s*$", "", text).strip()
     if not text:
+        return "", "", "", ""
+
+    pages = ""
+    match = re.match(r"^(.*),\s*([^,]+)$", text)
+    if match and re.fullmatch(r"[\dA-Za-z]+(?:\s*[-\u2013]\s*[\dA-Za-z]+)?", match.group(2).strip()):
+        text = match.group(1).strip()
+        pages = match.group(2).strip()
+
+    volume = ""
+    issue = ""
+    match = re.match(r"^(.*?)\s+(\d+)\s*(?:\(([^)]+)\))?$", text)
+    if match:
+        text = match.group(1).strip()
+        volume = match.group(2)
+        issue = (match.group(3) or "").strip()
+
+    return text.strip(" ,."), volume, issue, pages
+
+
+def normalize_journal(value: str) -> str:
+    """Journal / venue name only, using the canonical spelling when it is known."""
+    name = split_venue(value)[0]
+    if not name:
         return ""
-    lowered = text.lower()
-    for known in sorted(KNOWN_JOURNALS, key=len, reverse=True):
-        if lowered.startswith(known.lower()) or known.lower() in lowered:
+    for known in KNOWN_JOURNALS:
+        if name.lower() == known.lower():
             return known
-    text = re.sub(r"\s*,\s*\d{4}$", "", text)
-    text = re.sub(r"\s+\d+(?:\([^)]+\))?(?:,\s*\d+(?:-\d+)?)?$", "", text)
-    text = text.strip(" ,")
-    if text.endswith("."):
-        text = text[:-1]
-    return text
-
-
-def build_impact_display(journal: str, impact_factors: dict) -> str:
-    if not journal:
-        return ""
-    if journal in impact_factors and impact_factors[journal] not in (None, "", "n/a"):
-        return f"(JCR Q1, IF={impact_factors[journal]})"
-    return "(JCR Q1, IF=n/a)"
+    return name
 
 
 def parse_items(html_text: str):
@@ -111,53 +116,35 @@ def parse_items(html_text: str):
     return items
 
 
-def build_payload(items, existing_impact_factors):
-    by_year = {}
-    for item in items:
-        year = item["year"] or "Unknown"
-        by_year.setdefault(year, []).append(item)
-
-    sorted_years = sorted(by_year, key=lambda y: (y == "Unknown", -int(y)) if isinstance(y, int) else (1, y))
-    grouped = []
-    for year in sorted_years:
-        grouped.append({"year": year, "items": by_year[year]})
-
-    counts = Counter(item["journal"] for item in items if item["journal"])
-    stats = []
-    for journal, count in counts.most_common():
-        stats.append({
-            "journal": journal,
-            "count": count,
-            "impactDisplay": build_impact_display(journal, existing_impact_factors),
-        })
-
+def build_payload(items):
     return {
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "sourceUrl": SCHOLAR_URL,
-        "impactFactors": existing_impact_factors,
-        "stats": stats,
-        "years": grouped,
+        "totalCount": len(items),
         "items": items,
     }
 
 
 def main():
-    existing_data = {}
-    if OUTPUT.exists():
-        try:
-            existing_data = json.loads(OUTPUT.read_text(encoding="utf-8"))
-        except Exception:
-            existing_data = {}
-    existing_impact_factors = existing_data.get("impactFactors", {}) or {}
-    for journal, factor in DEFAULT_IMPACT_FACTORS.items():
-        existing_impact_factors.setdefault(journal, factor)
-
     html_text = fetch_html(f"{SCHOLAR_URL}&cstart=0&pagesize=100")
     items = parse_items(html_text)
-    payload = build_payload(items, existing_impact_factors)
-    OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {OUTPUT}")
-    print(f"Parsed {len(items)} items")
+
+    # Safety net: Google Scholar sometimes answers with a captcha or a partial
+    # page. Never replace a good snapshot with a suspiciously small one.
+    previous = 0
+    if OUTPUT.exists():
+        try:
+            previous = len(json.loads(OUTPUT.read_text(encoding="utf-8")).get("items") or [])
+        except Exception:
+            previous = 0
+    if not items or (previous and len(items) < previous * 0.8):
+        raise SystemExit(
+            f"! Scholar returned only {len(items)} records (previous snapshot: {previous}).\n"
+            f"  {OUTPUT.name} was left untouched - try again later."
+        )
+
+    OUTPUT.write_text(json.dumps(build_payload(items), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {OUTPUT.name}: {len(items)} records (previous snapshot: {previous})")
 
 
 if __name__ == "__main__":

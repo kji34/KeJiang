@@ -22,11 +22,26 @@
 }
 
 function renderPublications(data, container, statsContainer, controlsContainer) {
-  const items = Array.isArray(data.items) ? data.items : [];
   const stats = Array.isArray(data.stats) ? data.stats : [];
   const years = Array.isArray(data.years) ? data.years : [];
   const availableYears = years.map(group => group.year).filter(Boolean);
   const selectedYear = getSelectedYear(availableYears);
+
+  // Citation numbering: entries are grouped newest year first, but the numbers
+  // follow the citation order of the publication list (oldest paper = [1]), so
+  // they count down from the top of the page and stay stable when filtering.
+  const orderedItems = years.reduce(
+    (all, group) => all.concat(Array.isArray(group.items) ? group.items : []),
+    []
+  );
+  const citationNumbers = new Map();
+  orderedItems.forEach((item, index) => {
+    citationNumbers.set(item, orderedItems.length - index);
+  });
+
+  const items = orderedItems.length
+    ? orderedItems
+    : (Array.isArray(data.items) ? data.items : []);
   const filteredItems = selectedYear === 'all'
     ? items
     : items.filter(item => item.year === Number(selectedYear));
@@ -61,7 +76,9 @@ function renderPublications(data, container, statsContainer, controlsContainer) 
   filterWrap.appendChild(select);
   controlsContainer.appendChild(filterWrap);
 
-  const effectiveStats = stats.filter(stat => !(stat.journal || '').includes('Nanyang Technological University'));
+  // Which journals appear here (and their IF/quartile) is decided in the
+  // Journals sheet of publications-review.xlsx and baked into publications-data.json.
+  const effectiveStats = stats.filter(stat => (stat.count || 0) > 0);
   const totalCount = effectiveStats.reduce((sum, stat) => sum + (stat.count || 0), 0);
   const statsMarkup = `
     <table class="card-table publication-stats-table">
@@ -94,8 +111,8 @@ function renderPublications(data, container, statsContainer, controlsContainer) 
     <section class="publication-year-group">
       <h2 class="publication-year-heading">${group.year}</h2>
       <div class="publication-list">
-        ${group.items.filter(item => selectedYear === 'all' || item.year === Number(selectedYear)).map((item, index) => `
-          <div class="publication-entry">[${index + 1}] ${escapeHtml(formatPublication(item))}</div>
+        ${group.items.filter(item => selectedYear === 'all' || item.year === Number(selectedYear)).map(item => `
+          <div class="publication-entry">[${citationNumbers.get(item)}] ${formatPublicationHtml(item)}</div>
         `).join('')}
       </div>
     </section>
@@ -105,22 +122,166 @@ function renderPublications(data, container, statsContainer, controlsContainer) 
   container.innerHTML = yearMarkup || '<p class="publication-error">No publications found for the selected year.</p>';
 }
 
-function formatPublication(item) {
+// Surname particles that must stay part of the family name (van der Berg, de Silva...).
+const NAME_PARTICLES = ['van', 'von', 'de', 'del', 'della', 'der', 'di', 'da', 'dos', 'du', 'la', 'le', 'bin', 'binti', 'al', 'ter', 'ten'];
+
+// The group leader's name is shown in bold wherever it appears in an author list.
+const SELF_AUTHORS = ['Jiang, K.', 'Jiang, Ke'];
+
+// APA 7 reference as HTML: the group author is bold, the journal is underlined, e.g.
+// Wang, Y., ... & Hai, L. (2025). Title of the paper. Thin-Walled Structures, 212, 113190.
+function formatPublicationHtml(item) {
+  const authors = highlightSelf(escapeHtml(formatAuthors(item.authors)));
+  const year = `(${item.year ? escapeHtml(item.year) : 'n.d.'})`;
+  const title = escapeHtml(withPeriod(item.title));
+  const source = sourceInfo(item);
+
   const parts = [];
-  if (item.title) {
-    parts.push(item.title);
+  if (authors) {
+    parts.push(`${authors} ${year}.`);
+    if (title) {
+      parts.push(title);
+    }
+  } else if (title) {
+    parts.push(`${title} ${year}.`);
+  } else {
+    parts.push(`${year}.`);
   }
-  if (item.authors) {
-    parts.push(item.authors);
+
+  if (source.journal || source.extras.length) {
+    const journal = source.journal
+      ? `<span class="publication-journal">${escapeHtml(source.journal)}</span>`
+      : '';
+    const tail = source.extras.map(escapeHtml).join(', ');
+    parts.push(withPeriod([journal, tail].filter(Boolean).join(', ')));
   }
-  if (item.year) {
-    parts.push(`(${item.year})`);
+  return parts.join(' ');
+}
+
+function highlightSelf(escapedAuthors) {
+  return SELF_AUTHORS.reduce((markup, name) => {
+    const needle = escapeHtml(name);
+    return markup.split(needle).join(`<span class="publication-self">${needle}</span>`);
+  }, escapedAuthors);
+}
+
+function formatAuthors(rawAuthors) {
+  const pieces = String(rawAuthors || '')
+    .split(',')
+    .map(piece => piece.trim())
+    .filter(Boolean);
+
+  let truncated = false;
+  const names = [];
+  pieces.forEach(piece => {
+    if (/^(\.{2,}|…)$/.test(piece)) {
+      truncated = true;
+      return;
+    }
+    names.push(formatAuthorName(piece));
+  });
+
+  if (!names.length) {
+    return '';
   }
-  const journalText = item.journal ? `${item.journal}${item.impactDisplay ? ` ${item.impactDisplay}` : ''}` : '';
-  if (journalText) {
-    parts.push(journalText);
+  if (truncated) {
+    return `${names.join(', ')}, et al.`;
   }
-  return parts.join('. ');
+  if (names.length === 1) {
+    return names[0];
+  }
+  return `${names.slice(0, -1).join(', ')}, & ${names[names.length - 1]}`;
+}
+
+// Google Scholar writes "Y Wang" / "BY Lee"; APA needs "Wang, Y." / "Lee, B. Y.".
+function formatAuthorName(rawName) {
+  const tokens = String(rawName || '').split(/\s+/).filter(Boolean);
+  if (tokens.length < 2) {
+    return tokens.join(' ');
+  }
+  const initials = formatInitials(tokens[0]);
+  const rest = tokens.slice(1);
+  const surname = rest
+    .filter((token, index) => index === rest.length - 1
+      || NAME_PARTICLES.indexOf(token.toLowerCase()) !== -1
+      || token.charAt(0) === token.charAt(0).toUpperCase())
+    .join(' ');
+  if (!surname) {
+    return tokens.join(' ');
+  }
+  return initials ? `${surname}, ${initials}` : surname;
+}
+
+function formatInitials(token) {
+  const cleaned = String(token || '').replace(/\./g, '');
+  if (!cleaned) {
+    return '';
+  }
+  if (/[a-z]/.test(cleaned)) {
+    // A spelled-out given name such as "Ke" becomes "K."
+    return `${cleaned.charAt(0).toUpperCase()}.`;
+  }
+  return cleaned
+    .split(/(-)/)
+    .map(part => (part === '-'
+      ? '-'
+      : part.split('').map(letter => `${letter.toUpperCase()}.`).join(' ')))
+    .join('');
+}
+
+// Journal + volume/issue/pages. Corrected columns from publications-review.xlsx win;
+// otherwise the raw Scholar venue ("Thin-Walled Structures 212, 113190 , 2025") is parsed.
+function sourceInfo(item) {
+  const canonical = String(item.journal || '').trim();
+  const volume = String(item.volume || '').trim();
+  const issue = String(item.issue || '').trim();
+  const pages = String(item.pages || '').trim();
+  if (canonical && (volume || pages)) {
+    const extras = [];
+    if (volume) {
+      extras.push(issue ? `${volume}(${issue})` : volume);
+    }
+    if (pages) {
+      extras.push(pages);
+    }
+    return { journal: canonical, extras };
+  }
+
+  let text = String(item.venue || '').trim().replace(/\s*,\s*(?:19|20)\d{2}\s*$/, '').trim();
+  if (!text) {
+    return { journal: canonical, extras: [] };
+  }
+
+  const extras = [];
+  let parsedPages = '';
+  const pagesMatch = text.match(/^(.*),\s*([^,]+)$/);
+  if (pagesMatch && /^[\dA-Za-z]+(?:\s*[-–]\s*[\dA-Za-z]+)?$/.test(pagesMatch[2].trim())) {
+    text = pagesMatch[1].trim();
+    parsedPages = pagesMatch[2].trim();
+  }
+
+  let journal = text;
+  const volumeMatch = text.match(/^(.*?)\s+(\d+)\s*(?:\(([^)]+)\))?$/);
+  if (volumeMatch) {
+    journal = volumeMatch[1].trim();
+    const parsedIssue = (volumeMatch[3] || '').trim();
+    extras.push(parsedIssue ? `${volumeMatch[2]}(${parsedIssue})` : volumeMatch[2]);
+  }
+  if (parsedPages) {
+    extras.push(parsedPages);
+  }
+  if (canonical && canonical.toLowerCase() === journal.toLowerCase()) {
+    journal = canonical;
+  }
+  return { journal, extras };
+}
+
+function withPeriod(text) {
+  const value = String(text || '').trim();
+  if (!value) {
+    return '';
+  }
+  return /[.!?]$/.test(value) ? value : `${value}.`;
 }
 
 function getSelectedYear(availableYears) {
@@ -140,7 +301,7 @@ function escapeHtml(value) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/[\"']/g, '&quot;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 }
 

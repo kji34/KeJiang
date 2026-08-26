@@ -835,16 +835,6 @@ b {
     border-radius: 8px;
 }
 
-.publication-count {
-    font-weight: bold;
-    color: #333;
-    margin-left: auto;
-    padding: 8px 15px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-  
   .filter-label {
     font-size: 16px;
     font-weight: bold;
@@ -1184,110 +1174,21 @@ footer p {
         font-size: 0.9em; /* 调整教育项大小 */
     }
 }
-.publication-intro {
-    color: #4b5563;
-    line-height: 1.7;
-    margin-bottom: 1rem;
-}
-
-.publication-status {
-    color: #5f6b7a;
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-}
-
-.publication-status a {
-    color: #1a73e8;
-}
-
+/* ---------- Publications page + research page lists (scripts/publications-render.js) ---------- */
 .publication-stats {
     margin-bottom: 1.75rem;
 }
 
 .publication-stats-table {
     margin-top: 0.25rem;
+    margin-bottom: 1.25rem;
 }
 
-.publication-year-group {
-    margin-bottom: 1.5rem;
-}
-
-.publication-year-heading {
-    font-size: 1.15rem;
-    color: #1f2d3d;
-    margin-bottom: 0.75rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.publication-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.publication-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.publication-item {
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    padding: 1rem 1.1rem;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
-}
-
-.publication-title {
+.publication-total-row {
+    background: #f8fafc;
     font-weight: 600;
-    color: #111827;
-    margin: 0 0 0.35rem;
-    line-height: 1.5;
 }
 
-.publication-authors,
-.publication-venue {
-    color: #4b5563;
-    margin: 0 0 0.35rem;
-    line-height: 1.6;
-}
-
-.publication-link {
-    margin: 0.3rem 0 0;
-}
-
-.publication-link a {
-    color: #1a73e8;
-    text-decoration: none;
-}
-
-.publication-link a:hover {
-    text-decoration: underline;
-}
-
-.publication-loading,
-.publication-error {
-    color: #4b5563;
-    line-height: 1.7;
-}
-
-.publication-error {
-    color: #b91c1c;
-}
-
-@media (max-width: 768px) {
-    .publication-item {
-        padding: 0.9rem;
-    }
-}
-
-.publication-apa {
-    color: #1f2937;
-    line-height: 1.7;
-    margin: 0;
-}
 .publication-controls {
     margin-bottom: 1rem;
 }
@@ -1298,6 +1199,17 @@ footer p {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.publication-count {
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.publication-filter-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.6rem;
 }
 
 .publication-filter {
@@ -1315,13 +1227,23 @@ footer p {
     background: #fff;
 }
 
-.publication-count {
-    color: #4b5563;
-    font-size: 0.95rem;
+.publication-list-wrapper,
+.publication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
-.publication-stats-table {
-    margin-bottom: 1.25rem;
+.publication-year-group {
+    margin-bottom: 1.5rem;
+}
+
+.publication-year-heading {
+    font-size: 1.15rem;
+    color: #1f2d3d;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .publication-entry {
@@ -1335,14 +1257,14 @@ footer p {
     border-bottom: none;
 }
 
-.publication-year-heading {
-    font-size: 1.05rem;
-    margin: 0 0 0.4rem;
-    color: #111827;
+/* Ke Jiang in bold and the journal name underlined - used on the publications
+   page and inside the research topic cards. */
+.publication-self {
+    font-weight: 700;
 }
 
-.publication-list {
-    margin-bottom: 1rem;
+.publication-journal {
+    text-decoration: underline;
 }
 
 .publication-loading,
@@ -1360,15 +1282,4 @@ footer p {
         align-items: flex-start;
         flex-direction: column;
     }
-}
-
-.publication-filter-wrap {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 0.6rem;
-}
-
-.publication-total-row {
-    background: #f8fafc;
-    font-weight: 600;
 }
