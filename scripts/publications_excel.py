@@ -89,6 +89,11 @@ def truthy(value) -> bool:
     return str(value).strip().lower() in ("yes", "y", "true", "1", "x")
 
 
+def short(text: str, width: int = 60) -> str:
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    return text if len(text) <= width else text[: width - 3] + "..."
+
+
 def plain_text(fragment: str) -> str:
     text = html_lib.unescape(re.sub(r"<[^>]+>", " ", fragment or ""))
     return re.sub(r"\s+", " ", text).strip()
@@ -133,25 +138,35 @@ class _ResearchPageParser(HTMLParser):
             if "box-title" in classes and self._box_depth is None:
                 self._box_depth = self._depth
                 self.cards.append({"topic": "", "entries": []})
+        if tag == "p":
+            self._flush_paragraph()      # some cards use <p> without </p>
         if tag in ("h1", "h2", "p"):
             self._buffer = []
 
     def handle_startendtag(self, tag, attrs):
         return
 
-    def handle_endtag(self, tag):
+    def _flush_paragraph(self):
         text = re.sub(r"\s+", " ", "".join(self._buffer)).strip()
-        if tag == "h1" and not self.area:
-            self.area = text
-        elif tag == "h2" and self._box_depth is not None and self.cards:
-            self.cards[-1]["topic"] = text
-        elif tag == "p" and self._box_depth is not None and self.cards and text:
+        if text and self._box_depth is not None and self.cards:
             self.cards[-1]["entries"].append(text)
+        self._buffer = []
+
+    def handle_endtag(self, tag):
+        if tag in ("h1", "h2", "p"):
+            text = re.sub(r"\s+", " ", "".join(self._buffer)).strip()
+            if tag == "h1" and not self.area:
+                self.area = text
+            elif tag == "h2" and self._box_depth is not None and self.cards:
+                self.cards[-1]["topic"] = text
+            elif tag == "p" and self._box_depth is not None and self.cards and text:
+                self.cards[-1]["entries"].append(text)
+            self._buffer = []
         if tag == "div":
             if self._box_depth == self._depth:
+                self._flush_paragraph()  # last <p> of the card was never closed
                 self._box_depth = None
             self._depth -= 1
-        self._buffer = []
 
     def handle_data(self, data):
         self._buffer.append(data)
@@ -186,21 +201,39 @@ def read_categories() -> list:
 def categories_from_pages(raw_items: list):
     """Match the papers already listed on the research pages to the scraped records.
 
+    An article/page number (5+ digits) is a unique fingerprint, so it is tried
+    first; only then a strict fuzzy title match is used.
+
     Returns (id -> "Area / Topic", list of page entries that could not be matched).
     """
-    keys = {title_key(item["title"]): scholar_id(item) for item in raw_items}
+    by_title = {title_key(item["title"]): scholar_id(item) for item in raw_items}
+    by_number = {}
+    for item in raw_items:
+        text = f"{item.get('venue') or ''}"
+        for number in re.findall(r"\d{5,}", text):
+            by_number.setdefault(number, set()).add(scholar_id(item))
+
     lookup = {}
     unmatched = []
     for card in read_research_pages():
         label = f"{card['area']} / {card['topic']}"
         for entry in card["entries"]:
-            title_match = re.search(r"\(\d{4}\)\.\s*(.+?)\.\s+[A-Z\u00c0-\u024f]", entry)
-            candidate = title_key(title_match.group(1)) if title_match else ""
-            if not candidate:
-                candidate = title_key(re.sub(r"^\[\d+\]\s*", "", entry))
-            best = difflib.get_close_matches(candidate, list(keys), n=1, cutoff=0.6) if candidate else []
-            if best:
-                lookup[keys[best[0]]] = label
+            identifier = ""
+            candidates = set()
+            for number in re.findall(r"\d{5,}", entry):
+                found = by_number.get(number, set())
+                if len(found) == 1:
+                    candidates |= found
+            if len(candidates) == 1:
+                identifier = next(iter(candidates))
+            else:
+                title_match = re.search(r"\(\d{4}\)\.\s*(.+?)\.\s+[A-Z\u00c0-\u024f]", entry)
+                key = title_key(title_match.group(1)) if title_match else ""
+                best = difflib.get_close_matches(key, list(by_title), n=1, cutoff=0.82) if key else []
+                if best:
+                    identifier = by_title[best[0]]
+            if identifier:
+                lookup[identifier] = label
             else:
                 unmatched.append((label, entry))
     return lookup, unmatched
@@ -268,10 +301,15 @@ def bootstrap_from_published(raw_items: list):
     return shown, journals
 
 
-def merge_rows(raw_items: list, previous: dict) -> list:
-    """Combine the raw scrape with what you typed before; keep manual rows."""
+def merge_rows(raw_items: list, previous: dict):
+    """Combine the raw scrape with what you typed before; keep manual rows.
+
+    Returns (rows, unmatched research-page entries). Empty category cells are
+    always re-filled from the research pages, so adding a paper to a topic card
+    by hand (or fixing a title) is picked up on the next run.
+    """
     first_run = not previous
-    prefilled = categories_from_pages(raw_items) if first_run else {}
+    prefilled, unmatched = categories_from_pages(raw_items)
     shown_before, _ = bootstrap_from_published(raw_items) if first_run else (set(), {})
 
     merged = []
@@ -281,6 +319,7 @@ def merge_rows(raw_items: list, previous: dict) -> list:
         seen.add(identifier)
         journal, volume, issue, pages = split_venue(item.get("venue") or "")
         stored = previous.get(identifier, {})
+        category = str(stored.get("category") or "").strip() or prefilled.get(identifier, "")
         row = {
             "id": identifier,
             "show": stored.get("show") if stored else ("yes" if (not first_run or identifier in shown_before) else "no"),
@@ -291,7 +330,7 @@ def merge_rows(raw_items: list, previous: dict) -> list:
             "volume": stored.get("volume") if stored.get("volume") not in (None, "") else volume,
             "issue": stored.get("issue") if stored.get("issue") not in (None, "") else issue,
             "pages": stored.get("pages") if stored.get("pages") not in (None, "") else pages,
-            "category": stored.get("category") or prefilled.get(identifier, ""),
+            "category": category,
             "status": "ok" if stored else "NEW",
             "notes": stored.get("notes") or "",
             "venue_raw": item.get("venue") or "",
@@ -312,7 +351,7 @@ def merge_rows(raw_items: list, previous: dict) -> list:
         merged.append(row)
 
     merged.sort(key=lambda row: -(int(row["year"]) if str(row.get("year") or "").isdigit() else 0))
-    return merged
+    return merged, unmatched
 
 
 def write_workbook(rows: list, journal_settings: dict) -> None:
@@ -531,7 +570,7 @@ def export_workbook() -> int:
     if not settings:
         _, settings = bootstrap_from_published(raw["items"])
 
-    rows = merge_rows(raw["items"], previous)
+    rows, unmatched = merge_rows(raw["items"], previous)
     write_workbook(rows, settings)
 
     new_rows = [row for row in rows if row.get("status") == "NEW"]
@@ -544,6 +583,23 @@ def export_workbook() -> int:
     if not previous:
         print("   first run: show / IF / quartile taken from publications-data.json,")
         print("              categories taken from the R-*.html research pages")
+
+    assigned = Counter(str(row.get("category") or "").strip() for row in rows
+                       if truthy(row.get("show")) and str(row.get("category") or "").strip())
+    cards = read_research_pages()
+    print(f"\nResearch page cards <-> workbook ({len(cards)} cards):")
+    for card in cards:
+        label = f"{card['area']} / {card['topic']}"
+        state = "auto" if assigned.get(label) else "hand-written (no category assigned yet)"
+        print(f"   {card['page']:<12} {short(card['topic'], 40):40} excel: {assigned.get(label, 0):>2}"
+              f"  page: {len(card['entries']):>2}  -> {state}")
+
+    if unmatched:
+        print(f"\nEntries written on a page that do not match any scraped record ({len(unmatched)}):")
+        for label, entry in unmatched[:20]:
+            print(f"   {short(label, 40):40} {short(entry, 70)}")
+        print("   -> set their category in Excel by hand (or check the title spelling)")
+
     print(f"\nNEW since your last review ({len(new_rows)}):")
     for row in new_rows[:40]:
         print(f"   [{row.get('year')}] {str(row.get('journal') or 'no venue')[:34]:34} {str(row.get('title'))[:58]}")

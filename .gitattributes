@@ -1,0 +1,5 @@
+# The review workbook must never be text-merged by git (that would corrupt it).
+*.xlsx binary
+
+# publications-data.json is generated: if it ever conflicts, just re-run
+#   python scripts/publications_excel.py build
