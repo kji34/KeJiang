@@ -614,6 +614,39 @@ def export_workbook() -> int:
     return 0
 
 
+def print_status() -> int:
+    """Default action: is publications-data.json up to date with the workbook?"""
+    raw = load_json(RAW_FILE) or {}
+    published = load_json(PUBLISHED_FILE) or {}
+    print("Publication pipeline")
+    print(f"   1. {RAW_FILE.name:26} {len(raw.get('items') or [])} records"
+          f"   scraped {raw.get('generatedAt') or '-'}")
+    if BOOK_FILE.exists():
+        rows = read_workbook_rows()
+        shown = sum(1 for row in rows.values() if truthy(row.get("show")))
+        saved = datetime.fromtimestamp(BOOK_FILE.stat().st_mtime).strftime("%Y-%m-%d %H:%M")
+        print(f"   2. {BOOK_FILE.name:26} {len(rows)} rows, {shown} with show = yes   saved {saved}")
+    else:
+        print(f"   2. {BOOK_FILE.name:26} missing")
+    print(f"   3. {PUBLISHED_FILE.name:26} {published.get('totalCount', 0)} publications"
+          f"   built {published.get('generatedAt') or '-'}")
+
+    stale = (BOOK_FILE.exists() and PUBLISHED_FILE.exists()
+             and BOOK_FILE.stat().st_mtime > PUBLISHED_FILE.stat().st_mtime)
+    print()
+    if stale:
+        print("!! The workbook is newer than the website data - your Excel edits are NOT online yet.")
+        print("   Run:  python scripts/publications_excel.py build")
+    else:
+        print("The website data matches the workbook.")
+    print("\nCommands:")
+    print("   refresh          scrape Google Scholar + update the workbook")
+    print("   build            workbook -> publications-data.json (run this after editing Excel)")
+    print("   build --check    show what build would write, without writing")
+    print("   export           update the workbook without scraping again")
+    return 0
+
+
 def main(argv=None) -> int:
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -641,8 +674,7 @@ def main(argv=None) -> int:
         update_publications.main()
         print("\n2/2  updating the review workbook ...")
         return export_workbook()
-    parser.print_help()
-    return 0
+    return print_status()
 
 
 if __name__ == "__main__":
