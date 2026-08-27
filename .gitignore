@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# Excel lock files, created while publications-review.xlsx is open
+~$*

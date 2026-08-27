@@ -1,6 +1,7 @@
-// Fills the publication list of every research topic card (R-*.html) from
-// publications-data.json, using the "category" column of publications-review.xlsx.
-// A card keeps its hand-written content when the data has no paper for that topic.
+// Fills the reference list of every research topic card (R-*.html) from
+// publications-data.json. A paper appears on a card when its "category" column in
+// publications-review.xlsx is "<h1 of the page> / <h2 of the card>".
+// Inside a card the oldest paper is [1] and the newest gets the highest number.
 async function loadResearchPublications() {
   const cards = Array.from(document.querySelectorAll('.paper-card .box-title'));
   if (!cards.length || typeof formatPublicationHtml !== 'function') {
@@ -32,11 +33,12 @@ async function loadResearchPublications() {
     const matches = items
       .filter(item => sameText(item.area, area) && sameText(item.topic, topic))
       .sort((a, b) => (b.year || 0) - (a.year || 0));
-    if (!matches.length) {
-      return;
-    }
 
     card.querySelectorAll('p').forEach(paragraph => paragraph.remove());
+    if (!matches.length) {
+      console.warn(`No publication has category "${area} / ${topic}" in publications-review.xlsx`);
+      return;
+    }
     matches.forEach((item, index) => {
       const paragraph = document.createElement('p');
       paragraph.innerHTML = `[${matches.length - index}] ${formatPublicationHtml(item)}`;

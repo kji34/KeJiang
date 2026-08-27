@@ -584,15 +584,22 @@ def export_workbook() -> int:
         print("   first run: show / IF / quartile taken from publications-data.json,")
         print("              categories taken from the R-*.html research pages")
 
-    assigned = Counter(str(row.get("category") or "").strip() for row in rows
-                       if truthy(row.get("show")) and str(row.get("category") or "").strip())
+    shown_by_category = Counter(str(row.get("category") or "").strip() for row in rows
+                                if truthy(row.get("show")) and str(row.get("category") or "").strip())
+    hidden_by_category = Counter(str(row.get("category") or "").strip() for row in rows
+                                 if not truthy(row.get("show")) and str(row.get("category") or "").strip())
     cards = read_research_pages()
-    print(f"\nResearch page cards <-> workbook ({len(cards)} cards):")
+    print(f"\nResearch page cards <- workbook categories ({len(cards)} cards):")
     for card in cards:
         label = f"{card['area']} / {card['topic']}"
-        state = "auto" if assigned.get(label) else "hand-written (no category assigned yet)"
-        print(f"   {card['page']:<12} {short(card['topic'], 40):40} excel: {assigned.get(label, 0):>2}"
-              f"  page: {len(card['entries']):>2}  -> {state}")
+        shown_here = shown_by_category.get(label, 0)
+        hidden_here = hidden_by_category.get(label, 0)
+        note = ""
+        if hidden_here:
+            note = f"   ({hidden_here} more with show = no)"
+        if not shown_here:
+            note = "   <- EMPTY: no paper has this category yet" + (note or "")
+        print(f"   {card['page']:<12} {short(card['topic'], 42):42} {shown_here:>2} papers{note}")
 
     if unmatched:
         print(f"\nEntries written on a page that do not match any scraped record ({len(unmatched)}):")
